@@ -16,17 +16,6 @@ module.exports = {
     node: true,
   },
 
-  // globals: {
-  //   App: 'writable',
-  //   emitter: 'readonly',
-  //   transl: 'writeable',
-  //   Time: 'readonly',
-  //   dayjs: 'readonly',
-  //   i18n: 'readonly',
-  //   uuid: 'readonly',
-  //   store: 'readonly',
-  // },
-
   extends: [
     'eslint:recommended',
     'plugin:import/typescript',
@@ -125,12 +114,6 @@ module.exports = {
         prev: 'multiline-expression',
         next: '*',
       },
-
-      // {
-      //   blankLine: 'always',
-      //   prev: 'block-like',
-      //   next: '*',
-      // },
     ],
     'import/prefer-default-export': 'off',
     'jsx-quotes': ['error', 'prefer-single'],
@@ -251,113 +234,5 @@ module.exports = {
     },
 
 
-    /* --------------------------------------------------------------------------
-      VUE
-    -------------------------------------------------------------------------- */
-    {
-      files: ['*.vue'],
-      plugins: [
-        'import',
-        '@typescript-eslint',
-        'vue',
-      ],
-      extends: [
-        'eslint:recommended',
-        'plugin:import/typescript',
-        'plugin:vue/vue3-essential',
-        '@vue/eslint-config-typescript/recommended',
-      ],
-      rules: {
-        indent: 'off', // eslint indent conflicts with vue indent rules, so it has to be disabled for .vue files
-        'vue/script-indent': ['error', 2, {
-          baseIndent: 1,
-        }],
-        'vue/html-indent': ['error', 2, {
-          baseIndent: 1,
-          alignAttributesVertically: false,
-        }],
-
-        'prefer-destructuring': ['warn', {
-          VariableDeclarator: {
-            array: true,
-            object: false, // disabled because it forces it on props which breaks reactivity
-          },
-          AssignmentExpression: {
-            array: true,
-            object: true,
-          },
-        }, {
-          enforceForRenamedProperties: false,
-        }],
-        'no-unused-vars': ['warn', { varsIgnorePattern: 'props' }],
-        'func-call-spacing': 'off', // causes conflicts with Typescript e.g. defineProps
-
-        'vue/component-api-style': ['error', ['script-setup']],
-        'vue/html-quotes': ['error', 'single'],
-        'vue/html-self-closing': ['error', {
-          html: {
-            void: 'always',
-            normal: 'always',
-            component: 'always',
-          },
-          svg: 'always',
-        }],
-        'vue/attribute-hyphenation': ['error', 'never'],
-        'vue/v-on-event-hyphenation': ['error', 'never'],
-        'vue/first-attribute-linebreak': ['error', {
-          singleline: 'beside',
-          multiline: 'below',
-        }],
-        'vue/html-closing-bracket-newline': ['error', {
-          singleline: 'never',
-          multiline: 'always',
-        }],
-        'vue/html-closing-bracket-spacing': ['error', {
-          startTag: 'never',
-          endTag: 'never',
-          selfClosingTag: 'always',
-        }],
-        'vue/max-attributes-per-line': ['error', {
-          singleline: { max: 2 },
-          multiline: { max: 1 },
-        }],
-        'vue/multi-word-component-names': 'off',
-        'vue/define-props-declaration': ['error', 'type-based'],
-        'vue/define-emits-declaration': ['error', 'type-based'],
-        'vue/next-tick-style': ['error', 'promise'],
-        'vue/component-tags-order': ['error', {
-          order: [
-            'template',
-            'script[setup]',
-            'script',
-            'style',
-          ],
-        }],
-        'vue/attributes-order': ['error', {
-          order: [
-            'DEFINITION',
-            'CONDITIONALS',
-            'RENDER_MODIFIERS',
-            'LIST_RENDERING',
-            ['UNIQUE', 'SLOT'],
-            'GLOBAL',
-            'TWO_WAY_BINDING',
-            'OTHER_DIRECTIVES',
-            'OTHER_ATTR',
-            'EVENTS',
-            'CONTENT',
-          ],
-          alphabetical: false,
-        }],
-        'vue/v-for-delimiter-style': ['warn', 'in'],
-        'vue/prefer-true-attribute-shorthand': ['warn'],
-        'vue/no-duplicate-attr-inheritance': ['error'],
-        'vue/no-required-prop-with-default': ['error'],
-        'vue/no-ref-object-destructure': ['error'],
-        'vue/no-useless-v-bind': ['error'],
-        'vue/no-v-html': ['error'],
-        'vue/no-v-text': ['error'],
-      },
-    },
   ],
 }
