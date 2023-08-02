@@ -7,6 +7,7 @@ interface Props {
 
 // METHODS
 import fetchApi from '@/lib/strapi'
+import { micromark } from 'micromark'
 
 // COMPONENTS
 import { Debug } from 'astro/components'
@@ -40,6 +41,7 @@ const clients = await fetchApi<IClient[]>({
         <h1 class="h1 font-display font-bold">
           {home.title}
         </h1>
+        <div class="hero-desc prose" set:html={micromark(home.description)} />
       </div>
 
       <!-- RIGHT COLUMN -->
