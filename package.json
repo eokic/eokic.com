@@ -9,12 +9,11 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
+  "devDependencies": {
     "@astrojs/tailwind": "^4.0.0",
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
-    "@vue/eslint-config-typescript": "^11.0.3",
     "alpinejs": "^3.12.3",
     "astro": "^2.9.7",
     "eslint": "^8.46.0",
