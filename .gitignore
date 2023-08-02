@@ -1,3 +1,6 @@
+# symlinks
+public/uploads
+
 # build output
 dist/
 
