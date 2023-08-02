@@ -23,6 +23,39 @@ body {
 /* --------------------------------------------------------------------------
   TYPOGRAPHY
 -------------------------------------------------------------------------- */
-.h1 {
-  @apply text-h1 sm:text-h1-sm md:text-h1-md lg:text-h1-lg xl:text-h1-xl;
+
+/* Line heights with vertical trim */
+.lh1 { line-height: 1 !important; }
+  .lh1.\+vtrim { margin-top: -0.145em !important; margin-bottom: -0.18em !important; }
+.lh1\.2 { line-height: 1.2 !important; }
+  .lh1\.2.\+vtrim { margin-top: -0.235em !important; margin-bottom: -0.235em !important; }
+.lh1\.35 { line-height: 1.35 !important; }
+  .lh1\.35.\+vtrim { margin-top: -0.305em !important; margin-bottom: -0.31em !important; }
+.lh1\.5 { line-height: 1.5 !important; }
+  .lh1\.5.\+vtrim { margin-top: -0.4em !important; margin-bottom: -0.42em !important; }
+.lh1\.75 { line-height: 1.75 !important; }
+  .lh1\.75.\+vtrim { margin-top: -0.51em !important; margin-bottom: -0.51em !important; }
+
+/* Headings */
+.h1 { @apply text-h1 sm:text-h1-sm md:text-h1-md lg:text-h1-lg xl:text-h1-xl; }
+.h2 { @apply text-h2 sm:text-h2-sm md:text-h2-md lg:text-h2-lg xl:text-h2-xl; }
+.h3 { @apply text-h3 sm:text-h3-sm md:text-h3-md lg:text-h3-lg xl:text-h3-xl; }
+.h4 { @apply text-h4 sm:text-h4-sm md:text-h4-md lg:text-h4-lg xl:text-h4-xl; }
+
+/* Body */
+.body-1 { @apply text-body-1 sm:text-body-1-sm md:text-body-1-md lg:text-body-1-lg xl:text-body-1-xl; }
+.body { @apply text-body sm:text-body-sm md:text-body-md lg:text-body-lg xl:text-body-xl; }
+.body\+1 { @apply text-body+1 sm:text-body+1-sm md:text-body+1-md lg:text-body+1-lg xl:text-body+1-xl; }
+
+/* Lead = larger body */
+.lead {
+  @apply text-lead sm:text-lead-sm md:text-lead-md lg:text-lead-lg xl:text-lead-xl;
+}
+
+
+/* --------------------------------------------------------------------------
+  ACCESSIBILITY CORE
+-------------------------------------------------------------------------- */
+.a11y-link-skip {
+  @apply sr-only focus:not-sr-only;
 }

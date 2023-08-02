@@ -9,6 +9,7 @@ export default interface IHome extends IEntity {
   subtitle: string
   description: string
   heroMedia: NStrapiMedia.Raster
+  badge: NStrapiMedia.Raster
   photoLabelMe: string
   photoLabelWaifu: string
   sectionServices: ISection

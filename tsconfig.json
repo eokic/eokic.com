@@ -12,7 +12,9 @@
 
   "include": [
     "src/**/*.js",
+    "src/**/*.mjs",
     "src/**/*.ts",
+    "src/**/*.mts",
     "src/**/*.tsx",
     "src/**/*.d.ts",
     "src/**/*.astro",

@@ -12,7 +12,7 @@ const { title } = Astro.props
 
 // METHODS
 import fetchApi from '@/lib/strapi'
-import googleFonts from '@/utils/googleFonts'
+import { googleFonts } from '@/utils'
 
 // COMPONENTS
 import { ViewTransitions } from 'astro:transitions'
@@ -36,7 +36,7 @@ import '@/styles/base.css'
     <meta name="viewport" content="width=device-width" />
     <title>{title} | {globals.siteName}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link
       rel="stylesheet"
       href={googleFonts({

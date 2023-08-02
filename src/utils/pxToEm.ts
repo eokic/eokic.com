@@ -7,5 +7,3 @@ export default function pxToEm (
     ? `${(targetPx / basePx).toFixed(2)}em`
     : (targetPx / basePx).toFixed(2)
 }
-
-module.exports = pxToEm

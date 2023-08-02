@@ -50,6 +50,41 @@ const fontSize: Record<string, Sizing> = {
     max: 46,
     unit: 'px',
   },
+  h2: {
+    min: 30,
+    max: 38,
+    unit: 'px',
+  },
+  h3: {
+    min: 22,
+    max: 28,
+    unit: 'px',
+  },
+  h4: {
+    min: 22,
+    max: 24,
+    unit: 'px',
+  },
+  'body-1': {
+    min: BASE_FONT_PX * 0.88,
+    max: BASE_FONT_PX * 0.95,
+    unit: 'px',
+  },
+  body: {
+    min: 18,
+    max: 19,
+    unit: 'px',
+  },
+  'body+1': {
+    min: BASE_FONT_PX * 1.05,
+    max: BASE_FONT_PX * 1.12,
+    unit: 'px',
+  },
+  lead: {
+    min: BASE_FONT_PX * 1.15,
+    max: BASE_FONT_PX * 1.25,
+    unit: 'px',
+  },
 }
 
 const fontSizes = () => {
@@ -124,11 +159,46 @@ module.exports = {
       },
 
       aspectRatio: {
+        '1/1': '1 / 1',
+        '1/2': '1 / 2',
+        '1/3': '1 / 3',
+        '1/4': '1 / 4',
+        '1/5': '1 / 5',
+        '2/1': '2 / 1',
+        '2/3': '2 / 3',
+        '2/5': '2 / 5',
+        '3/1': '3 / 1',
+        '3/2': '3 / 2',
+        '3/4': '3 / 4',
+        '3/5': '3 / 5',
+        '4/1': '4 / 1',
         '4/3': '4 / 3',
+        '4/5': '4 / 5',
+        '5/1': '5 / 1',
+        '5/2': '5 / 2',
+        '5/3': '5 / 3',
+        '5/4': '5 / 4',
+        '5/7': '5 / 7',
+        '5/8': '5 / 8',
+        '7/5': '7 / 5',
+        '8/5': '8 / 5',
+        '9/16': '9 / 16',
+        '9/21': '9 / 21',
+        '16/9': '16 / 9',
+        '21/9': '21 / 9',
       },
 
       lineHeight: {
         ...lineHeights(),
+      },
+
+      typography: {
+        DEFAULT: {
+          css: {
+            fontSize: null,
+            lineHeight: null,
+          },
+        },
       },
     },
 
@@ -161,4 +231,34 @@ module.exports = {
       ],
     },
   },
+
+  safelist: [
+    'aspect-1/1',
+    'aspect-1/2',
+    'aspect-1/3',
+    'aspect-1/4',
+    'aspect-1/5',
+    'aspect-2/1',
+    'aspect-2/3',
+    'aspect-2/5',
+    'aspect-3/1',
+    'aspect-3/2',
+    'aspect-3/4',
+    'aspect-3/5',
+    'aspect-4/1',
+    'aspect-4/3',
+    'aspect-4/5',
+    'aspect-5/1',
+    'aspect-5/2',
+    'aspect-5/3',
+    'aspect-5/4',
+    'aspect-5/7',
+    'aspect-5/8',
+    'aspect-7/5',
+    'aspect-8/5',
+    'aspect-9/16',
+    'aspect-9/21',
+    'aspect-16/9',
+    'aspect-21/9',
+  ],
 }
