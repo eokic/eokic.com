@@ -13,7 +13,7 @@ interface Props {
  * @param wrappedByList - If the response is a list, unwrap it
  * @returns
  */
-export default async function fetchApi<T> ({
+export default async function fetchApi <T> ({
   endpoint,
   query,
   wrappedByKey,
