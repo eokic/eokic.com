@@ -11,6 +11,14 @@
 }
 
 html {
-  @apply text-slate-700;
+  @apply text-base text-slate-700;
   background: white;
+}
+
+
+/* --------------------------------------------------------------------------
+  TYPOGRAPHY
+-------------------------------------------------------------------------- */
+.h1 {
+  @apply text-h1 sm:text-h1-sm md:text-h1-md lg:text-h1-lg xl:text-h1-xl;
 }

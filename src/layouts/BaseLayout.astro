@@ -9,6 +9,9 @@ interface Props {
 // PROPS
 const { title } = Astro.props
 
+// METHODS
+import googleFonts from '@/utils/googleFonts'
+
 // STYLES
 import '@/styles/base.css'
 
@@ -21,6 +24,13 @@ import '@/styles/base.css'
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href={googleFonts({
+        family: ['Kalam'],
+        weight: ['400', '700'],
+      })}
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -30,10 +40,8 @@ import '@/styles/base.css'
     <a class="a11y-link-skip" href="#menu">Skip to navigation</a>
     <a class="a11y-link-skip" href="#main">Skip to content</a>
 
-    <!-- Container -->
-    <div class="container mx-auto">
-      <slot />
-    </div>
+    <!-- Body -->
+    <slot />
   </body>
 </html>
 

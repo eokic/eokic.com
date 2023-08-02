@@ -1,6 +1,4 @@
 ---
-// ----------------------------------------------------------------------------
-
 // TYPES
 import type { IClient, IGlobal, IHome } from '@/interfaces'
 interface Props {
@@ -8,7 +6,7 @@ interface Props {
 }
 
 // METHODS
-import fetchApi from '@/utils/strapi'
+import fetchApi from '@/lib/strapi'
 
 // COMPONENTS
 import { Debug } from 'astro/components'
@@ -31,17 +29,81 @@ const clients = await fetchApi<IClient[]>({
   wrappedByKey: 'data',
 })
 
-// ----------------------------------------------------------------------------
+// ============================================================================
 ---
 
 <div>
-  <!-- <Debug {globals} /> -->
+  <div class="container mx-auto">
+    <div class="hero">
+      <!-- LEFT COLUMN -->
+      <div class="hero-left">
+        <h1 class="h1 font-display font-bold">
+          {home.title}
+        </h1>
+      </div>
 
-  <div class=""></div>
-
-  <h2></h2>
+      <!-- RIGHT COLUMN -->
+      <div class="hero-right">
+        <div class="photo">
+          <div class="mask">
+            <img src={home.heroMedia.url} />
+          </div>
+          <span class="photo-label photo-label-me">
+            {home.photoLabelMe}
+          </span>
+          <span class="photo-label photo-label-waifu">
+            {home.photoLabelWaifu}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<style>
-  /*  */
+<br /><br /><br />
+<Debug {home} />
+
+<style lang="scss" is:global>
+  // ==========================================================================
+
+  .hero {
+    @apply grid grid-cols-5 gap-4;
+
+    &-left {
+      @apply col-span-12 md:col-span-3;
+    }
+
+    &-right {
+      @apply col-span-12 md:col-span-2;
+
+      .photo {
+        @apply relative;
+
+        .mask {
+          @apply aspect-[5/7] overflow-hidden;
+          @apply border-8 border-solid border-black;
+          @apply bg-gray-800;
+          @apply rotate-2;
+
+          img {
+            @apply w-full h-full object-cover;
+          }
+        }
+
+        &-label {
+          @apply absolute;
+          @apply font-display;
+
+          &-me {
+            @apply top-2 right-[100%];
+          }
+
+          &-waifu {
+            @apply top-3 left-[100%];
+            @apply text-right;
+          }
+        }
+      }
+    }
+  }
 </style>

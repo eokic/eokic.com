@@ -5,7 +5,7 @@
 import type { IGlobal, ITestimonial } from '@/interfaces'
 
 // METHODS
-import fetchApi from '@/utils/strapi'
+import fetchApi from '@/lib/strapi'
 
 // COMPONENTS
 import { BaseLayout } from '@/layouts'
@@ -57,4 +57,4 @@ const testimonials = await fetchApi<ITestimonial[]>({
 
 <style>
   /*  */
-</style>@/utils/strapi
+</style>
