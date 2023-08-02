@@ -9,13 +9,17 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@astrojs/cloudflare": "^6.6.2",
+    "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
+    "astro": "^2.9.7"
+  },
+  "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
     "alpinejs": "^3.12.3",
-    "astro": "^2.9.7",
     "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-typescript": "^3.5.5",

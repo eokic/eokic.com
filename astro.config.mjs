@@ -1,9 +1,12 @@
 import { defineConfig } from 'astro/config'
-
+import cloudflare from "@astrojs/cloudflare"
+import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  site: 'https://eokic.com',
+  integrations: [tailwind(), sitemap()],
   output: 'server',
+  adapter: cloudflare(),
 })
