@@ -18,7 +18,22 @@ import '@/styles/base.css'
 // ----------------------------------------------------------------------------
 ---
 
-<!DOCTYPE html>
+<script>
+  import Swup from 'swup'
+  import SwupFadeTheme from '@swup/fade-theme'
+  import SwupDebugPlugin from '@swup/debug-plugin'
+  import SwupScrollPlugin from '@swup/scroll-plugin'
+
+  const swup = new Swup({
+    animateHistoryBrowsing: true,
+    plugins: [
+      new SwupFadeTheme(),
+      new SwupDebugPlugin(),
+      new SwupScrollPlugin(),
+    ],
+  })
+</script>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -41,7 +56,9 @@ import '@/styles/base.css'
     <a class="a11y-link-skip" href="#main">Skip to content</a>
 
     <!-- Body -->
-    <slot />
+    <div id="swup">
+      <slot />
+    </div>
   </body>
 </html>
 

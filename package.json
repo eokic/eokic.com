@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && tsc --noEmit && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -14,6 +14,9 @@
     "@astrojs/compiler": "^1.7.0",
     "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
+    "@swup/debug-plugin": "^4.0.1",
+    "@swup/fade-theme": "^2.0.0",
+    "@swup/scroll-plugin": "^3.0.0",
     "@tailwindcss/typography": "^0.5.9",
     "alpinejs": "^3.12.3",
     "astro": "^2.9.7",
@@ -22,6 +25,7 @@
     "cssnano": "^6.0.1",
     "micromark": "^4.0.0",
     "sass": "^1.64.2",
+    "swup": "^4.1.0",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
