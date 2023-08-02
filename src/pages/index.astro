@@ -1,0 +1,55 @@
+---
+// ----------------------------------------------------------------------------
+
+// TYPES
+import type { ITestimonial } from '@/interfaces'
+
+// METHODS
+import fetchApi from '@/lib/strapi'
+
+// COMPONENTS
+import { BaseLayout } from '@/layouts'
+import { HomeHero } from '@/components'
+import { Debug } from 'astro/components'
+
+// STYLES
+import '@/styles/home.css'
+
+const testimonials = await fetchApi<ITestimonial[]>({
+  endpoint: 'testimonials',
+  wrappedByKey: 'data',
+})
+
+// ----------------------------------------------------------------------------
+---
+
+<BaseLayout title="Welcome to Astro.">
+  <main>
+    <!-- <Debug {testimonials} /> -->
+
+    <HomeHero />
+
+    {
+      testimonials.map((testimonial) => (
+        <blockquote>
+          <p>{testimonial.quote}</p>
+          <footer>
+            <a href="#">{testimonial.person}</a>
+            <br />
+            <small>{testimonial.position}</small>
+          </footer>
+        </blockquote>
+      ))
+    }
+
+    <!-- <Card
+      href="https://docs.astro.build/"
+      title="Documentation"
+      body="Learn how Astro works and explore the official API docs."
+    /> -->
+  </main>
+</BaseLayout>
+
+<style>
+  /*  */
+</style>@/interfaces/Testimonial

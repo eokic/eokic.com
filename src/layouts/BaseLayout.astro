@@ -1,0 +1,52 @@
+---
+// ----------------------------------------------------------------------------
+
+// TYPES
+interface Props {
+  title: string
+}
+
+// PROPS
+const { title } = Astro.props
+
+// STYLES
+import '@/styles/base.css'
+
+// ----------------------------------------------------------------------------
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Accessibilty links -->
+    <a class="a11y-link-skip" href="#menu">Skip to navigation</a>
+    <a class="a11y-link-skip" href="#main">Skip to content</a>
+
+    <!-- Container -->
+    <div class="container mx-auto">
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+</style>

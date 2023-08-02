@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 39 34 55;
+    --color-secondary: 214 69 38;
+    --color-tertiary: 61 87 84;
+  }
+}
+
+html {
+  @apply text-slate-700;
+  background: white;
+}

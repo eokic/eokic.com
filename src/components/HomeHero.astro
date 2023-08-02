@@ -1,0 +1,42 @@
+---
+// ----------------------------------------------------------------------------
+
+// TYPES
+import type { IClient, IHome } from '@/interfaces'
+
+// METHODS
+import fetchApi from '@/lib/strapi'
+
+// COMPONENTS
+// import { Card } from '@/components'
+import { Debug } from 'astro/components'
+
+// STYLES
+// import '@/styles/home.css'
+
+const home = await fetchApi<IHome>({
+  endpoint: 'home',
+  query: {
+    populate: '*',
+  },
+  wrappedByKey: 'data',
+})
+
+const clients = await fetchApi<IClient[]>({
+  endpoint: 'clients',
+  query: {
+    populate: '*',
+  },
+  wrappedByKey: 'data',
+})
+
+// ----------------------------------------------------------------------------
+---
+
+<div>
+  <Debug {home} />
+</div>
+
+<style>
+  /*  */
+</style>

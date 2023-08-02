@@ -1,0 +1,26 @@
+{
+  "extends": "astro/tsconfigs/strict",
+
+  "compilerOptions": {
+    "verbatimModuleSyntax": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [ "src/*" ],
+      "@public/*": [ "public/*" ],
+    }
+  },
+
+  "include": [
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.astro",
+    "src/**/*.vue",
+    "src/**/*.json",
+  ],
+
+  "exclude": [
+    "src/node_modules/**/*",
+  ]
+}

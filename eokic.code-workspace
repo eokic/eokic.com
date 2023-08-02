@@ -1,0 +1,59 @@
+{
+
+  "folders": [
+    {
+      "name": "Root",
+      "path": "."
+    },
+    {
+      "name": "=== TYPES",
+      "path": "src/interfaces"
+    },
+    {
+      "name": "=== ASSETS",
+      "path": "src/assets"
+    },
+    {
+      "name": "=== COMPONENTS",
+      "path": "src/components"
+    },
+    {
+      "name": "=== CONTENT",
+      "path": "src/content"
+    },
+    {
+      "name": "=== LAYOUTS",
+      "path": "src/layouts"
+    },
+    {
+      "name": "=== LIB",
+      "path": "src/lib"
+    },
+    {
+      "name": "=== PAGES",
+      "path": "src/pages"
+    },
+    {
+      "name": "=== STYLES",
+      "path": "src/styles"
+    },
+    {
+      "name": "=== ASSETS",
+      "path": "src/assets"
+    },
+    {
+      "name": "=== PUBLIC",
+      "path": "public"
+    },
+  ],
+
+  "settings": {
+    "files.associations": {
+      "*.css": "tailwindcss"
+    },
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+  },
+
+}
