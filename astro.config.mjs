@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config'
 import { astroImageTools } from 'astro-imagetools'
-import cloudflare from '@astrojs/cloudflare'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 
@@ -12,8 +11,6 @@ export default defineConfig({
     tailwind(),
     sitemap(),
   ],
-  output: 'server',
-  adapter: cloudflare(),
   experimental: {
     viewTransitions: true,
   },

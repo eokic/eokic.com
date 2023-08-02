@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^6.6.2",
     "@astrojs/compiler": "^1.8.0",
     "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
