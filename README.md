@@ -12,8 +12,8 @@ TODO: Public intro & licence
 
 ## Setup
 
-1. configure Strapi in `.env`
-1. symlink Strapi's `public/uploads` folder to the local equivalent
+1. create and configure the `.env` based on `.env.example`
+1. symlink Strapi's uploads `ln -s STRAPI_UPLOAD_FOLDER public/uploads`
 
 
 ## Development
