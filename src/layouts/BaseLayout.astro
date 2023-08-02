@@ -2,6 +2,7 @@
 // ----------------------------------------------------------------------------
 
 // TYPES
+import type { IGlobal } from '@/interfaces'
 interface Props {
   title: string
 }
@@ -10,10 +11,18 @@ interface Props {
 const { title } = Astro.props
 
 // METHODS
+import fetchApi from '@/lib/strapi'
 import googleFonts from '@/utils/googleFonts'
 
 // COMPONENTS
 import { ViewTransitions } from 'astro:transitions'
+
+// DATA
+const globals = await fetchApi<IGlobal>({
+  endpoint: 'global',
+  query: { populate: 'deep' },
+  wrappedByKey: 'data',
+})
 
 // STYLES
 import '@/styles/base.css'
@@ -24,8 +33,9 @@ import '@/styles/base.css'
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
+    <title>{title} | {globals.siteName}</title>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link
       rel="stylesheet"
       href={googleFonts({
@@ -33,10 +43,10 @@ import '@/styles/base.css'
         weight: ['400', '700'],
       })}
     />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
     <ViewTransitions />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="Astro description" />
+    <meta name="generator" content={Astro.generator} />
   </head>
   <body>
     <!-- Accessibilty links -->
