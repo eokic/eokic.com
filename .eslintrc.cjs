@@ -1,10 +1,10 @@
 /*
 
-  Production frontend
-  TODO
+  Production packages:
+  bun add @astrojs/cloudflare @astrojs/compiler @astrojs/sitemap @astrojs/tailwind @tailwindcss/typography alpinejs astro astro-imagetools autoprefixer cssnano micromark sass tailwindcss
 
-  Development frontend
-  TODO
+  Development packages:
+  bun add -d @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-airbnb-base eslint-import-resolver-typescript eslint-plugin-astro eslint-plugin-import eslint-plugin-json eslint-plugin-vue typescript
 
 */
 module.exports = {
