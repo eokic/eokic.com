@@ -2,7 +2,10 @@
 // ----------------------------------------------------------------------------
 
 // TYPES
-import type { IClient, IHome } from '@/interfaces'
+import type { IClient, IGlobal, IHome } from '@/interfaces'
+interface Props {
+  globals: IGlobal
+}
 
 // METHODS
 import fetchApi from '@/lib/strapi'
@@ -14,19 +17,18 @@ import { Debug } from 'astro/components'
 // STYLES
 // import '@/styles/home.css'
 
+// PROPS
+const { globals } = Astro.props
+
 const home = await fetchApi<IHome>({
   endpoint: 'home',
-  query: {
-    populate: '*',
-  },
+  query: { populate: 'deep' },
   wrappedByKey: 'data',
 })
 
 const clients = await fetchApi<IClient[]>({
   endpoint: 'clients',
-  query: {
-    populate: '*',
-  },
+  query: { populate: 'deep' },
   wrappedByKey: 'data',
 })
 
@@ -34,7 +36,11 @@ const clients = await fetchApi<IClient[]>({
 ---
 
 <div>
-  <Debug {home} />
+  <!-- <Debug {globals} /> -->
+
+  <div class=""></div>
+
+  <h2></h2>
 </div>
 
 <style>

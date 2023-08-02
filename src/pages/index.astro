@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 // TYPES
-import type { ITestimonial } from '@/interfaces'
+import type { IGlobal, ITestimonial } from '@/interfaces'
 
 // METHODS
 import fetchApi from '@/lib/strapi'
@@ -15,8 +15,15 @@ import { Debug } from 'astro/components'
 // STYLES
 import '@/styles/home.css'
 
+const globals = await fetchApi<IGlobal>({
+  endpoint: 'global',
+  query: { populate: 'deep' },
+  wrappedByKey: 'data',
+})
+
 const testimonials = await fetchApi<ITestimonial[]>({
   endpoint: 'testimonials',
+  query: { populate: 'deep' },
   wrappedByKey: 'data',
 })
 
@@ -25,9 +32,7 @@ const testimonials = await fetchApi<ITestimonial[]>({
 
 <BaseLayout title="Welcome to Astro.">
   <main>
-    <!-- <Debug {testimonials} /> -->
-
-    <HomeHero />
+    <HomeHero {globals} />
 
     {
       testimonials.map((testimonial) => (
@@ -52,4 +57,4 @@ const testimonials = await fetchApi<ITestimonial[]>({
 
 <style>
   /*  */
-</style>@/interfaces/Testimonial
+</style>
