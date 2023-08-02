@@ -18,7 +18,7 @@ TODO: Public intro & licence
 
 ## Development
 
-⚠️ Note: a configured, up & running instance of Strapi is a prerequisite
+⚠️ Note: a configured, up & running Strapi instance is a prerequisite.
 
 1. `nvm i`
 1. `bun install`
