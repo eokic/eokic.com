@@ -1,61 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 
-// METHODS
-import pxToEm from './src/utils/pxToEm'
-
 // TYPES
-type Sizing = {
-  min: number
-  max: number
-  unit?: string
-}
+import type { ResponsiveSizing } from './src/utils/responsivity'
+
+// METHODS
+import parseSizingObj from './src/utils/responsivity'
 
 // CONSTANTS
-const BASE_FONT_REM = 1.125
-const BASE_FONT_PX = BASE_FONT_REM * 16
-const BREAKPOINTS = ['sm', 'md', 'lg', 'xl', '2xl']
+import {
+  BASE_FONT_PX,
+  BASE_FONT_REM,
+} from './src/utils/responsivity'
 
 
 /* --------------------------------------------------------------------------
   FONT SIZES
 -------------------------------------------------------------------------- */
-const generateResponsiveVariations = (
-  key: string,
-  sizing: Sizing,
-  convertToEm = false,
-) => {
-  const output = {}
-  const increment = (sizing.max - sizing.min) / BREAKPOINTS.length
-
-  BREAKPOINTS.forEach((breakpoint, index) => {
-    output[`${key}-${breakpoint}`] = sizing.min + (increment * (index + 1))
-    if (convertToEm && sizing.unit === 'px')
-      output[`${key}-${breakpoint}`] = pxToEm(BASE_FONT_PX, output[`${key}-${breakpoint}`], true)
-    else if (sizing.unit)
-      output[`${key}-${breakpoint}`] += sizing.unit
-  })
-
-  return {
-    [key]: `${sizing.min}${sizing.unit || ''}`,
-    ...output,
-  }
-}
-
-const parseSizingObj = (
-  sizing: Record<string, Sizing>,
-  convertToEm = false,
-) => { // eslint-disable-line arrow-body-style
-  return Object.keys(sizing).reduce((sizes, key) => ({
-    ...sizes,
-    ...generateResponsiveVariations(key, sizing[key], convertToEm),
-  }), {})
-}
-
-
-/* --------------------------------------------------------------------------
-  FONT SIZES
--------------------------------------------------------------------------- */
-const fontSize: Record<string, Sizing> = {
+const fontSize: Record<string, ResponsiveSizing> = {
   h1: {
     min: 30,
     max: 46,
@@ -102,7 +63,7 @@ const fontSize: Record<string, Sizing> = {
 /* --------------------------------------------------------------------------
   LINE HEIGHTS
 -------------------------------------------------------------------------- */
-const lineHeight: Record<string, Sizing> = {
+const lineHeight: Record<string, ResponsiveSizing> = {
   body: {
     min: 1.12,
     max: 1.15,
@@ -121,7 +82,7 @@ const lineHeight: Record<string, Sizing> = {
 /* --------------------------------------------------------------------------
   SPACINGS
 -------------------------------------------------------------------------- */
-const spacing: Record<string, Sizing> = {
+const spacing: Record<string, ResponsiveSizing> = {
   edge: {
     min: 25,
     max: 40,
@@ -133,6 +94,8 @@ const spacing: Record<string, Sizing> = {
     unit: 'px',
   },
 }
+
+const edge = {}
 
 
 /* --------------------------------------------------------------------------
@@ -152,7 +115,14 @@ module.exports = {
 
     container: {
       center: true,
-      padding: '1rem',
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        md: '3rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
     },
 
     // colors: {

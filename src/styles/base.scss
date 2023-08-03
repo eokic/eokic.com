@@ -17,7 +17,7 @@ html {
 
 
 /* --------------------------------------------------------------------------
-  TYPOGRAPHY
+  RESPONSIVE TYPOGRAPHY
 -------------------------------------------------------------------------- */
 
 // Line heights with vertical trim
@@ -33,20 +33,31 @@ html {
   .lh1\.75.\+vtrim { margin-top: -0.51em !important; margin-bottom: -0.51em !important; }
 
 // Headings
-.h1 { @apply text-h1 sm:text-h1-sm md:text-h1-md lg:text-h1-lg xl:text-h1-xl; }
-.h2 { @apply text-h2 sm:text-h2-sm md:text-h2-md lg:text-h2-lg xl:text-h2-xl; }
-.h3 { @apply text-h3 sm:text-h3-sm md:text-h3-md lg:text-h3-lg xl:text-h3-xl; }
-.h4 { @apply text-h4 sm:text-h4-sm md:text-h4-md lg:text-h4-lg xl:text-h4-xl; }
+.h1 { @apply text-h1 sm:text-h1-sm md:text-h1-md lg:text-h1-lg xl:text-h1-xl 2xl:text-h1-2xl; }
+.h2 { @apply text-h2 sm:text-h2-sm md:text-h2-md lg:text-h2-lg xl:text-h2-xl 2xl:text-h2-2xl; }
+.h3 { @apply text-h3 sm:text-h3-sm md:text-h3-md lg:text-h3-lg xl:text-h3-xl 2xl:text-h3-2xl; }
+.h4 { @apply text-h4 sm:text-h4-sm md:text-h4-md lg:text-h4-lg xl:text-h4-xl 2xl:text-h4-2xl; }
 
 // Body
-.body-1 { @apply text-body-1 sm:text-body-1-sm md:text-body-1-md lg:text-body-1-lg xl:text-body-1-xl; }
-.body { @apply text-body sm:text-body-sm md:text-body-md lg:text-body-lg xl:text-body-xl; }
-.body\+1 { @apply text-body+1 sm:text-body+1-sm md:text-body+1-md lg:text-body+1-lg xl:text-body+1-xl; }
+.body-1 { @apply text-body-1 sm:text-body-1-sm md:text-body-1-md lg:text-body-1-lg xl:text-body-1-xl 2xl:text-body-1-2xl; }
+.body { @apply text-body sm:text-body-sm md:text-body-md lg:text-body-lg xl:text-body-xl 2xl:text-body-2xl; }
+.body\+1 { @apply text-body+1 sm:text-body+1-sm md:text-body+1-md lg:text-body+1-lg xl:text-body+1-xl 2xl:text-body+1-2xl; }
 
 // Lead = larger body
 .lead {
-  @apply text-lead sm:text-lead-sm md:text-lead-md lg:text-lead-lg xl:text-lead-xl;
+  @apply text-lead sm:text-lead-sm md:text-lead-md lg:text-lead-lg xl:text-lead-xl 2xl:text-lead-2xl;
 }
+
+
+/* --------------------------------------------------------------------------
+  RESPONSIVE SPACINGS
+-------------------------------------------------------------------------- */
+.mxr-edge { @apply mx-edge sm:mx-edge-sm md:mx-edge-md lg:mx-edge-lg xl:mx-edge-xl 2xl:mx-edge-2xl; }
+.mlr-edge { @apply ml-edge sm:ml-edge-sm md:ml-edge-md lg:ml-edge-lg xl:ml-edge-xl 2xl:ml-edge-2xl; }
+.mrr-edge { @apply mr-edge sm:mr-edge-sm md:mr-edge-md lg:mr-edge-lg xl:mr-edge-xl 2xl:mr-edge-2xl; }
+.myr-section { @apply my-section sm:my-section-sm md:my-section-md lg:my-section-lg xl:my-section-xl 2xl:my-section-2xl; }
+.mtr-section { @apply mt-section sm:mt-section-sm md:mt-section-md lg:mt-section-lg xl:mt-section-xl 2xl:mt-section-2xl; }
+.mbr-section { @apply mb-section sm:mb-section-sm md:mb-section-md lg:mb-section-lg xl:mb-section-xl 2xl:mb-section-2xl; }
 
 
 /* --------------------------------------------------------------------------
@@ -61,6 +72,19 @@ html {
   LAYOUT
 -------------------------------------------------------------------------- */
 .section {
-  //
+  @apply myr-section;
+
+
+  &-title {
+    //
+  }
+
+  &-subtitle {
+    //
+  }
+
+  &-body {
+    //
+  }
 }
 
