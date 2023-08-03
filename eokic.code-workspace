@@ -6,6 +6,10 @@
       "path": "."
     },
     {
+      "name": "=== BUILD",
+      "path": "dist"
+    },
+    {
       "name": "=== TYPES",
       "path": "src/interfaces"
     },

@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 // TYPES
-import type { IGlobal, ITestimonial } from '@/interfaces'
+import type { IGlobal, IHome, ITestimonial } from '@/interfaces'
 
 // METHODS
 import fetchApi from '@/lib/strapi'
@@ -12,11 +12,14 @@ import fetchApi from '@/lib/strapi'
 import { BaseLayout } from '@/layouts'
 import { HomeHero } from '@/components'
 
-// STYLES
-import '@/styles/home.css'
-
 const globals = await fetchApi<IGlobal>({
   endpoint: 'global',
+  query: { populate: 'deep' },
+  wrappedByKey: 'data',
+})
+
+const home = await fetchApi<IHome>({
+  endpoint: 'home',
   query: { populate: 'deep' },
   wrappedByKey: 'data',
 })
@@ -35,10 +38,10 @@ const testimonials = await fetchApi<ITestimonial[]>({
     <br />
     <a href="/case-studies/unhcr-resettlement-data/">UNHCR link</a>
 
-    <HomeHero {globals} />
+    <HomeHero {globals} {home} />
 
     {
-      testimonials.map((testimonial) => (
+      testimonials?.map((testimonial) => (
         <blockquote>
           <p>{testimonial.quote}</p>
           <footer>
