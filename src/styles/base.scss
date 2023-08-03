@@ -22,15 +22,15 @@ html {
 
 // Line heights with vertical trim
 .lh1 { line-height: 1 !important; }
-  .lh1.\+vtrim { margin-top: -0.145em !important; margin-bottom: -0.18em !important; }
+  .lh1\+vtrim { @apply lh1; margin-top: -0.145em !important; margin-bottom: -0.18em !important; }
 .lh1\.2 { line-height: 1.2 !important; }
-  .lh1\.2.\+vtrim { margin-top: -0.235em !important; margin-bottom: -0.235em !important; }
+  .lh1\.2\+vtrim { @apply lh1.2; margin-top: -0.235em !important; margin-bottom: -0.235em !important; }
 .lh1\.35 { line-height: 1.35 !important; }
-  .lh1\.35.\+vtrim { margin-top: -0.305em !important; margin-bottom: -0.31em !important; }
+  .lh1\.35\+vtrim { @apply lh1.35; margin-top: -0.305em !important; margin-bottom: -0.31em !important; }
 .lh1\.5 { line-height: 1.5 !important; }
-  .lh1\.5.\+vtrim { margin-top: -0.4em !important; margin-bottom: -0.42em !important; }
+  .lh1\.5\+vtrim { @apply lh1.5; margin-top: -0.4em !important; margin-bottom: -0.42em !important; }
 .lh1\.75 { line-height: 1.75 !important; }
-  .lh1\.75.\+vtrim { margin-top: -0.51em !important; margin-bottom: -0.51em !important; }
+  .lh1\.75\+vtrim { @apply lh1.75; margin-top: -0.51em !important; margin-bottom: -0.51em !important; }
 
 // Headings
 .h1 { @apply text-h1 sm:text-h1-sm md:text-h1-md lg:text-h1-lg xl:text-h1-xl 2xl:text-h1-2xl; }
