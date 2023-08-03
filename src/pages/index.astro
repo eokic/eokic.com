@@ -34,24 +34,51 @@ const testimonials = await fetchApi<ITestimonial[]>({
 ---
 
 <BaseLayout title="Welcome to Astro.">
-  <main>
-    <br />
-    <a href="/case-studies/unhcr-resettlement-data/">UNHCR link</a>
-
+  <main class="main">
     <HomeHero {globals} {home} />
 
-    {
-      testimonials?.map((testimonial) => (
-        <blockquote>
-          <p>{testimonial.quote}</p>
-          <footer>
-            <a href="#">{testimonial.person}</a>
-            <br />
-            <small>{testimonial.position}</small>
-          </footer>
-        </blockquote>
-      ))
-    }
+    <section id="services" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">{home?.sectionServices?.title}</h2>
+          <h3 class="section-subtitle">{home?.sectionServices?.subtitle}</h3>
+        </header>
+        <div class="section-body">TODO: SERVICES</div>
+      </div>
+    </section>
+
+    <section id="work" class="section -alt">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">{home?.sectionWork?.title}</h2>
+          <h3 class="section-subtitle">{home?.sectionWork?.subtitle}</h3>
+        </header>
+        <div class="section-body">
+          {
+            testimonials?.map((testimonial) => (
+              <blockquote>
+                <p>{testimonial.quote}</p>
+                <footer>
+                  <a href="#">{testimonial.person}</a>
+                  <br />
+                  <small>{testimonial.position}</small>
+                </footer>
+              </blockquote>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">{home?.sectionAbout?.title}</h2>
+          <h3 class="section-subtitle">{home?.sectionAbout?.subtitle}</h3>
+        </header>
+        <div class="section-body">TODO: ABOUT</div>
+      </div>
+    </section>
 
     <!-- <Card
       href="https://docs.astro.build/"

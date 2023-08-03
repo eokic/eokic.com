@@ -16,6 +16,7 @@ html {
 }
 
 
+
 /* --------------------------------------------------------------------------
   RESPONSIVE TYPOGRAPHY
 -------------------------------------------------------------------------- */
@@ -49,15 +50,24 @@ html {
 }
 
 
+
 /* --------------------------------------------------------------------------
   RESPONSIVE SPACINGS
 -------------------------------------------------------------------------- */
+
+// Screen edge
 .mxr-edge { @apply mx-edge sm:mx-edge-sm md:mx-edge-md lg:mx-edge-lg xl:mx-edge-xl 2xl:mx-edge-2xl; }
 .mlr-edge { @apply ml-edge sm:ml-edge-sm md:ml-edge-md lg:ml-edge-lg xl:ml-edge-xl 2xl:ml-edge-2xl; }
 .mrr-edge { @apply mr-edge sm:mr-edge-sm md:mr-edge-md lg:mr-edge-lg xl:mr-edge-xl 2xl:mr-edge-2xl; }
+
+// Section
 .myr-section { @apply my-section sm:my-section-sm md:my-section-md lg:my-section-lg xl:my-section-xl 2xl:my-section-2xl; }
 .mtr-section { @apply mt-section sm:mt-section-sm md:mt-section-md lg:mt-section-lg xl:mt-section-xl 2xl:mt-section-2xl; }
 .mbr-section { @apply mb-section sm:mb-section-sm md:mb-section-md lg:mb-section-lg xl:mb-section-xl 2xl:mb-section-2xl; }
+.pyr-section { @apply py-section sm:py-section-sm md:py-section-md lg:py-section-lg xl:py-section-xl 2xl:py-section-2xl; }
+.ptr-section { @apply pt-section sm:pt-section-sm md:pt-section-md lg:pt-section-lg xl:pt-section-xl 2xl:pt-section-2xl; }
+.pbr-section { @apply pb-section sm:pb-section-sm md:pb-section-md lg:pb-section-lg xl:pb-section-xl 2xl:pb-section-2xl; }
+
 
 
 /* --------------------------------------------------------------------------
@@ -68,20 +78,29 @@ html {
 }
 
 
+
 /* --------------------------------------------------------------------------
   LAYOUT
 -------------------------------------------------------------------------- */
 .section {
-  @apply myr-section;
+  @apply pyr-section;
 
-
-  &-title {
-    //
+  &.-alt {
+    background: #F8F9FC;
   }
 
-  &-subtitle {
-    //
+
+  &-head {
+    @apply text-center;
   }
+
+    &-title {
+      @apply h2 lh1+vtrim font-extrabold uppercase;
+    }
+
+    &-subtitle {
+      @apply h4 lh1.2+vtrim font-normal italic;
+    }
 
   &-body {
     //
