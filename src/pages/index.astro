@@ -1,6 +1,4 @@
 ---
-// ----------------------------------------------------------------------------
-
 // TYPES
 import type { IGlobal, IHome, ITestimonial } from '@/interfaces'
 
@@ -10,6 +8,7 @@ import fetchApi from '@/lib/strapi'
 // COMPONENTS
 // import { Debug } from 'astro/components'
 import { BaseLayout } from '@/layouts'
+import { Section } from '@/components/base'
 import { Hero } from '@/components/home'
 
 const globals = await fetchApi<IGlobal>({
@@ -37,54 +36,42 @@ const testimonials = await fetchApi<ITestimonial[]>({
   <main class="main">
     <Hero {globals} {home} />
 
-    <section id="services" class="section -alt">
-      <div class="container">
-        <header class="section-head">
-          <h2 class="section-title">{home?.sectionServices?.title}</h2>
-          <h3 class="section-subtitle">{home?.sectionServices?.subtitle}</h3>
-        </header>
-        <div class="section-body">TODO: SERVICES</div>
-      </div>
-    </section>
+    <Section
+      id="services"
+      title={home?.sectionServices?.title}
+      subtitle={home?.sectionServices?.subtitle}
+      alt
+    >
+      TODO: SERVICES
+    </Section>
 
-    <section id="work" class="section">
-      <div class="container">
-        <header class="section-head">
-          <h2 class="section-title">{home?.sectionWork?.title}</h2>
-          <h3 class="section-subtitle">{home?.sectionWork?.subtitle}</h3>
-        </header>
-        <div class="section-body">
-          {
-            testimonials?.map((testimonial) => (
-              <blockquote>
-                <p>{testimonial.quote}</p>
-                <footer>
-                  <a href="#">{testimonial.person}</a>
-                  <br />
-                  <small>{testimonial.position}</small>
-                </footer>
-              </blockquote>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    <Section
+      id="work"
+      title={home?.sectionWork?.title}
+      subtitle={home?.sectionWork?.subtitle}
+    >
+      {
+        testimonials?.map((testimonial) => (
+          <blockquote>
+            <p>{testimonial.quote}</p>
+            <footer>
+              <a href="#">{testimonial.person}</a>
+              <br />
+              <small>{testimonial.position}</small>
+            </footer>
+          </blockquote>
+        ))
+      }
+    </Section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <header class="section-head">
-          <h2 class="section-title">{home?.sectionAbout?.title}</h2>
-          <h3 class="section-subtitle">{home?.sectionAbout?.subtitle}</h3>
-        </header>
-        <div class="section-body">TODO: ABOUT</div>
-      </div>
-    </section>
-
-    <!-- <Card
-      href="https://docs.astro.build/"
-      title="Documentation"
-      body="Learn how Astro works and explore the official API docs."
-    /> -->
+    <Section
+      id="about"
+      title={home?.sectionAbout?.title}
+      subtitle={home?.sectionAbout?.subtitle}
+      alt
+    >
+      TODO: ABOUT
+    </Section>
   </main>
 </BaseLayout>
 

@@ -1,0 +1,66 @@
+---
+interface Props {
+  id?: string
+  title?: string
+  subtitle?: string
+  alt?: boolean
+}
+
+// PROPS
+const { id, title, subtitle, alt } = Astro.props
+---
+
+<section class:list={['section', { '-alt': alt }]} id={id}>
+  <slot name="before-container" />
+  <div class="container mx-auto">
+    {
+      (title || subtitle) && (
+        <header class="section-head">
+          {title && <h2 class="section-title">{title}</h2>}
+          {subtitle && <h3 class="section-subtitle">{subtitle}</h3>}
+        </header>
+      )
+    }
+    <div class="section-body">
+      <slot />
+    </div>
+  </div>
+  <slot name="after-container" />
+</section>
+
+<style lang="scss" is:global>
+  .section {
+    @apply pyr-section;
+
+    &.-alt {
+      @apply relative;
+      background: #f8f9fc;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        background: url();
+      }
+    }
+
+    &-head {
+      @apply text-center;
+    }
+
+    &-title {
+      @apply h2 lh1+vtrim font-extrabold uppercase;
+    }
+
+    &-subtitle {
+      @apply h4 lh1.2+vtrim font-normal italic;
+    }
+
+    &-body {
+      //
+    }
+  }
+</style>

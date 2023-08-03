@@ -8,7 +8,8 @@ interface Props {
 
 // COMPONENTS
 // import { Img } from 'astro-imagetools/components'
-import { Aside, Main } from './'
+import { Section } from '@/components/base'
+import { Aside, Clients, Main } from './'
 
 // PROPS
 const { globals, home } = Astro.props
@@ -16,18 +17,17 @@ const { globals, home } = Astro.props
 // ============================================================================
 ---
 
-<section class="section">
-  <div class="container mx-auto">
-    <div class="hero">
-      <main class="hero-left">
-        <Main {globals} {home} />
-      </main>
-      <aside class="hero-right">
-        <Aside {globals} {home} />
-      </aside>
-    </div>
+<Section id="hero">
+  <div class="hero">
+    <main class="hero-left">
+      <Main {globals} {home} />
+    </main>
+    <aside class="hero-right">
+      <Aside {globals} {home} />
+    </aside>
   </div>
-</section>
+  <Clients slot="after-container" />
+</Section>
 
 <style lang="scss" is:global>
   // ==========================================================================

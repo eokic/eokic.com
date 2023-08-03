@@ -14,7 +14,15 @@ const clients = await fetchApi<IClient[]>({
 // ============================================================================
 ---
 
-<div>CLIENT LOGOS</div>
+<footer>
+  <div class="flex mtr-section">
+    {
+      clients?.map((client) => (
+        <img src={client.logo?.colorOnLight?.url} alt={client.title} />
+      ))
+    }
+  </div>
+</footer>
 
 <style lang="scss" is:global>
   /**/
