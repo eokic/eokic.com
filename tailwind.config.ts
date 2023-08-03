@@ -15,19 +15,20 @@ const BASE_FONT_REM = 1.125
 const BASE_FONT_PX = BASE_FONT_REM * 16
 const BREAKPOINTS = ['sm', 'md', 'lg', 'xl', '2xl']
 
-// Generate variations
-const multiplication = (
+
+/* --------------------------------------------------------------------------
+  FONT SIZES
+-------------------------------------------------------------------------- */
+const generateResponsiveVariations = (
   key: string,
   sizing: Sizing,
   convertToEm = false,
 ) => {
   const output = {}
-
   const increment = (sizing.max - sizing.min) / BREAKPOINTS.length
 
   BREAKPOINTS.forEach((breakpoint, index) => {
     output[`${key}-${breakpoint}`] = sizing.min + (increment * (index + 1))
-
     if (convertToEm && sizing.unit === 'px')
       output[`${key}-${breakpoint}`] = pxToEm(BASE_FONT_PX, output[`${key}-${breakpoint}`], true)
     else if (sizing.unit)
@@ -38,6 +39,16 @@ const multiplication = (
     [key]: `${sizing.min}${sizing.unit || ''}`,
     ...output,
   }
+}
+
+const parseSizingObj = (
+  sizing: Record<string, Sizing>,
+  convertToEm = false,
+) => { // eslint-disable-line arrow-body-style
+  return Object.keys(sizing).reduce((sizes, key) => ({
+    ...sizes,
+    ...generateResponsiveVariations(key, sizing[key], convertToEm),
+  }), {})
 }
 
 
@@ -87,19 +98,9 @@ const fontSize: Record<string, Sizing> = {
   },
 }
 
-const fontSizes = () => {
-  let sizes = {}
-
-  Object.keys(fontSize).forEach(key => {
-    sizes = { ...sizes, ...multiplication(key, fontSize[key], true) }
-  })
-
-  return sizes
-}
-
 
 /* --------------------------------------------------------------------------
-  LINE HEIGHT
+  LINE HEIGHTS
 -------------------------------------------------------------------------- */
 const lineHeight: Record<string, Sizing> = {
   body: {
@@ -116,14 +117,21 @@ const lineHeight: Record<string, Sizing> = {
   },
 }
 
-const lineHeights = () => {
-  let sizes = {}
 
-  Object.keys(lineHeight).forEach(key => {
-    sizes = { ...sizes, ...multiplication(key, lineHeight[key]) }
-  })
-
-  return sizes
+/* --------------------------------------------------------------------------
+  SPACINGS
+-------------------------------------------------------------------------- */
+const spacing: Record<string, Sizing> = {
+  edge: {
+    min: 25,
+    max: 40,
+    unit: 'px',
+  },
+  section: {
+    min: 25,
+    max: 50,
+    unit: 'px',
+  },
 }
 
 
@@ -189,7 +197,7 @@ module.exports = {
       },
 
       lineHeight: {
-        ...lineHeights(),
+        ...parseSizingObj(lineHeight),
       },
 
       typography: {
@@ -204,7 +212,7 @@ module.exports = {
 
     fontSize: {
       base: `${BASE_FONT_REM}rem`,
-      ...fontSizes(),
+      ...parseSizingObj(fontSize, true),
     },
 
     fontFamily: {
@@ -229,6 +237,20 @@ module.exports = {
         '-apple-system',
         'sans-serif',
       ],
+    },
+
+    spacing: {
+      ...parseSizingObj(spacing, true),
+      1: '8px',
+      2: '12px',
+      3: '16px',
+      4: '24px',
+      5: '32px',
+      6: '48px',
+      7: '64px',
+      8: '96px',
+      9: '128px',
+      10: '192px',
     },
   },
 

@@ -117,6 +117,7 @@ module.exports = {
     ],
     'import/prefer-default-export': 'off',
     'jsx-quotes': ['error', 'prefer-single'],
+    'arrow-body-style': ['error', 'as-needed'],
     'arrow-parens': ['error', 'as-needed'],
     'arrow-spacing': 'error',
     'implicit-arrow-linebreak': 'off',
