@@ -1,6 +1,4 @@
 ---
-// ----------------------------------------------------------------------------
-
 // TYPES
 import type { IGlobal } from '@/interfaces'
 interface Props {
@@ -25,9 +23,7 @@ const globals = await fetchApi<IGlobal>({
 })
 
 // STYLES
-import '@/styles/base.css'
-
-// ----------------------------------------------------------------------------
+import '@/styles/eokic.css'
 ---
 
 <html lang="en">
@@ -56,17 +52,5 @@ import '@/styles/base.css'
 
     <!-- Body -->
     <slot />
-  </body><style is:global>
-    :root {
-      --accent: 136, 58, 234;
-      --accent-light: 224, 204, 250;
-      --accent-dark: 49, 10, 101;
-      --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        rgb(var(--accent-light)) 30%,
-        white 60%
-      );
-    }
-  </style>
+  </body>
 </html>

@@ -1,18 +1,27 @@
-import type { ResponsiveSizing } from '../utils/responsivity'
+import type { ScaleInput } from '../utils/tw-scale'
 import {
   BASE_FONT_PX,
   BASE_FONT_REM,
-} from '../utils/responsivity'
+} from '../utils/tw-scale'
 
-export const spacing: Record<string, ResponsiveSizing> = {
-  edge: {
-    min: 25,
-    max: 40,
-    unit: 'px',
+export const spacingX: ScaleInput = {
+  type: 'spacingX',
+  scale: {
+    edge: {
+      min: 25,
+      max: 40,
+      unit: 'px',
+    },
   },
-  section: {
-    min: 25,
-    max: 50,
-    unit: 'px',
+}
+
+export const spacingY: ScaleInput = {
+  type: 'spacingY',
+  scale: {
+    section: {
+      min: 25,
+      max: 50,
+      unit: 'px',
+    },
   },
 }

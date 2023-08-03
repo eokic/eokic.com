@@ -15,8 +15,6 @@ import { micromark } from 'micromark'
 
 // PROPS
 const { globals, home } = Astro.props
-
-// ============================================================================
 ---
 
 <a class="eokic-logo" href="/">
@@ -29,7 +27,7 @@ const { globals, home } = Astro.props
 </a>
 <br />
 <div class="relative inline-block mb-10">
-  <h1 class="inline-block h1 lh1+vtrim font-display font-bold">
+  <h1 class="inline-block h1 lh-h1-vtrim font-display font-bold">
     {home?.title}
   </h1>
   <small class="body-1 font-display absolute top-[90%] right-[1.25em]">
@@ -42,13 +40,11 @@ const { globals, home } = Astro.props
   />
 </div>
 <div
-  class="hero-desc prose lead lh1.75"
+  class="hero-desc prose lead lh-prose"
   set:html={micromark(home?.description)}
 />
 
-<style lang="scss" is:global>
-  // ==========================================================================
-
+<style is:global>
   .eokic-logo {
     @apply inline-block mb-10;
   }

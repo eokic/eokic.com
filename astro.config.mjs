@@ -8,7 +8,11 @@ export default defineConfig({
   site: 'https://eokic.com',
   integrations: [
     astroImageTools,
-    tailwind(),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
     sitemap(),
   ],
   experimental: {

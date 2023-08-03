@@ -1,7 +1,7 @@
 /*
 
   Production packages:
-  bun add @astrojs/compiler @astrojs/sitemap @astrojs/tailwind @tailwindcss/typography alpinejs astro astro-imagetools autoprefixer cssnano micromark sass tailwindcss
+  bun add @astrojs/compiler @astrojs/sitemap @astrojs/tailwind alpinejs astro astro-imagetools autoprefixer cssnano micromark tailwindcss @tailwindcss/nesting @tailwindcss/typography postcss-import
 
   Development packages:
   bun add -d @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-airbnb-base eslint-import-resolver-typescript eslint-plugin-astro eslint-plugin-import eslint-plugin-json eslint-plugin-vue typescript

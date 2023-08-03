@@ -1,29 +1,43 @@
 /** @type {import('tailwindcss').Config} */
 
 // TYPES
-import type { ResponsiveSizing } from './src/utils/responsivity'
+import type { ResponsiveSizing } from './src/utils/tw-scale'
 
 // METHODS
-import parseSizingObj from './src/utils/responsivity'
+const plugin = require('tailwindcss/plugin')
+import { generateTwScale } from './src/utils/tw-scale'
 
 // CONSTANTS
 import {
+  BREAKPOINTS,
   BASE_FONT_PX,
   BASE_FONT_REM,
-} from './src/utils/responsivity'
+} from './src/utils/tw-scale'
 
 // CONFIGURATION MODULES
 import aspectRatio from './src/_tailwind/aspect-ratio'
 import brand from './src/_tailwind/brand'
 import { fontSize } from './src/_tailwind/font-size'
 import { lineHeight } from './src/_tailwind/line-height'
-import { spacing } from './src/_tailwind/spacing'
+import { spacingX, spacingY } from './src/_tailwind/spacing'
+
+// Parse sizing objects
+const fontSizes = generateTwScale(fontSize)
+const lineHeights = generateTwScale(lineHeight)
+const spacingXs = generateTwScale(spacingX)
+const spacingYs = generateTwScale(spacingY)
 
 // EXPORT
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  plugins: [require('@tailwindcss/typography')],
+
+
+  /* --------------------------------------------------------------------------
+    THEME CONFIG
+  -------------------------------------------------------------------------- */
   theme: {
+    screens: BREAKPOINTS,
+
     container: {
       center: true,
       padding: {
@@ -38,12 +52,8 @@ module.exports = {
 
     extend: {
       colors: brand.colors,
-      lineHeight: parseSizingObj(lineHeight),
+      lineHeight: lineHeights.theme,
       aspectRatio,
-
-      screens: {
-        sm: '560px',
-      },
 
       typography: {
         DEFAULT: {
@@ -58,11 +68,12 @@ module.exports = {
     fontFamily: brand.font.family,
     fontSize: {
       base: `${BASE_FONT_REM}rem`,
-      ...parseSizingObj(fontSize, true),
+      ...fontSizes.theme,
     },
 
     spacing: {
-      ...parseSizingObj(spacing, true),
+      ...spacingXs.theme,
+      ...spacingYs.theme,
       1: '8px',
       2: '12px',
       3: '16px',
@@ -76,6 +87,29 @@ module.exports = {
     },
   },
 
+
+  /* --------------------------------------------------------------------------
+    PLUGINS
+
+    Note: had to add custom styles here because @apply did not work.
+    https://docs.astro.build/en/guides/integrations-guide/tailwind/#class-does-not-exist-with-apply-directives
+  -------------------------------------------------------------------------- */
+  plugins: [
+    require('@tailwindcss/typography'),
+    plugin(({ addUtilities, theme }) => {
+      addUtilities({
+        ...fontSizes.style,
+        ...lineHeights.style,
+        ...spacingXs.style,
+        ...spacingYs.style,
+      })
+    }),
+  ],
+
+
+  /* --------------------------------------------------------------------------
+    THESE CLASSES ARE ALWAYS OUTPUTTED
+  -------------------------------------------------------------------------- */
   safelist: [
     'aspect-1/1',
     'aspect-1/2',

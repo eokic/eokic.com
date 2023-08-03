@@ -10,8 +10,6 @@ const clients = await fetchApi<IClient[]>({
   query: { populate: 'deep' },
   wrappedByKey: 'data',
 })
-
-// ============================================================================
 ---
 
 <footer>
@@ -23,7 +21,3 @@ const clients = await fetchApi<IClient[]>({
     }
   </div>
 </footer>
-
-<style lang="scss" is:global>
-  /**/
-</style>

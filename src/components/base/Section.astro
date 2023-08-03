@@ -28,7 +28,7 @@ const { id, title, subtitle, alt } = Astro.props
   <slot name="after-container" />
 </section>
 
-<style lang="scss" is:global>
+<style is:global>
   .section {
     @apply pyr-section;
 
@@ -52,15 +52,17 @@ const { id, title, subtitle, alt } = Astro.props
     }
 
     &-title {
-      @apply h2 lh1+vtrim font-extrabold uppercase;
+      @apply h1;
+      @apply pb-4;
+      @apply h2 lh-h2-vtrim font-extrabold uppercase text-slate-900;
     }
 
     &-subtitle {
-      @apply h4 lh1.2+vtrim font-normal italic;
+      @apply h4 lh-h4-vtrim font-normal italic text-slate-600;
     }
 
     &-body {
-      //
+      /*  */
     }
   }
 </style>
