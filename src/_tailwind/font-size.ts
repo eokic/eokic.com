@@ -1,4 +1,4 @@
-import type { ResponsiveSizing } from '../utils/responsivity'
+import type { ResponsiveSizing } from '@/utils/responsivity'
 import {
   BASE_FONT_PX,
   BASE_FONT_REM,

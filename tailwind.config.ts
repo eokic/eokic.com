@@ -13,26 +13,17 @@ import {
 } from './src/utils/responsivity'
 
 // CONFIGURATION MODULES
+import aspectRatio from './src/_tailwind/aspect-ratio'
+import brand from './src/_tailwind/brand'
 import { fontSize } from './src/_tailwind/font-size'
 import { lineHeight } from './src/_tailwind/line-height'
 import { spacing } from './src/_tailwind/spacing'
-
-
-/* --------------------------------------------------------------------------
-  BRAND COLORS
--------------------------------------------------------------------------- */
-// const brandColors = {
-//   primary: '#FE3B1F',
-//   secondary: '#0C1D3B',
-// }
-
 
 // EXPORT
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   plugins: [require('@tailwindcss/typography')],
   theme: {
-
     container: {
       center: true,
       padding: {
@@ -45,88 +36,29 @@ module.exports = {
       },
     },
 
-    // colors: {
-    //   primary: 'hsl(var(--color-primary) / 1)',
-    //   secondary: 'hsl(var(--color-secondary) / 1)',
-    //   tertiary: 'hsl(var(--color-tertiary) / 1)',
-    // },
-
     extend: {
+      colors: brand.colors,
+      lineHeight: parseSizingObj(lineHeight),
+      aspectRatio,
+
       screens: {
         sm: '560px',
-      },
-
-      aspectRatio: {
-        '1/1': '1 / 1',
-        '1/2': '1 / 2',
-        '1/3': '1 / 3',
-        '1/4': '1 / 4',
-        '1/5': '1 / 5',
-        '2/1': '2 / 1',
-        '2/3': '2 / 3',
-        '2/5': '2 / 5',
-        '3/1': '3 / 1',
-        '3/2': '3 / 2',
-        '3/4': '3 / 4',
-        '3/5': '3 / 5',
-        '4/1': '4 / 1',
-        '4/3': '4 / 3',
-        '4/5': '4 / 5',
-        '5/1': '5 / 1',
-        '5/2': '5 / 2',
-        '5/3': '5 / 3',
-        '5/4': '5 / 4',
-        '5/7': '5 / 7',
-        '5/8': '5 / 8',
-        '7/5': '7 / 5',
-        '8/5': '8 / 5',
-        '9/16': '9 / 16',
-        '9/21': '9 / 21',
-        '16/9': '16 / 9',
-        '21/9': '21 / 9',
-      },
-
-      lineHeight: {
-        ...parseSizingObj(lineHeight),
       },
 
       typography: {
         DEFAULT: {
           css: {
-            fontSize: null,
-            lineHeight: null,
+            fontSize: null, // makes `prose` inherit the font-size + allows customization
+            lineHeight: null, // makes `prose` inherit the line-height + allows customization
           },
         },
       },
     },
 
+    fontFamily: brand.font.family,
     fontSize: {
       base: `${BASE_FONT_REM}rem`,
       ...parseSizingObj(fontSize, true),
-    },
-
-    fontFamily: {
-      sans: [
-        'SF Pro', 'system-ui', '-apple-system',
-        'Segoe UI',
-        'Roboto',
-        'Helvetica Neue',
-        'Noto Sans', 'Liberation Sans',
-        'sans-serif',
-        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji',
-      ],
-      display: [
-        'Kalam',
-        'Caveat',
-        'Merienda',
-        'Fuzzy Bubbles',
-        'Comic Neue',
-        'Palatino',
-        'SF Pro',
-        'system-ui',
-        '-apple-system',
-        'sans-serif',
-      ],
     },
 
     spacing: {
