@@ -10,7 +10,7 @@ import fetchApi from '@/lib/strapi'
 // COMPONENTS
 // import { Debug } from 'astro/components'
 import { BaseLayout } from '@/layouts'
-import { HomeHero } from '@/components'
+import { Hero } from '@/components/home'
 
 const globals = await fetchApi<IGlobal>({
   endpoint: 'global',
@@ -35,9 +35,9 @@ const testimonials = await fetchApi<ITestimonial[]>({
 
 <BaseLayout title="Welcome to Astro.">
   <main class="main">
-    <HomeHero {globals} {home} />
+    <Hero {globals} {home} />
 
-    <section id="services" class="section">
+    <section id="services" class="section -alt">
       <div class="container">
         <header class="section-head">
           <h2 class="section-title">{home?.sectionServices?.title}</h2>
@@ -47,7 +47,7 @@ const testimonials = await fetchApi<ITestimonial[]>({
       </div>
     </section>
 
-    <section id="work" class="section -alt">
+    <section id="work" class="section">
       <div class="container">
         <header class="section-head">
           <h2 class="section-title">{home?.sectionWork?.title}</h2>

@@ -1,0 +1,46 @@
+---
+// TYPES
+import type { IGlobal, IHome } from '@/interfaces'
+interface Props {
+  globals: IGlobal
+  home: IHome
+}
+
+// COMPONENTS
+// import { Img } from 'astro-imagetools/components'
+import { Aside, Main } from './'
+
+// PROPS
+const { globals, home } = Astro.props
+
+// ============================================================================
+---
+
+<section class="section">
+  <div class="container mx-auto">
+    <div class="hero">
+      <main class="hero-left">
+        <Main {globals} {home} />
+      </main>
+      <aside class="hero-right">
+        <Aside {globals} {home} />
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style lang="scss" is:global>
+  // ==========================================================================
+
+  .hero {
+    @apply grid grid-cols-5 gap-4;
+
+    &-left {
+      @apply col-span-12 md:col-span-3;
+    }
+
+    &-right {
+      @apply col-span-12 md:col-span-2;
+    }
+  }
+</style>

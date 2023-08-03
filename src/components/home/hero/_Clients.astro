@@ -1,0 +1,21 @@
+---
+// TYPES
+import type { IClient } from '@/interfaces'
+
+// METHODS
+import fetchApi from '@/lib/strapi'
+
+const clients = await fetchApi<IClient[]>({
+  endpoint: 'clients',
+  query: { populate: 'deep' },
+  wrappedByKey: 'data',
+})
+
+// ============================================================================
+---
+
+<div>CLIENT LOGOS</div>
+
+<style lang="scss" is:global>
+  /**/
+</style>

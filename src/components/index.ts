@@ -1,1 +1,1 @@
-export { default as HomeHero } from './HomeHero.astro'
+export * from './home'
