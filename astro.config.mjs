@@ -1,10 +1,11 @@
-import { defineConfig, sharpImageService } from 'astro/config'
-import { astroImageTools } from 'astro-imagetools'
+import { defineConfig, sharpImageService } from 'astro/config';
 
 // import alpinejs from '@astrojs/alpinejs'
-import compressor from 'astro-compressor'
-import sitemap from '@astrojs/sitemap'
-import tailwind from '@astrojs/tailwind'
+import { astroImageTools } from 'astro-imagetools';
+import compress from "astro-compress";
+import compressor from 'astro-compressor';
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,9 +20,9 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-
     // alpinejs(),
     sitemap(),
+    compress(),
     compressor(),
   ],
   image: {
