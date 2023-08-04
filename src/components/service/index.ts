@@ -1,1 +1,1 @@
-export { default as Teaser } from './Teaser.astro'
+export { default as ServiceTeaser } from './ServiceTeaser.astro'

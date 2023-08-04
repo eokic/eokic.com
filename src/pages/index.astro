@@ -8,9 +8,8 @@ import fetchApi from '@/lib/strapi'
 // COMPONENTS
 // import { Debug } from 'astro/components'
 import { BaseLayout } from '@/layouts'
-import { Section } from '@/components/base'
 import { Hero } from '@/components/home'
-import { Teaser as ServiceTeaser } from '@/components/service'
+import { Section, ServiceTeaser, Testimonial } from '@/components'
 
 const globals = await fetchApi<IGlobal>({
   endpoint: 'global',
@@ -51,18 +50,9 @@ const testimonials = await fetchApi<ITestimonial[]>({
       title={home?.sectionWork?.title}
       subtitle={home?.sectionWork?.subtitle}
     >
-      {
-        testimonials?.map((testimonial) => (
-          <blockquote>
-            <p>{testimonial.quote}</p>
-            <footer>
-              <a href="#">{testimonial.person}</a>
-              <br />
-              <small>{testimonial.position}</small>
-            </footer>
-          </blockquote>
-        ))
-      }
+      <div class="grid grid-cols-3 gap-5">
+        {testimonials?.map((testimonial) => <Testimonial {testimonial} />)}
+      </div>
     </Section>
 
     <Section

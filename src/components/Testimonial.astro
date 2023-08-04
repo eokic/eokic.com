@@ -1,0 +1,54 @@
+---
+// TYPES
+import type { ITestimonial } from '@/interfaces'
+interface Props {
+  testimonial: ITestimonial
+}
+
+// PROPS
+const { testimonial } = Astro.props
+
+// COMPONENTS
+import { Link } from '@/components'
+
+// VENDOR
+import { micromark } from 'micromark'
+---
+
+<figure
+  class:list={[
+    'testimonial',
+    {
+      'col-span-2': testimonial.size === 'medium',
+      'col-span-3': testimonial.size === 'large',
+    },
+  ]}
+>
+  <blockquote set:html={micromark(testimonial.quote)} />
+  <figcaption>
+    <b class="block">
+      {
+        testimonial.link ? (
+          <Link label={testimonial.person} link={testimonial.link} />
+        ) : (
+          testimonial.person
+        )
+      }
+    </b>
+    <small>{testimonial.position}</small>
+  </figcaption>
+</figure>
+
+<style is:global>
+  .testimonial {
+    /*  */
+
+    &.-small {
+      width: 33.333%;
+    }
+
+    &.-medium {
+      width: 66.666%;
+    }
+  }
+</style>
