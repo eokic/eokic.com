@@ -2,7 +2,7 @@ import { defineConfig, sharpImageService } from 'astro/config'
 import { astroImageTools } from 'astro-imagetools'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
-import alpinejs from "@astrojs/alpinejs"
+import alpinejs from '@astrojs/alpinejs'
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,17 +11,17 @@ export default defineConfig({
     astroImageTools,
     tailwind({
       config: {
-        applyBaseStyles: false
-      }
+        applyBaseStyles: false,
+      },
     }),
     alpinejs(),
     sitemap(),
   ],
   image: {
-    service: sharpImageService()
+    service: sharpImageService(),
   },
   experimental: {
     assets: true,
-    viewTransitions: true
+    viewTransitions: true,
   },
 })
