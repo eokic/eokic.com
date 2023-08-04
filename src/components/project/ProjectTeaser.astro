@@ -16,7 +16,7 @@ import { micromark } from 'micromark'
 ---
 
 <article
-  class="p-2 rounded-lg text-white"
+  class="p-1 rounded-lg text-white"
   style={{
     backgroundColor: project.client.brandColor,
   }}
@@ -26,9 +26,10 @@ import { micromark } from 'micromark'
       {
         project.thumbnail && (
           <ImageHandler
-            class="rounded-sm"
+            cssClass="rounded"
             img={project.thumbnail}
             nonStandardRatio
+            fullWidth
           />
         )
       }
