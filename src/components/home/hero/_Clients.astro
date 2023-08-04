@@ -5,6 +5,10 @@ import type { IClient } from '@/interfaces'
 // METHODS
 import fetchApi from '@/lib/strapi'
 
+// COMPONENTS
+import { Image } from 'astro:assets'
+
+// LOCAL STATE
 const clients = await fetchApi<IClient[]>({
   endpoint: 'clients',
   query: { populate: 'deep' },
@@ -13,11 +17,18 @@ const clients = await fetchApi<IClient[]>({
 ---
 
 <footer>
-  <div class="flex mtr-section">
+  <div class="flex items-center flex-wrap mtr-section">
     {
-      clients?.map((client) => (
-        <img src={client.logo?.colorOnLight?.url} alt={client.title} />
-      ))
+      clients
+        ?.filter((client) => client.logo?.colorOnLight?.url)
+        ?.map((client) => (
+          <Image
+            src={client.logo.colorOnLight.url}
+            width={client.logo.colorOnLight.width}
+            height={client.logo.colorOnLight.height}
+            alt={client.title}
+          />
+        ))
     }
   </div>
 </footer>

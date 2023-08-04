@@ -10,11 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^0.2.2",
     "@astrojs/compiler": "^1.8.0",
     "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/alpinejs": "^3.7.2",
     "alpinejs": "^3.12.3",
     "astro": "^2.9.7",
     "astro-imagetools": "^0.8.1",
@@ -22,6 +24,7 @@
     "cssnano": "^6.0.1",
     "micromark": "^4.0.0",
     "postcss-import": "^15.1.0",
+    "sharp": "^0.32.4",
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {

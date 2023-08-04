@@ -7,11 +7,10 @@ interface Props {
 }
 
 // METHODS
-// import fetchApi from '@/lib/strapi'
 import { aspectRatio } from '@/utils'
 
 // VENDOR
-// import { micromark } from 'micromark'
+import { Picture } from 'astro-imagetools/components'
 
 // PROPS
 const { globals, home } = Astro.props
@@ -21,8 +20,13 @@ const { globals, home } = Astro.props
   <div
     class=`mask aspect-${aspectRatio(home?.heroMedia?.width, home?.heroMedia?.height)}`
   >
-    <img src={home?.heroMedia?.url} />
-    <!-- <Img src={home?.heroMedia?.url} alt="A random image" /> -->
+    <Picture
+      src={home.heroMedia.url}
+      width={home.heroMedia.width}
+      height={home.heroMedia.height}
+      loading="eager"
+      alt="TODO"
+    />
   </div>
   <span class="photo-label photo-label-me">
     {home?.photoLabelMe}

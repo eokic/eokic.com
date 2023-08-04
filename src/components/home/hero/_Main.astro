@@ -10,6 +10,9 @@ interface Props {
 // import fetchApi from '@/lib/strapi'
 import { aspectRatio } from '@/utils'
 
+// COMPONENTS
+import { Image } from 'astro:assets'
+
 // VENDOR
 import { micromark } from 'micromark'
 
@@ -18,24 +21,27 @@ const { globals, home } = Astro.props
 ---
 
 <a class="eokic-logo" href="/">
-  <img
-    src={globals?.logo?.colorOnLight?.url}
-    class="inline-block h-[50px]"
-    style=`aspect-ratio: ${aspectRatio(globals?.logo?.colorOnLight?.width, globals?.logo?.colorOnLight?.height, false)}`
+  <Image
+    src={globals.logo.colorOnLight.url}
+    width={globals.logo.colorOnLight.width}
+    height={globals.logo.colorOnLight.height}
+    class="inline-block"
     alt="Elmas Okić logo"
   />
 </a>
 <br />
-<div class="relative inline-block mb-10">
+<div class="relative inline-block mb-8">
   <h1 class="inline-block h1 lh-h1-vtrim font-display font-bold">
     {home?.title}
   </h1>
   <small class="body-1 font-display absolute top-[90%] right-[1.25em]">
     {home?.subtitle}
   </small>
-  <img
-    src={home?.badge.url}
-    class="aspect-1/1 w-20 absolute -top-6 left-[19em] ml-4"
+  <Image
+    src={home.badge.url}
+    width={home.badge.width}
+    height={home.badge.height}
+    class="w-[100px] absolute -top-4 left-[19em] ml-4"
     alt="Nielsen/Norman UX Certification badge"
   />
 </div>
@@ -46,6 +52,6 @@ const { globals, home } = Astro.props
 
 <style is:global>
   .eokic-logo {
-    @apply inline-block mb-10;
+    @apply inline-block mb-8;
   }
 </style>
