@@ -3,11 +3,18 @@
 
   "compilerOptions": {
     "verbatimModuleSyntax": true,
+    "jsx": "react",
+    "types": [
+      "@types/react",
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": [ "src/*" ],
       "@public/*": [ "public/*" ],
-    }
+    },
+    "plugins": [
+      { "name": "@astrojs/ts-plugin" },
+    ],
   },
 
   "include": [
