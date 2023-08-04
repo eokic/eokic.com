@@ -1,0 +1,35 @@
+---
+// TYPES
+import type { IProject } from '@/interfaces'
+
+// METHODS
+import fetchApi from '@/lib/strapi'
+
+// PROPS & DYNAMIC ROUTING
+export async function getStaticPaths() {
+  const projects = await fetchApi<IProject[]>({
+    endpoint: 'projects',
+    query: { populate: 'deep' },
+    wrappedByKey: 'data',
+  })
+
+  return projects.map((project) => {
+    return {
+      params: { seoUrl: project.seo.url },
+      props: { project },
+    }
+  })
+}
+
+const { seoUrl } = Astro.params
+const { project } = Astro.props
+
+// COMPONENTS
+import { BaseLayout } from '@/layouts'
+---
+
+<BaseLayout title={project.seo.metaTitle || project.title}>
+  <main>
+    <h1>{project.title}</h1>
+  </main>
+</BaseLayout>
