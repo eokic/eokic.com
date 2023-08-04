@@ -42,19 +42,7 @@ const base64 = isResponsive
   : null
 ---
 
-<div
-  id=`st-image-${localID}`
-  class:list={[
-    'st-image',
-    {
-      [`aspect-${aspectRatio}`]: !nonStandardRatio,
-    },
-    cssClass,
-  ]}
-  style={{
-    aspectRatio: nonStandardRatio ? aspectRatio : 'auto',
-  }}
->
+<div id=`st-image-${localID}` class:list={['st-image', cssClass]}>
   <img
     id=`st-image-img-${localID}`
     class:list={[
@@ -66,7 +54,7 @@ const base64 = isResponsive
       imgClass,
     ]}
     style={{
-      aspectRatio: nonStandardRatio ? aspectRatio : 'auto',
+      aspectRatio: nonStandardRatio ?? aspectRatio,
     }}
     width={img.width}
     height={img.height}
@@ -145,7 +133,7 @@ const base64 = isResponsive
       @apply opacity-0;
     }
     .st-image-placeholder {
-      @apply opacity-30;
+      @apply opacity-40;
     }
   }
 
