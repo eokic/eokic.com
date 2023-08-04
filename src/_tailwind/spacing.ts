@@ -4,24 +4,18 @@ import {
   BASE_FONT_REM,
 } from '../utils/tw-scale'
 
-export const spacingX: ScaleInput = {
-  type: 'spacingX',
-  scale: {
+export const spacing: ScaleInput = {
+  type: 'spacing',
+  clamp: {
     edge: {
-      min: 25,
-      max: 40,
-      unit: 'px',
+      min: '1rem',
+      mid: '6vw',
+      max: '4rem',
     },
-  },
-}
-
-export const spacingY: ScaleInput = {
-  type: 'spacingY',
-  scale: {
     section: {
-      min: 25,
-      max: 50,
-      unit: 'px',
+      min: '1.75rem',
+      mid: '4vh',
+      max: '5rem',
     },
   },
 }

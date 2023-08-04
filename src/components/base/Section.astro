@@ -11,7 +11,7 @@ const { id, title, subtitle, alt } = Astro.props
 
 <section class:list={['section', { '-alt': alt }]} id={id}>
   <slot name="before-container" />
-  <div class="container mx-auto">
+  <div class="container">
     {
       (title || subtitle) && (
         <header class="section-head">
@@ -29,7 +29,7 @@ const { id, title, subtitle, alt } = Astro.props
 
 <style is:global>
   .section {
-    @apply pyr-section;
+    @apply py-section;
 
     &.-alt {
       @apply relative;
@@ -63,7 +63,7 @@ const { id, title, subtitle, alt } = Astro.props
 
     &-title {
       @apply h1;
-      @apply pb-4;
+      @apply pb-1;
       @apply h2 lh-h2-vtrim font-extrabold uppercase text-slate-900;
     }
 
@@ -72,7 +72,7 @@ const { id, title, subtitle, alt } = Astro.props
     }
 
     &-body {
-      /*  */
+      @apply pt-5;
     }
   }
 </style>

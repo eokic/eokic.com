@@ -19,13 +19,12 @@ import aspectRatio from './src/_tailwind/aspect-ratio'
 import brand from './src/_tailwind/brand'
 import { fontSize } from './src/_tailwind/font-size'
 import { lineHeight } from './src/_tailwind/line-height'
-import { spacingX, spacingY } from './src/_tailwind/spacing'
+import { spacing } from './src/_tailwind/spacing'
 
 // Parse sizing objects
 const fontSizes = generateTwScale(fontSize)
 const lineHeights = generateTwScale(lineHeight)
-const spacingXs = generateTwScale(spacingX)
-const spacingYs = generateTwScale(spacingY)
+const spacings = generateTwScale(spacing)
 
 // EXPORT
 module.exports = {
@@ -40,13 +39,15 @@ module.exports = {
 
     container: {
       center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        md: '3rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+      padding: spacing?.clamp?.edge
+        ? `clamp(${spacing.clamp.edge.min}, ${spacing.clamp.edge.mid}, ${spacing.clamp.edge.max})`
+        : '2rem',
+      screens: {
+        sm: 'auto',
+        md: 'auto',
+        lg: 'auto',
+        xl: '1240px',
+        '2xl': '1496px',
       },
     },
 
@@ -72,8 +73,7 @@ module.exports = {
     },
 
     spacing: {
-      ...spacingXs.theme,
-      ...spacingYs.theme,
+      ...spacings.theme,
       1: '8px',
       2: '12px',
       3: '16px',
@@ -100,8 +100,7 @@ module.exports = {
       addUtilities({
         ...fontSizes.style,
         ...lineHeights.style,
-        ...spacingXs.style,
-        ...spacingYs.style,
+        ...spacings.style,
       })
     }),
   ],
