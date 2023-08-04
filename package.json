@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.2.2",
-    "@astrojs/compiler": "^1.8.0",
+    "@astrojs/compiler": "^1.8.1",
     "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",

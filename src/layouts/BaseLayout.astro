@@ -41,14 +41,44 @@ import '@/styles/eokic.css'
       })}
     />
     <ViewTransitions />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content="Astro description" />
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body>
+  <body class="no-js">
     <!-- Accessibilty links -->
     <a class="a11y-link-skip" href="#menu">Skip to navigation</a>
     <a class="a11y-link-skip" href="#main">Skip to content</a>
+
+    <script is:inline>
+      document.body.classList.remove('no-js')
+      document.body.classList.add('js')
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('domReady')
+      })
+      setTimeout(() => {
+        document.body.classList.add('vfxReady')
+      }, 500)
+    </script>
+
+    <script is:inline>
+      // TODO: Extract so that it loads only once
+      // document.querySelectorAll('[id^="st-image-img-"]').forEach((element) => {
+      //   if (element.complete) {
+      //     console.log(111)
+      //   } else {
+      //     console.log(222)
+      //   }
+      // })
+
+      function onStrapiImageLoad(localID) {
+        console.log('Loaded', localID)
+        document.getElementById(`st-image-${localID}`).classList.add('-loaded')
+        setTimeout(() => {
+          document.getElementById(`placeholder-${localID}`).style.display =
+            'none'
+        }, 1000)
+      }
+    </script>
 
     <!-- Body -->
     <slot />

@@ -1,6 +1,7 @@
 // MODULES
 export * from './base'
 export * from './home'
+export * from './project'
 export * from './service'
 
 // COMPONENTS

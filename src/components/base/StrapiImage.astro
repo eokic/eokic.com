@@ -1,0 +1,161 @@
+---
+// TYPES
+import { NStrapiMedia } from '@/interfaces'
+
+// PROPS
+interface Props {
+  img: NStrapiMedia.Unknown
+  cssClass?: string
+  imgClass?: string
+  fullWidth?: boolean
+  nonStandardRatio?: boolean
+  important?: boolean
+  alt?: string // should come from Strapi though
+}
+const { alt, cssClass, fullWidth, img, imgClass, important, nonStandardRatio } =
+  Astro.props
+
+// METHODS
+import { getAspectRatio, ID } from '@/utils'
+
+// Returns a valid `srcset` string based on the provided formats
+function getSrcset(formats: Record<string, NStrapiMedia.Base>): string {
+  return Object.entries(formats)
+    .filter(([size, variant]) => size !== '16' && size !== 'thumbnail')
+    .map(([size, variant]) => `${variant.url} ${variant.width}w`)
+    .join(', ')
+}
+
+// COMPUTED
+const localID = ID()
+const aspectRatio = getAspectRatio(img.width, img.height, !nonStandardRatio)
+const isResponsive = img.formats && Object.keys(img.formats).length > 1
+const srcset = isResponsive ? getSrcset(img.formats) : null
+
+// BASE64 THUMB
+import fs from 'node:fs/promises'
+// const url = new URL(img.url, import.meta.url) // TODO: figure out what to do with the path
+const base64 = isResponsive
+  ? await fs.readFile('./public' + img.formats[16].url, {
+      encoding: 'base64',
+    })
+  : null
+---
+
+<div
+  id=`st-image-${localID}`
+  class:list={[
+    'st-image',
+    {
+      [`aspect-${aspectRatio}`]: !nonStandardRatio,
+    },
+    cssClass,
+  ]}
+  style={{
+    aspectRatio: nonStandardRatio ? aspectRatio : 'auto',
+  }}
+>
+  <img
+    id=`st-image-img-${localID}`
+    class:list={[
+      'st-image-img',
+      {
+        [`aspect-${aspectRatio}`]: !nonStandardRatio,
+        'w-full': fullWidth,
+      },
+      imgClass,
+    ]}
+    style={{
+      aspectRatio: nonStandardRatio ? aspectRatio : 'auto',
+    }}
+    width={img.width}
+    height={img.height}
+    srcset={srcset}
+    src={img.url}
+    alt={img.alternativeText || alt}
+    loading={important ? 'eager' : 'lazy'}
+    decoding="async"
+    onload=`javascript: onStrapiImageLoad('${localID}')`
+  />
+
+  <!-- Blurry placeholder -->
+  <div
+    id=`placeholder-${localID}`
+    class="st-image-placeholder"
+    style={{
+      display: base64 ? 'block' : 'none',
+      background: base64
+        ? `url(data:image/webp;base64,${base64}) center/cover no-repeat`
+        : 'none',
+    }}
+  >
+  </div>
+</div>
+
+<style is:global>
+  /* Base styles */
+  .st-image {
+    @apply relative overflow-hidden;
+
+    &-img {
+      @apply relative z-2 max-h-full object-cover;
+    }
+
+    &-placeholder {
+      @apply hidden;
+      @apply absolute z-1 left-0 top-0 w-full h-full;
+      @apply blur-sm opacity-0;
+    }
+  }
+
+  /*
+    Without JS, the img is visible and placeholder is hidden.
+    The reason for hiding the placeholder without js is because it can
+    leave artifacts on transparent images.
+  */
+  body.no-js .st-image {
+    &-img {
+      @apply opacity-100;
+    }
+    &-placeholder {
+      @apply hidden;
+    }
+  }
+
+  /*
+    With JS enabled, we show the placeholder and apply transitions
+  */
+  body.js .st-image {
+    &-img {
+      @apply transition-opacity;
+      transition-duration: 600ms;
+    }
+    &-placeholder {
+      @apply block;
+      @apply transition-opacity;
+      transition-duration: 600ms;
+    }
+  }
+
+  /*
+    With JS enabled, we show the placeholder and apply transitions
+  */
+  body.js.vfxReady .st-image:not(.-loaded) {
+    .st-image-img {
+      @apply opacity-0;
+    }
+    .st-image-placeholder {
+      @apply opacity-30;
+    }
+  }
+
+  /* Once the image is loaded, cross-fade it with the placeholder */
+  body.js .st-image.-loaded {
+    .st-image-img {
+      @apply opacity-100;
+    }
+    .st-image-placeholder {
+      @apply opacity-0;
+    }
+  }
+</style>

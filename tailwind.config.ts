@@ -64,6 +64,14 @@ module.exports = {
           },
         },
       },
+
+      zIndex: {
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+      },
     },
 
     fontFamily: brand.font.family,
@@ -74,6 +82,7 @@ module.exports = {
 
     spacing: {
       ...spacings.theme,
+      0: '0',
       1: '8px',
       2: '12px',
       3: '16px',
@@ -84,6 +93,16 @@ module.exports = {
       8: '96px',
       9: '128px',
       10: '192px',
+    },
+
+    borderRadius: {
+      none: '0',
+      sm: '.125rem',
+      DEFAULT: '.35rem',
+      md: '.5rem',
+      lg: '.75rem',
+      xl: '1.1rem',
+      full: '9999px',
     },
   },
 

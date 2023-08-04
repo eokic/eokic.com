@@ -9,23 +9,20 @@ interface Props {
 }
 const { globals, home } = Astro.props
 
-// METHODS
-import { aspectRatio } from '@/utils'
-
 // COMPONENTS
-import { Image } from 'astro:assets'
+import { ImageHandler } from '@/components'
 
 // VENDOR
 import { micromark } from 'micromark'
 ---
 
 <a class="eokic-logo" href="/">
-  <Image
-    src={globals.logo.colorOnLight.url}
-    width={globals.logo.colorOnLight.width}
-    height={globals.logo.colorOnLight.height}
-    class="inline-block"
-    alt="Elmas Okić logo"
+  <ImageHandler
+    cssClass="inline-block"
+    imgClass="h-[50px]"
+    img={globals.logo.colorOnLight}
+    fullWidth
+    important
   />
 </a>
 <br />
@@ -36,12 +33,9 @@ import { micromark } from 'micromark'
   <small class="body-1 font-display absolute top-[90%] right-[1.25em]">
     {home?.subtitle}
   </small>
-  <Image
-    class="w-[clamp(75px,9vw,102px)] absolute -top-4 left-full ml-4"
-    src={home.badge.url}
-    width={home.badge.width}
-    height={home.badge.height}
-    alt="Nielsen/Norman UX Certification badge"
+  <ImageHandler
+    cssClass="w-[clamp(75px,9vw,102px)] absolute -top-4 left-full ml-4"
+    img={home.badge}
   />
 </div>
 <div

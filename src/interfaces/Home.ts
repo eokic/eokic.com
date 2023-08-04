@@ -1,8 +1,5 @@
 import type { NStrapiMedia } from './_StrapiMedia'
-import type IEntity from './_Entity'
-import type ISection from './_Section'
-import type IService from './Service'
-import type ISEO from './_SEO'
+import type { IEntity, IProject, ISection, ISEO, IService } from '.'
 
 export default interface IHome extends IEntity {
   title: string
@@ -15,6 +12,7 @@ export default interface IHome extends IEntity {
   sectionServices: ISection
   services: Omit<IService, 'thumbnail'>[]
   sectionWork: ISection
+  projects: IProject[]
   sectionAbout: ISection
   seo?: ISEO
 }

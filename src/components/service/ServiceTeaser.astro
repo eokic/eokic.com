@@ -9,20 +9,14 @@ interface Props {
 const { service } = Astro.props
 
 // COMPONENTS
-import { Image } from 'astro:assets'
+import { ImageHandler } from '@/components'
 
 // VENDOR
 import { micromark } from 'micromark'
 ---
 
 <article class="text-center">
-  <Image
-    class="inline-block"
-    src={service.thumbnail.url}
-    width={service.thumbnail.width}
-    height={service.thumbnail.height}
-    alt={service.thumbnail.alternativeText || ''}
-  />
+  <ImageHandler cssClass="inline-block" img={service.thumbnail} fullWidth />
   <h3 class="h3">
     {service.title}
   </h3>

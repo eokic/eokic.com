@@ -23,18 +23,7 @@ export namespace NStrapiMedia {
   }
 
   export interface Raster extends Vector {
-    formats?: {
-      thumbnail: Base
-      24: Base
-      128: Base
-      360: Base
-      524: Base
-      720: Base
-      960: Base
-      1280: Base
-      1640: Base
-      1920: Base
-    }
+    formats?: Record<string, Base>
   }
 
   export type Unknown = Vector | Raster

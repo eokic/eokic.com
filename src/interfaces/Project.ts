@@ -1,10 +1,10 @@
-import type IEntity from './_Entity'
-import type ISEO from './_SEO'
+import type { IClient, IEntity, ISEO, IStrapiMedia } from '.'
 
 export default interface IProject extends IEntity {
+  client: IClient
   title: string
   subtitle: string
-  thumbnail: string
+  thumbnail: IStrapiMedia
   dateStart: string
   dateEnd?: string
   ongoing?: boolean

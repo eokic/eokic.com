@@ -13,9 +13,6 @@ export default defineConfig({
       quality: 80,
     },
     jpg: {
-      quality: 75,
-    },
-    png: {
       quality: 80,
     },
   },

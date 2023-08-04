@@ -30,7 +30,7 @@ function rawRatio (
 }
 
 
-export default function aspectRatio (
+export default function getAspectRatio (
   width: number,
   height: number,
   forceStandardRadio = true,

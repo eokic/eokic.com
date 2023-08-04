@@ -1,0 +1,39 @@
+---
+// TYPES
+import { NStrapiMedia } from '@/interfaces'
+
+// PROPS
+interface Props {
+  img: NStrapiMedia.Unknown
+  cssClass?: string
+  imgClass?: string
+  fullWidth?: boolean
+  nonStandardRatio?: boolean
+  important?: boolean
+  alt?: string // should come from Strapi though
+}
+const { alt, cssClass, fullWidth, img, imgClass, important, nonStandardRatio } =
+  Astro.props
+
+// COMPONENTS
+import { StrapiImage } from '.'
+import { Image } from 'astro:assets'
+---
+
+<StrapiImage
+  {img}
+  {cssClass}
+  {imgClass}
+  {fullWidth}
+  {nonStandardRatio}
+  {important}
+  {alt}
+/>
+
+<!-- <Image
+  class="hero-photo-img"
+  src={img.url}
+  width={img.width}
+  height={img.height}
+  alt={img.alternativeText || ''}
+/> -->

@@ -1,0 +1,43 @@
+---
+// TYPES
+import type { IProject } from '@/interfaces'
+
+// PROPS
+interface Props {
+  project: IProject
+}
+const { project } = Astro.props
+
+// COMPONENTS
+import { ImageHandler } from '@/components'
+
+// VENDOR
+import { micromark } from 'micromark'
+---
+
+<article
+  class="p-2 rounded-lg text-white"
+  style={{
+    backgroundColor: project.client.brandColor,
+  }}
+>
+  <div class="grid grid-cols-2">
+    <div>
+      {
+        project.thumbnail && (
+          <ImageHandler
+            class="rounded-sm"
+            img={project.thumbnail}
+            nonStandardRatio
+          />
+        )
+      }
+    </div>
+    <div>
+      <h3 class="h3 lh-h3-vtrim pb-1">
+        {project.title}
+      </h3>
+      <div set:html={micromark(project.subtitle)} />
+    </div>
+  </div>
+</article>

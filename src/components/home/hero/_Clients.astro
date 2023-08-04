@@ -6,6 +6,7 @@ import type { IClient } from '@/interfaces'
 import fetchApi from '@/lib/strapi'
 
 // COMPONENTS
+import { ImageHandler } from '@/components'
 import { Image } from 'astro:assets'
 
 // LOCAL STATE
@@ -22,11 +23,10 @@ const clients = await fetchApi<IClient[]>({
       clients
         ?.filter((client) => client.logo?.colorOnLight?.url)
         ?.map((client) => (
-          <Image
-            src={client.logo.colorOnLight.url}
-            width={client.logo.colorOnLight.width}
-            height={client.logo.colorOnLight.height}
+          <ImageHandler
+            img={client.logo.colorOnLight}
             alt={client.title}
+            nonStandardRatio
           />
         ))
     }
