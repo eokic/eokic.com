@@ -10,6 +10,7 @@ import fetchApi from '@/lib/strapi'
 import { BaseLayout } from '@/layouts'
 import { Section } from '@/components/base'
 import { Hero } from '@/components/home'
+import { Teaser as ServiceTeaser } from '@/components/service'
 
 const globals = await fetchApi<IGlobal>({
   endpoint: 'global',
@@ -40,7 +41,9 @@ const testimonials = await fetchApi<ITestimonial[]>({
       subtitle={home?.sectionServices?.subtitle}
       alt
     >
-      TODO: SERVICES
+      <div class="columns-1 md:columns-3 gap-5">
+        {home.services?.map((service) => <ServiceTeaser {service} />)}
+      </div>
     </Section>
 
     <Section

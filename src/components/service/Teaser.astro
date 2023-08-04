@@ -1,0 +1,30 @@
+---
+// TYPES
+import type { IService } from '@/interfaces'
+interface Props {
+  service: IService
+}
+
+// COMPONENTS
+import { Image } from 'astro:assets'
+
+// PROPS
+const { service } = Astro.props
+
+// VENDOR
+import { micromark } from 'micromark'
+---
+
+<article class="text-center">
+  <Image
+    class="inline-block"
+    src={service.thumbnail.url}
+    width={service.thumbnail.width}
+    height={service.thumbnail.height}
+    alt={service.thumbnail.alternativeText || ''}
+  />
+  <h3 class="h3">
+    {service.title}
+  </h3>
+  <div class="prose lh-prose-vtrim" set:html={micromark(service.subtitle)} />
+</article>
