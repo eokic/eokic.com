@@ -1,0 +1,35 @@
+---
+import type {
+  HTMLAttributeAnchorTarget,
+  HTMLAttributeReferrerPolicy,
+} from '@types/react'
+import type { ILink } from '@/interfaces'
+interface Props {
+  label: string
+  link: ILink
+}
+
+// PROPS
+const { label, link } = Astro.props
+---
+
+<a
+  class="link"
+  href={link.url}
+  rel={link.isPrivate ? 'noopener noreferrer' : null}
+  referrerpolicy={link.isPrivate
+    ? ('no-referrer' satisfies HTMLAttributeReferrerPolicy)
+    : null}
+  target={link.openInNewTab
+    ? ('_blank' satisfies HTMLAttributeAnchorTarget)
+    : ''}
+>
+  {label}
+</a>
+
+<style is:global>
+  .link {
+    @apply underline;
+    color: blue; /* TODO: from brand variables */
+  }
+</style>
