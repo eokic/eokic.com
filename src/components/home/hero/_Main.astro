@@ -32,22 +32,22 @@ const { globals, home } = Astro.props
 <br />
 <div class="relative inline-block mb-8">
   <h1 class="inline-block h1 lh-h1-vtrim font-display font-bold">
-    {home?.title}
+    {home.title}
   </h1>
   <small class="body-1 font-display absolute top-[90%] right-[1.25em]">
     {home?.subtitle}
   </small>
   <Image
+    class="w-[100px] absolute -top-4 left-[19em] ml-4"
     src={home.badge.url}
     width={home.badge.width}
     height={home.badge.height}
-    class="w-[100px] absolute -top-4 left-[19em] ml-4"
     alt="Nielsen/Norman UX Certification badge"
   />
 </div>
 <div
   class="hero-desc prose lead lh-prose"
-  set:html={micromark(home?.description)}
+  set:html={micromark(home.description)}
 />
 
 <style is:global>
