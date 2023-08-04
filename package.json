@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "upgrade-dep": "bun add @astrojs/alpinejs @astrojs/compiler @astrojs/sitemap @astrojs/tailwind @tailwindcss/nesting @tailwindcss/typography @types/alpinejs alpinejs astro astro-imagetools autoprefixer cssnano micromark postcss-import sharp tailwindcss",
+    "upgrade-dep": "bun add @astrojs/alpinejs @astrojs/compiler @astrojs/sitemap @astrojs/tailwind @tailwindcss/nesting @tailwindcss/typography @types/alpinejs alpinejs astro astro-compressor astro-imagetools autoprefixer cssnano micromark postcss-import sharp tailwindcss",
     "upgrade-dev": "bun add -d @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-airbnb-base eslint-import-resolver-typescript eslint-plugin-astro eslint-plugin-import eslint-plugin-json eslint-plugin-vue typescript",
     "upgrade-all": "bun run upgrade-dep && bun run upgrade-dev"
   },
@@ -22,6 +22,7 @@
     "@types/alpinejs": "^3.7.2",
     "alpinejs": "^3.12.3",
     "astro": "^2.10.1",
+    "astro-compressor": "^0.4.0",
     "astro-imagetools": "^0.8.1",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
