@@ -1,15 +1,15 @@
 ---
 // TYPES
 import type { IService } from '@/interfaces'
+
+// PROPS
 interface Props {
   service: IService
 }
+const { service } = Astro.props
 
 // COMPONENTS
 import { Image } from 'astro:assets'
-
-// PROPS
-const { service } = Astro.props
 
 // VENDOR
 import { micromark } from 'micromark'

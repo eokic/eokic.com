@@ -1,15 +1,12 @@
 ---
-import type {
-  HTMLAttributeAnchorTarget,
-  HTMLAttributeReferrerPolicy,
-} from '@types/react'
+// TYPES
 import type { ILink } from '@/interfaces'
+
+// PROPS
 interface Props {
   label: string
   link: ILink
 }
-
-// PROPS
 const { label, link } = Astro.props
 ---
 

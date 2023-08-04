@@ -1,16 +1,15 @@
 ---
 // TYPES
 import type { IGlobal, IHome } from '@/interfaces'
+
+// PROPS
 interface Props {
   globals: IGlobal
   home: IHome
 }
-
-// PROPS
 const { globals, home } = Astro.props
 
 // METHODS
-// import fetchApi from '@/lib/strapi'
 import { aspectRatio } from '@/utils'
 
 // COMPONENTS

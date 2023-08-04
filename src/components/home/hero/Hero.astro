@@ -1,18 +1,17 @@
 ---
 // TYPES
 import type { IGlobal, IHome } from '@/interfaces'
+
+// PROPS
 interface Props {
   globals: IGlobal
   home: IHome
 }
+const { globals, home } = Astro.props
 
 // COMPONENTS
-// import { Img } from 'astro-imagetools/components'
 import { Section } from '@/components/base'
 import { Aside, Clients, Main } from './'
-
-// PROPS
-const { globals, home } = Astro.props
 ---
 
 <Section id="hero">

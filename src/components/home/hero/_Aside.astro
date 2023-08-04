@@ -1,6 +1,9 @@
 ---
 // TYPES
 import type { IGlobal, IHome } from '@/interfaces'
+
+// PROPS
+const { globals, home } = Astro.props
 interface Props {
   globals: IGlobal
   home: IHome
@@ -11,9 +14,6 @@ import { aspectRatio } from '@/utils'
 
 // VENDOR
 import { Picture } from 'astro-imagetools/components'
-
-// PROPS
-const { globals, home } = Astro.props
 ---
 
 <div class="photo">
