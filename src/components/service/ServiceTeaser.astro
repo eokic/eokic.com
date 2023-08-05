@@ -8,11 +8,11 @@ interface Props {
 }
 const { service } = Astro.props
 
+// METHODS
+import { markdownToHTML } from '@/utils'
+
 // COMPONENTS
 import { Button, ImageHandler } from '@/components'
-
-// VENDOR
-import { micromark } from 'micromark'
 ---
 
 <article class="text-center">
@@ -20,7 +20,7 @@ import { micromark } from 'micromark'
   <h3 class="h3">
     {service.title}
   </h3>
-  <div class="prose lh-prose" set:html={micromark(service.subtitle)} />
+  <div class="prose lh-prose" set:html={markdownToHTML(service.subtitle)} />
   <Button
     theme="primary"
     href="mailto:hi@eokic.com"

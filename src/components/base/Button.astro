@@ -7,6 +7,9 @@ interface Props {
   href?: string
 }
 const { cssClass, theme, label, href } = Astro.props
+
+// METHODS
+import { markdownToHTML } from '@/utils'
 ---
 
 <a
@@ -18,9 +21,9 @@ const { cssClass, theme, label, href } = Astro.props
     ...(cssClass || []),
   ]}
   href={href}
+  set:html={label ? markdownToHTML(label) : null}
 >
   <slot />
-  {label}
 </a>
 
 <style is:global>
