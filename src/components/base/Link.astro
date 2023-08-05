@@ -4,14 +4,27 @@ import type { ILink } from '@/interfaces'
 
 // PROPS
 interface Props {
-  label: string
   link: ILink
+  label?: string
 }
-const { label, link } = Astro.props
+const { link, label } = Astro.props
+
+/*
+  Note: if no `label`` is provided, then it is presumed that a <slot> was used.
+  In this case, the <Link> component will be focusable and serves primarily to
+    assist with accessibility, but will not have "link" styles applied.
+  One use-case for this is for <Link> to wrap around a large chunk of content
+    like a clickable card.
+*/
 ---
 
 <a
-  class="link"
+  class:list={[
+    'focusable',
+    {
+      link: label,
+    },
+  ]}
   href={link.url}
   rel={link.isPrivate ? 'noopener noreferrer' : null}
   referrerpolicy={link.isPrivate
@@ -21,12 +34,33 @@ const { label, link } = Astro.props
     ? ('_blank' satisfies HTMLAttributeAnchorTarget)
     : ''}
 >
-  {label}
+  {label}<slot />
 </a>
 
 <style is:global>
   .link {
     @apply underline;
     color: blue; /* TODO: from brand variables */
+  }
+
+  .focusable {
+    @apply rounded-sm;
+    outline-offset: 0.25em;
+
+    /* Hover */
+    &:where(:not(:active):hover) {
+      outline: 0.2rem solid hsla(var(--color-primary));
+    }
+
+    /* Focus */
+    &:where(:not(:active)):focus-visible {
+      outline: 0.5rem solid hsl(var(--color-focus-sr));
+    }
+
+    /* Pressed */
+    &:is(:active) {
+      outline-offset: 0;
+      outline: 0 solid;
+    }
   }
 </style>

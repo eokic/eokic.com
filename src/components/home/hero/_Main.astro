@@ -10,21 +10,27 @@ interface Props {
 const { globals, home } = Astro.props
 
 // COMPONENTS
-import { Button, ImageHandler } from '@/components'
+import { Button, ImageHandler, Link } from '@/components'
 
 // VENDOR
 import { micromark } from 'micromark'
 ---
 
-<a class="eokic-logo" href="/">
-  <ImageHandler
-    cssClass="inline-block"
-    imgClass="h-[50px]"
-    img={globals.logo.colorOnLight}
-    fullWidth
-    inline
-  />
-</a>
+<div class="mb-8 h2">
+  <Link
+    link={{
+      url: '/',
+    }}
+  >
+    <ImageHandler
+      cssClass="inline-block"
+      imgClass="h-[50px]"
+      img={globals.logo.colorOnLight}
+      fullWidth
+      inline
+    />
+  </Link>
+</div>
 <br />
 <div class="relative inline-block mb-8">
   <h1 class="inline-block h1 lh-h1-vtrim font-display font-bold">
@@ -51,10 +57,6 @@ import { micromark } from 'micromark'
 </div>
 
 <style is:global>
-  .eokic-logo {
-    @apply inline-block mb-8;
-  }
-
   .hero-desc {
     ul {
       padding-left: 1em;

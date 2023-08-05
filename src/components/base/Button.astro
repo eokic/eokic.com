@@ -28,13 +28,11 @@ const { theme, label, href } = Astro.props
 
     &.-neutral {
       @apply text-primary bg-transparent;
-      outline-color: blue;
     }
 
     &.-primary {
       @apply px-4;
       @apply font-semibold bg-primary;
-      outline-color: red;
     }
 
     &.-a11y {
@@ -42,8 +40,7 @@ const { theme, label, href } = Astro.props
       @apply py-1 px-2 !important;
       @apply h4 lh-h4 font-semibold text-white bg-slate-900;
       @apply rounded-sm;
-      outline: 1rem solid;
-      outline-color: red;
+      outline: 1rem solid hsl(var(--color-focus-sr));
 
       &::focus {
         @apply inline-block;
@@ -58,7 +55,7 @@ const { theme, label, href } = Astro.props
 
   /* Focus */
   :where(button, .btn):where(:not(:active)):focus-visible {
-    outline: 0.5rem solid;
+    outline: 0.5rem solid hsl(var(--color-focus-sr));
   }
 
   /* Pressed */

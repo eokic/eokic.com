@@ -9,13 +9,17 @@ interface Props {
 const { project } = Astro.props
 
 // COMPONENTS
-import { ImageHandler } from '@/components'
+import { ImageHandler, Link } from '@/components'
 
 // VENDOR
 import { micromark } from 'micromark'
 ---
 
-<a href={`/case-study/${project.seo.url}/`}>
+<Link
+  link={{
+    url: `/case-study/${project.seo.url}/`,
+  }}
+>
   <article
     class="p-1 rounded-lg text-white"
     style={{
@@ -43,4 +47,4 @@ import { micromark } from 'micromark'
       </div>
     </div>
   </article>
-</a>
+</Link>
