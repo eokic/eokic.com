@@ -24,6 +24,9 @@ const {
   nonStandardRatio,
 } = Astro.props
 
+// COMPONENTS
+import { Spinner } from '@/components'
+
 // METHODS
 import { getAspectRatio, ID } from '@/utils'
 
@@ -100,6 +103,9 @@ const base64Orig = inline
         : 'none',
     }}
   >
+    <Spinner
+      cssClass="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
+    />
   </div>
 </div>
 
@@ -115,7 +121,7 @@ const base64Orig = inline
     &-placeholder {
       @apply hidden;
       @apply absolute z-1 left-0 top-0 w-full h-full;
-      @apply blur-sm opacity-0;
+      @apply opacity-0;
     }
   }
 
