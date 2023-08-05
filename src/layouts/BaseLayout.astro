@@ -30,7 +30,10 @@ import '@/styles/eokic.css'
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
     <title>{title} | {globals.siteName}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,7 +51,7 @@ import '@/styles/eokic.css'
   </head>
   <body class="no-js">
     <!-- Accessibilty links -->
-    <div class="absolute top-5 left-5 w-full">
+    <div class="absolute top-5 left-5">
       <Button theme="a11y" href="#menu" label="Skip to navigation" />
       <Button theme="a11y" href="#main" label="Skip to content" />
     </div>
@@ -74,7 +77,7 @@ import '@/styles/eokic.css'
       // })
 
       function onStrapiImageLoad(localID) {
-        console.log('Loaded', localID)
+        // console.log('Loaded', localID)
         document.getElementById(`st-image-${localID}`).classList.add('-loaded')
         setTimeout(() => {
           document.getElementById(`placeholder-${localID}`).style.display =

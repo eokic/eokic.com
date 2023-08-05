@@ -1,25 +1,31 @@
 ---
 // PROPS
 interface Props {
+  cssClass?: string[]
   theme?: 'primary' | 'neutral' | 'a11y' // defaults to neutral
   label?: string
   href?: string
 }
-const { theme, label, href } = Astro.props
+const { cssClass, theme, label, href } = Astro.props
 ---
 
-<a class:list={['btn', `-${theme || 'neutral'}`, ,]} href={href}>
+<a
+  class:list={[
+    'btn py-2 px-2 sm:px-3',
+    'body lh-body font-sans text-white bg-primary',
+    'rounded-full transition-all cursor-pointer',
+    `-${theme || 'neutral'}`,
+    ...(cssClass || []),
+  ]}
+  href={href}
+>
   <slot />
   {label}
 </a>
 
 <style is:global>
-  button,
   .btn {
-    @apply py-2 px-3 cursor-pointer;
-    @apply body lh-body font-sans;
-    @apply text-white bg-primary;
-    @apply rounded-full transition-all;
+    display: inline-block;
     /* @apply hover:shadow-sm hover:shadow-slate-700/40; */
     /* @apply focus:opacity-[0.85] focus:shadow-none; */
     /* @apply active:opacity-[0.85] active:shadow-none; */
@@ -32,7 +38,7 @@ const { theme, label, href } = Astro.props
     }
 
     &.-primary {
-      @apply px-4;
+      @apply px-2 sm:px-3 md:px-4;
       @apply font-semibold bg-primary;
     }
 

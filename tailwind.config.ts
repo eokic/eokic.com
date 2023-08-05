@@ -36,6 +36,7 @@ module.exports = {
 
     Note: had to add custom styles here because @apply did not work.
     https://docs.astro.build/en/guides/integrations-guide/tailwind/#class-does-not-exist-with-apply-directives
+    https://tailwindcss.com/docs/functions-and-directives#using-apply-with-per-component-css
   -------------------------------------------------------------------------- */
   plugins: [
     require('@tailwindcss/typography'),

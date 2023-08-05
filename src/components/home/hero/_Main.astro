@@ -9,51 +9,44 @@ interface Props {
 }
 const { globals, home } = Astro.props
 
-// COMPONENTS
-import { Button, ImageHandler, Link } from '@/components'
+// METHODS
+import { markdownToHTML } from '@/utils'
 
-// VENDOR
-import { micromark } from 'micromark'
+// COMPONENTS
+import { Button, ImageHandler } from '@/components'
 ---
 
-<div class="mb-8 h2 lh-h2">
-  <Link
-    link={{
-      url: '/',
-    }}
-  >
-    <ImageHandler
-      cssClass="inline-block"
-      imgClass="h-[50px]"
-      img={globals.logo.colorOnLight}
-      fullWidth
-      inline
-    />
-  </Link>
-</div>
-<br />
-<div class="relative inline-block mb-8">
+<div class="relative inline-block mb-outer">
   <h1 class="inline-block h1 lh-h1-vtrim font-display font-bold">
     {home.title}
   </h1>
   <small class="body-1 font-display absolute top-[90%] right-[1.25em]">
     {home?.subtitle}
   </small>
-  <ImageHandler
-    cssClass="w-[clamp(75px,9vw,102px)] absolute -top-4 left-full ml-4"
-    img={home.badge}
-  />
+  <div class="absolute -top-4 left-full ml-3">
+    <ImageHandler cssClass="w-[clamp(75px,9vw,102px)]" img={home.badge} />
+  </div>
 </div>
-<div
-  class="hero-desc mb-outer prose lead lh-prose"
-  set:html={micromark(home.description)}
-/>
 
-<div class="flex gap-1">
-  <Button theme="primary" href="mailto:hi@eokic.com" label="Let's talk!" />
-  <Button href="#services" label="Services" />
-  <Button href="#work" label="Work" />
-  <Button href="#about" label="About" />
+<div
+  class:list={[
+    'hero-desc',
+    'max-md:absolute max-md:bottom-0 max-md:-ml-edge max-md:-mb-1 max-md:p-3 max-md:pl-edge max-md:pb-4',
+    'max-md:bg-primary-bg max-md:backdrop-blur-md',
+  ]}
+>
+  <div
+    class="mb-outer prose lead lh-prose"
+    set:html={markdownToHTML(home.description)}
+  />
+  <div class="flex flex-wrap sm:gap-1">
+    <Button theme="primary" href="mailto:hi@eokic.com" label="Let's talk!" />
+    <Button href="#services" label="Services" />
+    <Button href="#work" label="Work" />
+    <div class="hidden sm:inline-block">
+      <Button href="#about" label="About" />
+    </div>
+  </div>
 </div>
 
 <style is:global>
@@ -61,13 +54,9 @@ import { micromark } from 'micromark'
     ul {
       padding-left: 1em;
 
-      li {
-        /*  */
-
-        &::marker {
-          @apply h3;
-          content: '⚡️';
-        }
+      li::marker {
+        @apply h3;
+        content: '⚡️';
       }
     }
   }

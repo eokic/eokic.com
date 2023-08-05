@@ -38,12 +38,12 @@ export const fontSize: ScaleInput = {
       unit: 'px',
     },
     'body+1': {
-      min: BASE_FONT_PX * 1.05,
+      min: BASE_FONT_PX,
       max: BASE_FONT_PX * 1.12,
       unit: 'px',
     },
     lead: {
-      min: BASE_FONT_PX * 1.15,
+      min: BASE_FONT_PX * 1.1,
       max: BASE_FONT_PX * 1.25,
       unit: 'px',
     },

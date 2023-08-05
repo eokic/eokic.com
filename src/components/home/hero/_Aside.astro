@@ -9,51 +9,34 @@ interface Props {
   home: IHome
 }
 
-// METHODS
-import { getAspectRatio } from '@/utils'
-
 // COMPONENTS
 import { ImageHandler } from '@/components'
-import { Image } from 'astro:assets'
 ---
 
-<div class="hero-photo">
+<div class="hero-photo relative">
   <ImageHandler
-    cssClass="hero-photo-img"
+    imgClass="border-8 border-solid border-black"
     img={home.heroMedia}
     fullWidth
     important
   />
-  <span class="photo-label photo-label-me">
+  <span class="absolute top-2 right-[100%] font-display">
     {home?.photoLabelMe}
   </span>
-  <span class="photo-label photo-label-waifu">
+  <span
+    class:list={[
+      'hidden md:block absolute top-3 left-[100%]',
+      'font-display md:text-right',
+    ]}
+  >
     {home?.photoLabelWaifu}
   </span>
 </div>
 
 <style is:global>
-  .photo {
-    @apply relative;
-
-    &-img {
-      @apply border-8 border-solid border-black;
-      @apply bg-gray-800;
-      @apply rotate-2;
-    }
-
-    &-label {
-      @apply absolute;
-      @apply font-display;
-
-      &-me {
-        @apply top-2 right-[100%];
-      }
-
-      &-waifu {
-        @apply top-3 left-[100%];
-        @apply text-right;
-      }
-    }
+  .hero-photo {
+    @apply max-sm:translate-x-[140px] min-w-[380px] w-[380px];
+    @apply md:max-lg:translate-x-[140px];
+    @apply rotate-[1.35deg];
   }
 </style>

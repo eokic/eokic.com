@@ -8,8 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "upgrade-dep": "bun add @astrojs/alpinejs @astrojs/compiler @astrojs/sitemap @astrojs/tailwind @tailwindcss/nesting @tailwindcss/typography @types/alpinejs alpinejs astro astro-compressor astro-imagetools autoprefixer cssnano micromark postcss-import sharp tailwindcss",
-    "upgrade-dev": "bun add -d @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-airbnb-base eslint-import-resolver-typescript eslint-plugin-astro eslint-plugin-import eslint-plugin-json eslint-plugin-vue typescript",
+    "upgrade-dep": "bun add @astrojs/alpinejs @astrojs/compiler @astrojs/sitemap @astrojs/tailwind @tailwindcss/nesting @tailwindcss/typography @types/alpinejs alpinejs astro astro-compressor astro-imagetools autoprefixer cssnano micromark micromark-extension-directive postcss-import sharp tailwindcss",
+    "upgrade-dev": "bun add -d @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-airbnb-base eslint-import-resolver-typescript eslint-plugin-astro eslint-plugin-import eslint-plugin-json eslint-plugin-vue micromark-util-types typescript",
     "upgrade-all": "bun run upgrade-dep && bun run upgrade-dev"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
     "micromark": "^4.0.0",
+    "micromark-extension-directive": "^3.0.0",
     "postcss-import": "^15.1.0",
     "sharp": "^0.32.4",
     "tailwindcss": "^3.3.3"
@@ -43,6 +44,7 @@
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-vue": "^9.16.1",
+    "micromark-util-types": "^2.0.0",
     "typescript": "^5.1.6"
   }
 }

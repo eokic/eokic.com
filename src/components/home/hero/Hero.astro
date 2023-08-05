@@ -10,16 +10,36 @@ interface Props {
 const { globals, home } = Astro.props
 
 // COMPONENTS
-import { Section } from '@/components/base'
+import { ImageHandler, Link, Section } from '@/components'
 import { Aside, Clients, Main } from './'
 ---
 
-<Section id="hero">
-  <div class="hero">
-    <main class="hero-left">
+<Section id="hero" cssClass={['pt-2']}>
+  <div class="mb-section h2 lh-h2">
+    <Link
+      link={{
+        url: '/',
+      }}
+    >
+      <ImageHandler
+        cssClass="inline-block"
+        imgClass="h-[50px]"
+        img={globals.logo.colorOnLight}
+        fullWidth
+        inline
+      />
+    </Link>
+  </div>
+  <div class="hero relative grid grid-cols-5 gap-4">
+    <main class="hero-left z-2 col-span-12 md:col-span-3">
       <Main {globals} {home} />
     </main>
-    <aside class="hero-right">
+    <aside
+      class:list={[
+        'hero-right relative z-1 col-span-12 md:col-span-2',
+        'flex justify-end md:-mt-9',
+      ]}
+    >
       <Aside {globals} {home} />
     </aside>
   </div>
@@ -30,14 +50,14 @@ import { Aside, Clients, Main } from './'
 
 <style is:global>
   .hero {
-    @apply grid grid-cols-5 gap-4;
+    /*  */
 
     &-left {
-      @apply col-span-12 md:col-span-3;
+      /*  */
     }
 
     &-right {
-      @apply col-span-12 md:col-span-2;
+      /*  */
     }
   }
 </style>

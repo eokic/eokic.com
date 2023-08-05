@@ -3,8 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: 39 34% 55%;
-  --color-secondary: 214 69% 38%;
+
+  /*
+    TODO: for some reason the default Tailwind variables are not imported.
+    Without these defaults, transform and filters don't work.
+  */
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+
+  /* Branding */
+  --color-primary: 214 69% 38%;
+  --color-primary-bg: 220 45% 97%;
+  --color-secondary: 39 34% 55%;
   --color-tertiary: 61 87% 84%;
   --color-focus-sr: 0 100% 50%;
   --hover-outline-width: 2px;
@@ -14,4 +38,9 @@ html {
   @apply text-base text-slate-700;
   background: white;
   /* scroll-behavior: smooth; */
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: clip;
 }

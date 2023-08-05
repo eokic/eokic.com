@@ -62,7 +62,7 @@ const base64Orig = inline
 <div
   id=`st-image-${localID}`
   class:list={[
-    'st-image',
+    'st-image relative overflow-hidden',
     {
       vfx: !base64Orig,
     },
@@ -72,7 +72,7 @@ const base64Orig = inline
   <img
     id=`st-image-img-${localID}`
     class:list={[
-      'st-image-img',
+      'st-image-img relative z-2 max-h-full object-cover',
       {
         [`aspect-${aspectRatio}`]: !nonStandardRatio,
         'w-full': fullWidth,
@@ -95,33 +95,31 @@ const base64Orig = inline
   <!-- Blurry placeholder -->
   <div
     id=`placeholder-${localID}`
-    class="st-image-placeholder"
-    style={{
-      display: base64Thumb ? 'block' : 'none',
-      background: base64Thumb
-        ? `url(data:${img.mime};base64,${base64Thumb}) center/cover no-repeat`
-        : 'none',
-    }}
+    class="st-image-placeholder hidden absolute z-1 left-0 top-0 w-full h-full animate-pulse opacity-0"
   >
-    <Spinner
-      cssClass="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
-    />
+    <div
+      class="st-image-placeholder-inner w-full h-full"
+      style={{
+        display: base64Thumb ? 'block' : 'none',
+        background: base64Thumb
+          ? `url(data:${img.mime};base64,${base64Thumb}) center/cover no-repeat`
+          : 'none',
+      }}
+    >
+    </div>
   </div>
 </div>
 
 <style is:global>
-  /* Base styles */
   .st-image {
-    @apply relative overflow-hidden;
+    /*  */
 
     &-img {
-      @apply relative z-2 max-h-full object-cover;
+      /*  */
     }
 
     &-placeholder {
-      @apply hidden;
-      @apply absolute z-1 left-0 top-0 w-full h-full;
-      @apply opacity-0;
+      filter: blur(10px);
     }
   }
 
