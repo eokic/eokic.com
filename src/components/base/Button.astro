@@ -1,7 +1,7 @@
 ---
 // PROPS
 interface Props {
-  cssClass?: string[]
+  cssClass?: string | string[]
   theme?: 'primary' | 'neutral' | 'a11y' // defaults to neutral
   label?: string
   href?: string
@@ -18,7 +18,7 @@ import { markdownToHTML } from '@/utils'
     'body lh-body font-sans text-white bg-primary',
     'rounded-full transition-all cursor-pointer',
     `-${theme || 'neutral'}`,
-    ...(cssClass || []),
+    ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
   ]}
   href={href}
   set:html={label ? markdownToHTML(label) : null}

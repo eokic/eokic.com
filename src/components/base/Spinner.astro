@@ -1,12 +1,15 @@
 ---
 // PROPS
 interface Props {
-  cssClass?: string
+  cssClass?: string | string[]
 }
 const { cssClass } = Astro.props
 ---
 
-<div class={cssClass} role="status">
+<div
+  class:list={[...(typeof cssClass === 'string' ? [cssClass] : cssClass || [])]}
+  role="status"
+>
   <svg
     aria-hidden="true"
     class="w-6 h-6 text-slate-300 fill-slate-600 animate-spin"

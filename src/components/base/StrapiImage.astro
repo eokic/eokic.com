@@ -5,8 +5,8 @@ import { NStrapiMedia } from '@/interfaces'
 // PROPS
 interface Props {
   img: NStrapiMedia.Unknown
-  cssClass?: string
-  imgClass?: string
+  cssClass?: string | string[]
+  imgClass?: string | string[]
   fullWidth?: boolean
   nonStandardRatio?: boolean
   important?: boolean
@@ -66,7 +66,7 @@ const base64Orig = inline
     {
       vfx: !base64Orig,
     },
-    cssClass,
+    ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
   ]}
 >
   <img
@@ -77,7 +77,7 @@ const base64Orig = inline
         [`aspect-${aspectRatio}`]: !nonStandardRatio,
         'w-full': fullWidth,
       },
-      imgClass,
+      ...(typeof imgClass === 'string' ? [imgClass] : imgClass || []),
     ]}
     style={{
       aspectRatio: nonStandardRatio ?? aspectRatio,

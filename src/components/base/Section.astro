@@ -4,14 +4,18 @@ interface Props {
   id?: string
   title?: string
   subtitle?: string
-  cssClass?: string[]
+  cssClass?: string | string[]
   alt?: boolean
 }
 const { id, title, subtitle, cssClass, alt } = Astro.props
 ---
 
 <section
-  class:list={['section py-section', { '-alt': alt }, ...(cssClass || [])]}
+  class:list={[
+    'section py-section',
+    { '-alt': alt },
+    ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
+  ]}
   id={id}
 >
   <slot name="before-container" />

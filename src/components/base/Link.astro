@@ -6,8 +6,9 @@ import type { ILink } from '@/interfaces'
 interface Props {
   link: ILink
   label?: string
+  cssClass?: string | string[]
 }
-const { link, label } = Astro.props
+const { link, label, cssClass } = Astro.props
 
 /*
   Note: if no `label`` is provided, then it is presumed that a <slot> was used.
@@ -19,10 +20,13 @@ const { link, label } = Astro.props
 ---
 
 <a
-  class:list={{
-    focusable: !label,
-    link: label,
-  }}
+  class:list={[
+    {
+      focusable: !label,
+      link: label,
+    },
+    ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
+  ]}
   href={link.url}
   rel={link.isPrivate ? 'noopener noreferrer' : null}
   referrerpolicy={link.isPrivate
