@@ -11,11 +11,5 @@
 html {
   @apply text-base text-slate-700;
   background: white;
-}
-
-/* --------------------------------------------------------------------------
-  ACCESSIBILITY CORE
--------------------------------------------------------------------------- */
-.a11y-link-skip {
-  @apply sr-only focus:not-sr-only;
+  scroll-behavior: smooth;
 }

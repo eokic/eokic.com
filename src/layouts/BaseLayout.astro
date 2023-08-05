@@ -13,6 +13,7 @@ import fetchApi from '@/lib/strapi'
 import { googleFonts } from '@/utils'
 
 // COMPONENTS
+import { Button } from '@/components'
 import { ViewTransitions } from 'astro:transitions'
 
 // DATA
@@ -46,8 +47,10 @@ import '@/styles/eokic.css'
   </head>
   <body class="no-js">
     <!-- Accessibilty links -->
-    <a class="a11y-link-skip" href="#menu">Skip to navigation</a>
-    <a class="a11y-link-skip" href="#main">Skip to content</a>
+    <div class="absolute top-3 left-3 w-full">
+      <Button theme="a11y" href="#menu" label="Skip to navigation" />
+      <Button theme="a11y" href="#main" label="Skip to content" />
+    </div>
 
     <script is:inline>
       document.body.classList.remove('no-js')

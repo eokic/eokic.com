@@ -1,33 +1,69 @@
 ---
 // PROPS
 interface Props {
-  theme?: 'primary' | 'neutral' // defaults to neutral
+  theme?: 'primary' | 'neutral' | 'a11y' // defaults to neutral
+  label?: string
   href?: string
 }
-const { theme, href } = Astro.props
+const { theme, label, href } = Astro.props
 ---
 
 <a class:list={['btn', `-${theme || 'neutral'}`, ,]} href={href}>
   <slot />
+  {label}
 </a>
 
 <style is:global>
+  button,
   .btn {
-    @apply py-2 px-4 cursor-pointer;
-    @apply body lh-body font-sans font-semibold;
+    @apply py-2 px-3 cursor-pointer;
+    @apply body lh-body font-sans;
     @apply text-white bg-primary;
     @apply rounded-full transition-all;
     /* @apply hover:shadow-sm hover:shadow-slate-700/40; */
     /* @apply focus:opacity-[0.85] focus:shadow-none; */
     /* @apply active:opacity-[0.85] active:shadow-none; */
     /* @apply disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none; */
+    outline-offset: 0.2em;
 
     &.-neutral {
-      @apply text-slate-800 bg-slate-200;
+      @apply text-primary bg-transparent;
+      outline-color: blue;
     }
 
     &.-primary {
-      @apply bg-primary;
+      @apply px-4;
+      @apply font-semibold bg-primary;
+      outline-color: red;
     }
+
+    &.-a11y {
+      @apply sr-only focus:not-sr-only;
+      @apply py-1 px-2 !important;
+      @apply h4 lh-h4 font-semibold text-white bg-slate-900;
+      @apply rounded-sm;
+      outline: 1rem solid;
+      outline-color: red;
+
+      &::focus {
+        @apply inline-block;
+      }
+    }
+  }
+
+  /* Hover */
+  :where(button, .btn):where(:not(:active):hover) {
+    outline: 0.2rem solid;
+  }
+
+  /* Focus */
+  :where(button, .btn):where(:not(:active)):focus-visible {
+    outline: 0.5rem solid;
+  }
+
+  /* Pressed */
+  :is(button, .btn):is(:active) {
+    outline-offset: 0;
+    outline: 0 solid;
   }
 </style>

@@ -10,7 +10,7 @@ interface Props {
 const { globals, home } = Astro.props
 
 // COMPONENTS
-import { ImageHandler } from '@/components'
+import { Button, ImageHandler } from '@/components'
 
 // VENDOR
 import { micromark } from 'micromark'
@@ -42,6 +42,13 @@ import { micromark } from 'micromark'
   class="hero-desc mb-outer prose lead lh-prose"
   set:html={micromark(home.description)}
 />
+
+<div class="flex gap-1">
+  <Button theme="primary" label="Let's talk!" />
+  <Button href="#services" label="Services" />
+  <Button href="#work" label="Work" />
+  <Button href="#about" label="About" />
+</div>
 
 <style is:global>
   .eokic-logo {
