@@ -23,7 +23,9 @@ import { Aside, Clients, Main } from './'
       <Aside {globals} {home} />
     </aside>
   </div>
-  <Clients slot="after-container" />
+  <div slot="after-container" class="mt-outer">
+    <Clients />
+  </div>
 </Section>
 
 <style is:global>

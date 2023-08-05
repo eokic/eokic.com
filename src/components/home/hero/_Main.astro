@@ -39,12 +39,27 @@ import { micromark } from 'micromark'
   />
 </div>
 <div
-  class="hero-desc prose lead lh-prose"
+  class="hero-desc mb-outer prose lead lh-prose"
   set:html={micromark(home.description)}
 />
 
 <style is:global>
   .eokic-logo {
     @apply inline-block mb-8;
+  }
+
+  .hero-desc {
+    ul {
+      padding-left: 1em;
+
+      li {
+        /*  */
+
+        &::marker {
+          @apply h3;
+          content: '⚡️';
+        }
+      }
+    }
   }
 </style>

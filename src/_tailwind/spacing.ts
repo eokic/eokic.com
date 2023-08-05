@@ -17,5 +17,15 @@ export const spacing: ScaleInput = {
       mid: '6.25vh',
       max: '80px',
     },
+    outer: {
+      min: '30px',
+      mid: 'calc(1vw + 3vh)',
+      max: '60px',
+    },
+    inner: {
+      min: '18px',
+      mid: 'calc(.5vw + 1vh)',
+      max: '30px',
+    },
   },
 }
