@@ -7,10 +7,11 @@
   --color-secondary: 214 69% 38%;
   --color-tertiary: 61 87% 84%;
   --color-focus-sr: 0 100% 50%;
+  --hover-outline-width: 2px;
 }
 
 html {
   @apply text-base text-slate-700;
   background: white;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }

@@ -24,6 +24,7 @@ const { theme, label, href } = Astro.props
     /* @apply focus:opacity-[0.85] focus:shadow-none; */
     /* @apply active:opacity-[0.85] active:shadow-none; */
     /* @apply disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none; */
+    outline: var(--hover-outline-width) solid transparent;
     outline-offset: 0.2em;
 
     &.-neutral {
@@ -46,21 +47,21 @@ const { theme, label, href } = Astro.props
         @apply inline-block;
       }
     }
-  }
 
-  /* Hover */
-  :where(button, .btn):where(:not(:active):hover) {
-    outline: 0.2rem solid;
-  }
+    /* Hover */
+    &:not(:active):hover {
+      outline-color: inherit;
+    }
 
-  /* Focus */
-  :where(button, .btn):where(:not(:active)):focus-visible {
-    outline: 0.5rem solid hsl(var(--color-focus-sr));
-  }
+    /* Focus */
+    &:not(:active):focus-visible {
+      outline: 0.5em solid hsl(var(--color-focus-sr));
+    }
 
-  /* Pressed */
-  :is(button, .btn):is(:active) {
-    outline-offset: 0;
-    outline: 0 solid;
+    /* Pressed */
+    &:active {
+      outline-width: 1px;
+      outline-offset: 0.1em;
+    }
   }
 </style>

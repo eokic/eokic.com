@@ -19,12 +19,10 @@ const { link, label } = Astro.props
 ---
 
 <a
-  class:list={[
-    'focusable',
-    {
-      link: label,
-    },
-  ]}
+  class:list={{
+    focusable: !label,
+    link: label,
+  }}
   href={link.url}
   rel={link.isPrivate ? 'noopener noreferrer' : null}
   referrerpolicy={link.isPrivate
@@ -34,33 +32,45 @@ const { link, label } = Astro.props
     ? ('_blank' satisfies HTMLAttributeAnchorTarget)
     : ''}
 >
-  {label}<slot />
+  {label ? <span>{label}</span> : null}
+  <slot />
 </a>
 
 <style is:global>
   .link {
-    @apply underline;
+    @apply underline underline-offset-4;
+    @apply transition-all;
     color: blue; /* TODO: from brand variables */
   }
 
   .focusable {
-    @apply rounded-sm;
-    outline-offset: 0.25em;
+    @apply inline-block;
+    @apply rounded-lg;
 
     /* Hover */
-    &:where(:not(:active):hover) {
-      outline: 0.2rem solid hsla(var(--color-primary));
+    &:not(:active):hover {
+      outline-color: hsl(var(--color-primary));
     }
 
     /* Focus */
-    &:where(:not(:active)):focus-visible {
+    &:not(:active):focus-visible {
       outline: 0.5rem solid hsl(var(--color-focus-sr));
     }
 
     /* Pressed */
-    &:is(:active) {
-      outline-offset: 0;
-      outline: 0 solid;
+    &:active {
+      outline-width: 1px;
+      outline-offset: 0.1em;
+    }
+  }
+
+  :where(.link, .focusable) {
+    outline: var(--hover-outline-width) solid transparent;
+    outline-offset: 0.15em;
+
+    &:not(:active):focus-visible {
+      @apply rounded-lg;
+      outline: 0.5rem solid hsl(var(--color-focus-sr));
     }
   }
 </style>

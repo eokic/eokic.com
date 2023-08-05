@@ -75,7 +75,7 @@ export function generateTwScale (
   if (scale.scale) {
     Object.entries(scale.scale)?.forEach(([key, variant]) => {
 
-    // 1) BASE THEME & STYLE
+      // 1) BASE THEME & STYLE
       const baseVal = variant.min + (variant.unit || '')
       theme[key] = baseVal
       switch (scale.type) {
@@ -103,8 +103,8 @@ export function generateTwScale (
           break
       }
 
-    // 2) PER BREAKPOINT THEME & STYLE
-    // Calculate the breakpoint increment
+      // 2) PER BREAKPOINT THEME & STYLE
+      // Calculate the breakpoint increment
       const increment = (variant.max - variant.min) / Object.keys(BREAKPOINTS).length
 
       Object.entries(BREAKPOINTS).forEach(([bpName, bpWidth], index) => {
