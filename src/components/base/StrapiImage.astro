@@ -10,10 +10,19 @@ interface Props {
   fullWidth?: boolean
   nonStandardRatio?: boolean
   important?: boolean
+  inline?: boolean
   alt?: string // should come from Strapi though
 }
-const { alt, cssClass, fullWidth, img, imgClass, important, nonStandardRatio } =
-  Astro.props
+const {
+  alt,
+  cssClass,
+  fullWidth,
+  img,
+  inline,
+  imgClass,
+  important,
+  nonStandardRatio,
+} = Astro.props
 
 // METHODS
 import { getAspectRatio, ID } from '@/utils'
@@ -35,10 +44,15 @@ const srcset = isResponsive ? getSrcset(img.formats) : null
 // BASE64 THUMB
 import fs from 'node:fs/promises'
 // const url = new URL(img.url, import.meta.url) // TODO: figure out what to do with the path
-const base64 = isResponsive
+const base64Thumb = isResponsive
   ? await fs.readFile('./public' + img.formats[16].url, {
       encoding: 'base64',
     })
+  : null
+
+// BASE64 ORIGINAL
+const base64Orig = inline
+  ? await fs.readFile('./public' + img.url, { encoding: 'base64' })
   : null
 ---
 
@@ -48,6 +62,7 @@ const base64 = isResponsive
     class:list={[
       'st-image-img',
       {
+        vfx: !base64Orig,
         [`aspect-${aspectRatio}`]: !nonStandardRatio,
         'w-full': fullWidth,
       },
@@ -58,12 +73,12 @@ const base64 = isResponsive
     }}
     width={img.width}
     height={img.height}
-    srcset={srcset}
-    src={img.url}
+    srcset={base64Orig ? null : srcset}
+    src={base64Orig ? `data:${img.mime};base64,${base64Orig}` : img.url}
     alt={img.alternativeText || alt}
-    loading={important ? 'eager' : 'lazy'}
+    loading={base64Orig ? null : important ? 'eager' : 'lazy'}
     decoding="async"
-    onload=`javascript: onStrapiImageLoad('${localID}')`
+    onload={base64Orig ? null : `javascript: onStrapiImageLoad('${localID}')`}
   />
 
   <!-- Blurry placeholder -->
@@ -71,9 +86,9 @@ const base64 = isResponsive
     id=`placeholder-${localID}`
     class="st-image-placeholder"
     style={{
-      display: base64 ? 'block' : 'none',
-      background: base64
-        ? `url(data:image/webp;base64,${base64}) center/cover no-repeat`
+      display: base64Thumb ? 'block' : 'none',
+      background: base64Thumb
+        ? `url(data:${img.mime};base64,${base64Thumb}) center/cover no-repeat`
         : 'none',
     }}
   >
@@ -113,7 +128,7 @@ const base64 = isResponsive
   /*
     With JS enabled, we show the placeholder and apply transitions
   */
-  body.js .st-image {
+  body.js .st-image.vfx {
     &-img {
       @apply transition-opacity;
       transition-duration: 600ms;
@@ -128,7 +143,7 @@ const base64 = isResponsive
   /*
     With JS enabled, we show the placeholder and apply transitions
   */
-  body.js.vfxReady .st-image:not(.-loaded) {
+  body.js.vfxReady .st-image.vfx:not(.-loaded) {
     .st-image-img {
       @apply opacity-0;
     }
@@ -138,7 +153,7 @@ const base64 = isResponsive
   }
 
   /* Once the image is loaded, cross-fade it with the placeholder */
-  body.js .st-image.-loaded {
+  body.js .st-image.vfx.-loaded {
     .st-image-img {
       @apply opacity-100;
     }

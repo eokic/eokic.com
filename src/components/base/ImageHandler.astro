@@ -10,10 +10,19 @@ interface Props {
   fullWidth?: boolean
   nonStandardRatio?: boolean
   important?: boolean
+  inline?: boolean
   alt?: string // should come from Strapi though
 }
-const { alt, cssClass, fullWidth, img, imgClass, important, nonStandardRatio } =
-  Astro.props
+const {
+  alt,
+  cssClass,
+  fullWidth,
+  img,
+  inline,
+  imgClass,
+  important,
+  nonStandardRatio,
+} = Astro.props
 
 // COMPONENTS
 import { StrapiImage } from '.'
@@ -27,13 +36,16 @@ import { Image } from 'astro:assets'
   {fullWidth}
   {nonStandardRatio}
   {important}
+  {inline}
   {alt}
 />
 
-<!-- <Image
+{
+  /* <Image
   class="hero-photo-img"
   src={img.url}
   width={img.width}
   height={img.height}
   alt={img.alternativeText || ''}
-/> -->
+/> */
+}
