@@ -13,6 +13,7 @@ import { ImageHandler, Link } from '@/components'
 
 // VENDOR
 import { micromark } from 'micromark'
+import dayjs from 'dayjs'
 ---
 
 <Link
@@ -39,10 +40,13 @@ import { micromark } from 'micromark'
           )
         }
       </div>
-      <div
-        class:list={['py-2 sm:py-3 md:py-4 lg:py-5', 'px-2 md:px-4 lg:px-5']}
-      >
-        <h3 class="h3 lh-h3-vtrim pb-2">
+      <div class:list={['py-1 md:py-2 lg:py-3', 'px-2 md:px-4 lg:px-5']}>
+        <div class="mb-1 lg:mb-3">
+          {dayjs(project.dateStart).format('YYYY')} — {
+            project.ongoing ? 'Ongoing' : dayjs(project.dateEnd).format('YYYY')
+          }
+        </div>
+        <h3 class="h3 lh-h3-vtrim font-semibold pb-3 lg:pb-4">
           {project.title}
         </h3>
         <div set:html={micromark(project.subtitle)} />

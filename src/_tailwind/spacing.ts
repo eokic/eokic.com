@@ -18,14 +18,14 @@ export const spacing: ScaleInput = {
       max: '80px',
     },
     outer: {
-      min: '30px',
-      mid: 'calc(1vw + 3vh)',
-      max: '60px',
+      min: '32px',
+      mid: 'calc(1vw + 2.8vh)',
+      max: '54px',
     },
     inner: {
-      min: '18px',
-      mid: 'calc(.5vw + 1vh)',
-      max: '30px',
+      min: '25px',
+      mid: 'calc(.75vw + 1.35vh)',
+      max: '46px',
     },
   },
 }

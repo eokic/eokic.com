@@ -19,8 +19,8 @@ import { micromark } from 'micromark'
   class:list={[
     'testimonial',
     {
-      'col-span-2': testimonial.size === 'medium',
-      'col-span-3': testimonial.size === 'large',
+      'md:col-span-2': testimonial.size === 'medium',
+      'md:col-span-3': testimonial.size === 'large',
     },
   ]}
 >
@@ -38,17 +38,3 @@ import { micromark } from 'micromark'
     <small>{testimonial.position}</small>
   </figcaption>
 </figure>
-
-<style is:global>
-  .testimonial {
-    /*  */
-
-    &.-small {
-      width: 33.333%;
-    }
-
-    &.-medium {
-      width: 66.666%;
-    }
-  }
-</style>
