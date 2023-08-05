@@ -26,12 +26,12 @@ import { micromark } from 'micromark'
       backgroundColor: project.client.brandColor,
     }}
   >
-    <div class="grid grid-cols-2">
-      <div>
+    <div class="grid md:grid-cols-2">
+      <div class="max-md:mb-2">
         {
           project.thumbnail && (
             <ImageHandler
-              cssClass="rounded"
+              cssClass="max-md:w-full max-md:max-h-[300px] rounded"
               img={project.thumbnail}
               nonStandardRatio
               fullWidth
@@ -39,8 +39,10 @@ import { micromark } from 'micromark'
           )
         }
       </div>
-      <div>
-        <h3 class="h3 lh-h3-vtrim pb-1">
+      <div
+        class:list={['py-2 sm:py-3 md:py-4 lg:py-5', 'px-2 md:px-4 lg:px-5']}
+      >
+        <h3 class="h3 lh-h3-vtrim pb-2">
           {project.title}
         </h3>
         <div set:html={micromark(project.subtitle)} />
