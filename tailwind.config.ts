@@ -32,6 +32,33 @@ module.exports = {
 
 
   /* --------------------------------------------------------------------------
+    PLUGINS
+
+    Note: had to add custom styles here because @apply did not work.
+    https://docs.astro.build/en/guides/integrations-guide/tailwind/#class-does-not-exist-with-apply-directives
+  -------------------------------------------------------------------------- */
+  plugins: [
+    require('@tailwindcss/typography'),
+    plugin(({ addBase, theme }) => {
+      addBase({
+        ':root': `
+          --color-primary: 39 34 55;
+          --color-secondary: 214 69 38;
+          --color-tertiary: 61 87 84;
+        `,
+      })
+    }),
+    plugin(({ addUtilities, theme }) => {
+      addUtilities({
+        ...fontSizes.style,
+        ...lineHeights.style,
+        ...spacings.style,
+      })
+    }),
+  ],
+
+
+  /* --------------------------------------------------------------------------
     THEME CONFIG
   -------------------------------------------------------------------------- */
   theme: {
@@ -105,24 +132,6 @@ module.exports = {
       full: '9999px',
     },
   },
-
-
-  /* --------------------------------------------------------------------------
-    PLUGINS
-
-    Note: had to add custom styles here because @apply did not work.
-    https://docs.astro.build/en/guides/integrations-guide/tailwind/#class-does-not-exist-with-apply-directives
-  -------------------------------------------------------------------------- */
-  plugins: [
-    require('@tailwindcss/typography'),
-    plugin(({ addUtilities, theme }) => {
-      addUtilities({
-        ...fontSizes.style,
-        ...lineHeights.style,
-        ...spacings.style,
-      })
-    }),
-  ],
 
 
   /* --------------------------------------------------------------------------
