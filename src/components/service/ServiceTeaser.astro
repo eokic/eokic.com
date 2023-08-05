@@ -16,12 +16,12 @@ import { Button, ImageHandler } from '@/components'
 ---
 
 <article class="text-center">
-  <ImageHandler cssClass="mb-2 inline-block" img={service.thumbnail} inline />
-  <h3 class="pb-2 h4 lh-h4-vtrim font-semibold">
+  <ImageHandler cssClass="mb-3 inline-block" img={service.thumbnail} inline />
+  <h3 class="pb-3 h4 lh-h4-vtrim font-semibold">
     {service.title}
   </h3>
   <div
-    class="max-w-[27em] mx-auto mb-3 prose lh-prose body-1"
+    class="max-w-[27em] mx-auto mb-4 prose lh-prose body-1"
     set:html={markdownToHTML(service.subtitle)}
   />
   <Button

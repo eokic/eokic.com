@@ -14,7 +14,7 @@ import { ImageHandler, Link, Section } from '@/components'
 import { Aside, Clients, Main } from './'
 ---
 
-<Section id="hero" cssClass={['pt-2']}>
+<Section id="hero" cssClass={['pt-3']}>
   <div class="mb-section h2 lh-h2">
     <Link
       link={{
@@ -30,14 +30,14 @@ import { Aside, Clients, Main } from './'
       />
     </Link>
   </div>
-  <div class="hero relative grid grid-cols-5 gap-4">
+  <div class="hero relative grid grid-cols-5 gap-5">
     <main class="hero-left z-2 col-span-12 md:col-span-3">
       <Main {globals} {home} />
     </main>
     <aside
       class:list={[
         'hero-right relative z-1 col-span-12 md:col-span-2',
-        'flex justify-end md:-mt-9',
+        'flex justify-end md:-mt-10',
       ]}
     >
       <Aside {globals} {home} />

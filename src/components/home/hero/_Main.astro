@@ -23,7 +23,7 @@ import { Button, ImageHandler } from '@/components'
   <small class="-body-1 font-display absolute top-[90%] right-[1.25em]">
     {home?.subtitle}
   </small>
-  <div class="absolute -top-4 left-full ml-3">
+  <div class="absolute -top-5 left-full ml-4">
     <ImageHandler cssClass="w-[clamp(75px,9vw,102px)]" img={home.badge} />
   </div>
 </div>
@@ -31,7 +31,7 @@ import { Button, ImageHandler } from '@/components'
 <div
   class:list={[
     'hero-desc',
-    'max-md:absolute max-md:bottom-0 max-md:-ml-edge max-md:-mb-1 max-md:p-3 max-md:pl-edge max-md:pb-4',
+    'max-md:absolute max-md:bottom-0 max-md:-ml-edge max-md:-mb-2 max-md:p-4 max-md:pl-edge max-md:pb-5',
     'max-md:bg-primary-bg max-md:backdrop-blur-md',
   ]}
 >
@@ -39,7 +39,7 @@ import { Button, ImageHandler } from '@/components'
     class="mb-outer prose lead lh-prose"
     set:html={markdownToHTML(home.description)}
   />
-  <div class="flex flex-wrap sm:gap-1">
+  <div class="flex flex-wrap sm:gap-2">
     <Button theme="primary" href="mailto:hi@eokic.com" label="Let's talk!" />
     <Button href="#services" label="Services" />
     <Button href="#work" label="Work" />

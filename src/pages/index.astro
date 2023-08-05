@@ -44,7 +44,7 @@ const testimonials = await fetchApi<ITestimonial[]>({
       subtitle={home?.sectionServices?.subtitle}
       alt
     >
-      <div class="grid md:grid-cols-3 gap-5">
+      <div class="grid md:grid-cols-3 gap-6">
         {home.services?.map((service) => <ServiceTeaser {service} />)}
       </div>
     </Section>
@@ -54,10 +54,10 @@ const testimonials = await fetchApi<ITestimonial[]>({
       title={home?.sectionWork?.title}
       subtitle={home?.sectionWork?.subtitle}
     >
-      <div class="flex flex-col gap-3">
+      <div class="flex flex-col gap-4">
         {home.projects?.map((project) => <ProjectTeaser {project} />)}
       </div>
-      <div class="grid grid-cols-3 gap-5">
+      <div class="grid grid-cols-3 gap-6">
         {testimonials?.map((testimonial) => <Testimonial {testimonial} />)}
       </div>
     </Section>

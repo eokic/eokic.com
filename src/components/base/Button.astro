@@ -14,7 +14,7 @@ import { markdownToHTML } from '@/utils'
 
 <a
   class:list={[
-    'btn py-2 px-2 sm:px-3',
+    'btn py-3 px-3 sm:px-4',
     'body lh-body font-sans text-white bg-primary',
     'rounded-full transition-all cursor-pointer',
     `-${theme || 'neutral'}`,
@@ -41,13 +41,13 @@ import { markdownToHTML } from '@/utils'
     }
 
     &.-primary {
-      @apply px-3 md:px-4;
+      @apply px-4 md:px-5;
       @apply font-semibold bg-primary;
     }
 
     &.-a11y {
       @apply sr-only focus:not-sr-only;
-      @apply py-1 px-2 !important;
+      @apply py-2 px-3 !important;
       @apply h4 lh-h4 font-semibold text-white bg-slate-900;
       @apply rounded-sm;
       outline: 1rem solid hsl(var(--color-focus-sr));
