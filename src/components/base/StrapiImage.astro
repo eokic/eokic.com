@@ -56,13 +56,21 @@ const base64Orig = inline
   : null
 ---
 
-<div id=`st-image-${localID}` class:list={['st-image', cssClass]}>
+<div
+  id=`st-image-${localID}`
+  class:list={[
+    'st-image',
+    {
+      vfx: !base64Orig,
+    },
+    cssClass,
+  ]}
+>
   <img
     id=`st-image-img-${localID}`
     class:list={[
       'st-image-img',
       {
-        vfx: !base64Orig,
         [`aspect-${aspectRatio}`]: !nonStandardRatio,
         'w-full': fullWidth,
       },
@@ -129,11 +137,11 @@ const base64Orig = inline
     With JS enabled, we show the placeholder and apply transitions
   */
   body.js .st-image.vfx {
-    &-img {
+    .st-image-img {
       @apply transition-opacity;
       transition-duration: 600ms;
     }
-    &-placeholder {
+    .st-image-placeholder {
       @apply block;
       @apply transition-opacity;
       transition-duration: 600ms;
