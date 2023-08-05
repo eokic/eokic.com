@@ -4,6 +4,7 @@ import pxToEm from './pxToEm'
 export const BASE_FONT_REM = 1.125
 export const BASE_FONT_PX = BASE_FONT_REM * 16
 export const BREAKPOINTS = {
+  xs: '320px',
   sm: '480px',
   md: '768px',
   lg: '1024px',

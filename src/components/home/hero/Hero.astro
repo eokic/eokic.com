@@ -14,8 +14,9 @@ import { ImageHandler, Link, Section } from '@/components'
 import { Aside, Clients, Main } from './'
 ---
 
-<Section id="hero" cssClass={['pt-3']}>
-  <div class="mb-section h2 lh-h2">
+<Section id="hero" cssClass="pt-0 sm:pt-3 md:pt-5 lg:pt-7 xl:pt-8">
+  <!-- Logo -->
+  <div class="mb-6 sm:mb-7 md:mb-outer lg:mb-section h2 lh-h2">
     <Link
       link={{
         url: '/',
@@ -30,34 +31,28 @@ import { Aside, Clients, Main } from './'
       />
     </Link>
   </div>
-  <div class="hero relative grid grid-cols-5 gap-5">
-    <main class="hero-left z-2 col-span-12 md:col-span-3">
+
+  <!-- 2-column layout -->
+  <div class="relative grid grid-cols-5 gap-5">
+    <!-- Left: main content -->
+    <main class:list={['z-2 col-span-12 md:col-span-3']}>
       <Main {globals} {home} />
     </main>
+
+    <!-- Right: photo -->
     <aside
       class:list={[
-        'hero-right relative z-1 col-span-12 md:col-span-2',
-        'flex justify-end md:-mt-10',
+        'invisible max-xs:absolute max-xs:pointer-events-none xs:visible',
+        'relative z-1 col-span-12 md:col-span-2',
+        'flex justify-end -mt-4 md:-mt-9',
       ]}
     >
       <Aside {globals} {home} />
     </aside>
   </div>
+
+  <!-- Clients -->
   <div slot="after-container" class="mt-outer">
     <Clients />
   </div>
 </Section>
-
-<style is:global>
-  .hero {
-    /*  */
-
-    &-left {
-      /*  */
-    }
-
-    &-right {
-      /*  */
-    }
-  }
-</style>

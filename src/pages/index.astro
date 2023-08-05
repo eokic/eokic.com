@@ -54,7 +54,7 @@ const testimonials = await fetchApi<ITestimonial[]>({
       title={home?.sectionWork?.title}
       subtitle={home?.sectionWork?.subtitle}
     >
-      <div class="flex flex-col gap-3 md:gap-4 lg:gap-5 mb-outer">
+      <div class="flex flex-col gap-3 md:gap-4 lg:gap-5 mb-inner">
         {home.projects?.map((project) => <ProjectTeaser {project} />)}
       </div>
       <div class="grid md:grid-cols-3 gap-6">

@@ -8,7 +8,7 @@ export const spacing: ScaleInput = {
   type: 'spacing',
   clamp: {
     edge: {
-      min: '1rem',
+      min: '1.25rem',
       mid: '6vw',
       max: '4rem',
     },
@@ -19,12 +19,12 @@ export const spacing: ScaleInput = {
     },
     outer: {
       min: '32px',
-      mid: 'calc(1vw + 2.8vh)',
-      max: '54px',
+      mid: 'calc(1.5vw + 3.8vh)',
+      max: '65px',
     },
     inner: {
-      min: '25px',
-      mid: 'calc(.75vw + 1.35vh)',
+      min: '26px',
+      mid: 'calc(1vw + 1.5vh)',
       max: '46px',
     },
   },
