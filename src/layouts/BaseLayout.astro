@@ -13,7 +13,7 @@ import fetchApi from '@/lib/strapi'
 import { googleFonts } from '@/utils'
 
 // COMPONENTS
-import { Button } from '@/components'
+import { Button, Header } from '@/components'
 import { ViewTransitions } from 'astro:transitions'
 
 // DATA
@@ -51,7 +51,7 @@ import '@/styles/eokic.css'
   </head>
   <body class="no-js">
     <!-- Accessibilty links -->
-    <div class="absolute top-6 left-6">
+    <div class="absolute z-30 top-6 left-6">
       <Button theme="a11y" href="#menu" label="Skip to navigation" />
       <Button theme="a11y" href="#main" label="Skip to content" />
     </div>
@@ -66,6 +66,8 @@ import '@/styles/eokic.css'
         document.body.classList.add('vfxReady')
       }, 250)
     </script>
+
+    <Header {globals} />
 
     <script is:inline>
       // document.querySelectorAll('[id^="st-image-img-"]').forEach((element) => {

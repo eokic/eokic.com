@@ -1,0 +1,70 @@
+---
+// TYPES
+import type { IGlobal } from '@/interfaces'
+
+// PROPS
+interface Props {
+  globals: IGlobal
+}
+const { globals } = Astro.props
+
+// COMPONENTS
+import { Button, ImageHandler, Link } from '.'
+---
+
+<header
+  id="header"
+  class:list={[
+    'sticky z-20 top-0 left-0 w-full h-60',
+    'bg-primary-bg backdrop-blur-md',
+  ]}
+>
+  <div class="container flex justify-between items-center">
+    <!-- Logo -->
+    <div aria-hidden>
+      <Link
+        link={{
+          url: '/',
+        }}
+      >
+        <ImageHandler
+          cssClass="inline-block"
+          imgClass="h-[50px]"
+          img={globals.logo.colorOnLight}
+          fullWidth
+          inline
+        />
+      </Link>
+    </div>
+
+    <!-- Navigation -->
+    <nav aria-label="Main navigation">
+      <ul class="flex flex-wrap">
+        <li><Button href="#services" label="Services" /></li>
+        <li><Button href="#work" label="Work" /></li>
+        <li>
+          <div class="hidden sm:inline-block">
+            <Button href="#about" label="About" />
+          </div>
+        </li>
+        <li>
+          <Button
+            theme="primary"
+            href="mailto:hi@eokic.com"
+            label="Let's talk!"
+          />
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  body.js #header {
+    @apply -translate-y-full transition-transform;
+
+    &.show {
+      @apply translate-y-0;
+    }
+  }
+</style>
