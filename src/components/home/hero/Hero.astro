@@ -14,9 +14,11 @@ import { ImageHandler, Link, Section } from '@/components'
 import { Aside, Clients, Main } from './'
 ---
 
-<Section id="hero" cssClass="pt-0 sm:pt-3 md:pt-5 lg:pt-7 xl:pt-8">
+<Section id="hero" cssClass="pt-2 sm:pt-3 md:pt-5 lg:pt-7 xl:pt-8">
   <!-- Logo -->
-  <div class="mb-6 sm:mb-7 md:mb-outer lg:mb-section h2 lh-h2">
+  <div
+    class="mb-6 sm:mb-7 md:mb-outer lg:mb-section h2 lh-h2 text-center md:text-start"
+  >
     <Link
       link={{
         url: '/',
@@ -35,7 +37,7 @@ import { Aside, Clients, Main } from './'
   <!-- 2-column layout -->
   <div class="relative grid grid-cols-5 gap-5">
     <!-- Left: main content -->
-    <main class:list={['z-2 col-span-12 md:col-span-3']}>
+    <main class="z-2 col-span-12 md:col-span-3 text-center md:text-start">
       <Main {globals} {home} />
     </main>
 

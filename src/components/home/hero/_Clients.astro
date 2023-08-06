@@ -7,7 +7,6 @@ import fetchApi from '@/lib/strapi'
 
 // COMPONENTS
 import { ImageHandler } from '@/components'
-import { Image } from 'astro:assets'
 
 // LOCAL STATE
 const clients = await fetchApi<IClient[]>({

@@ -1,7 +1,7 @@
 import { defineConfig, sharpImageService } from 'astro/config'
 
 // import alpinejs from '@astrojs/alpinejs'
-import { astroImageTools } from 'astro-imagetools'
+// import { astroImageTools } from 'astro-imagetools'
 import compress from 'astro-compress'
 import compressor from 'astro-compressor'
 import sitemap from '@astrojs/sitemap'
@@ -14,7 +14,7 @@ export default defineConfig({
     // https://vitejs.dev/config
   },
   integrations: [
-    astroImageTools,
+    // astroImageTools,
     tailwind({
       config: {
         applyBaseStyles: false,

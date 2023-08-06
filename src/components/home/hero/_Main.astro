@@ -23,21 +23,22 @@ import { Button, ImageHandler } from '@/components'
   <small class="-body-1 font-display absolute top-[90%] right-[1.25em]">
     {home?.subtitle}
   </small>
-  <div class="absolute -top-5 left-full ml-4">
+  <div class="hidden sm:block absolute -top-5 left-full ml-4">
     <ImageHandler cssClass="w-[clamp(75px,9vw,102px)]" img={home.badge} />
   </div>
 </div>
 
 <div
+  id="hero-desc"
   class:list={[
-    'hero-desc',
-    'xs:max-md:absolute xs:max-md:bottom-0 max-md:-ml-edge max-xs:-mr-edge',
+    'hero-desc text-start',
+    'xs:max-md:absolute xs:max-md:bottom-0 max-md:-ml-edge max-xs:-mr-edge xs:max-sm:-mr-4',
     'max-md:-mb-2 max-md:p-4 max-md:pl-edge max-md:pb-5',
     'max-md:bg-primary-bg max-md:backdrop-blur-md',
   ]}
 >
   <div
-    class="mb-outer prose lead lh-prose"
+    class="mb-2 sm:mb-4 md:mb-outer prose md:lead lh-prose"
     set:html={markdownToHTML(home.description)}
   />
   <div class="flex flex-wrap sm:gap-2">

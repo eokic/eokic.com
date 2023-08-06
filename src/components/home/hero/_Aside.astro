@@ -13,29 +13,32 @@ interface Props {
 import { ImageHandler } from '@/components'
 ---
 
-<div class="hero-photo relative">
-  <ImageHandler
-    imgClass="border-8 border-solid border-black"
-    img={home.heroMedia}
-    fullWidth
-    important
-  />
-  <span class="absolute top-3 right-[100%] font-display">
-    {home?.photoLabelMe}
-  </span>
-  <span
-    class:list={[
-      'hidden md:block absolute top-4 left-[100%]',
-      'font-display md:text-right',
-    ]}
-  >
-    {home?.photoLabelWaifu}
-  </span>
+<div id="hero-photo">
+  <div class="hero-photo relative">
+    <ImageHandler
+      imgClass="border-8 border-solid border-black"
+      img={home.heroMedia}
+      fullWidth
+      important
+    />
+    <span class="absolute top-3 right-[100%] font-display">
+      {home?.photoLabelMe}
+    </span>
+    <span
+      class:list={[
+        'hidden md:block absolute top-4 left-[100%]',
+        'font-display md:text-right',
+      ]}
+    >
+      {home?.photoLabelWaifu}
+    </span>
+  </div>
 </div>
 
 <style is:global>
   .hero-photo {
-    @apply max-sm:translate-x-[140px] max-lg:min-w-[350px] max-lg:w-[350px];
+    @apply max-sm:translate-x-[90px];
+    @apply max-md:min-w-[300px] max-md:w-[300px] md:max-lg:min-w-[360px] md:max-lg:w-[360px];
     @apply md:max-lg:translate-x-[140px];
     @apply rotate-[1.35deg];
   }
