@@ -34,7 +34,7 @@ import { Button, ImageHandler } from '@/components'
     'hero-desc text-start',
     'xs:max-md:absolute xs:max-md:bottom-0 max-md:-ml-edge max-xs:-mr-edge xs:max-sm:-mr-4',
     'max-md:-mb-2 max-md:p-4 max-md:pl-edge max-md:pb-5',
-    'max-md:bg-primary-bg max-md:backdrop-blur-md',
+    'max-md:bg-primary-bg max-md:rounded-tr-lg max-md:rounded-br-lg max-md:backdrop-blur-md',
   ]}
 >
   <div
@@ -59,6 +59,7 @@ import { Button, ImageHandler } from '@/components'
       li::marker {
         @apply h3;
         content: '⚡️';
+        /* TODO: Safari does not support the ::marker pseudo */
       }
     }
   }
