@@ -22,6 +22,7 @@ import { markdownToHTML } from '@/utils'
   ]}
   href={href}
   set:html={label ? markdownToHTML(label) : null}
+  tabindex="0"
 >
   <slot />
 </a>

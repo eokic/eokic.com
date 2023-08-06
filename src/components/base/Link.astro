@@ -35,6 +35,7 @@ const { link, label, cssClass } = Astro.props
   target={link.openInNewTab
     ? ('_blank' satisfies HTMLAttributeAnchorTarget)
     : ''}
+  tabindex="0"
 >
   {label ? <span>{label}</span> : null}
   <slot />
