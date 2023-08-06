@@ -8,8 +8,15 @@ export default function markdownToHTML (
 ): string {
   return micromark(body, {
     extensions: [directive()],
-    htmlExtensions: [directiveHtml({ sm, md, lg })],
+    htmlExtensions: [directiveHtml({ xs, sm, md, lg })],
   })
+}
+
+function xs (dir: Directive): boolean | undefined {
+  if (dir.type !== 'textDirective') return false
+  const split = dir.label.split('||')
+  if (split[0]) this.tag(`<span class="hidden xs:inline">${split[0]}</span>`)
+  if (split[1]) this.tag(`<span class="max-xs:inline hidden" aria-hidden="true">${split[1]}</span>`)
 }
 
 function sm (dir: Directive): boolean | undefined {
