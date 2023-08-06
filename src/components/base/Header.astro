@@ -15,13 +15,13 @@ import { Button, ImageHandler, Link } from '.'
 <header
   id="header"
   class:list={[
-    'sticky z-20 top-0 left-0 w-full h-60',
-    'bg-primary-bg backdrop-blur-md',
+    'fixed z-20 top-1 right-edge h-60 p-2',
+    'bg-primary-bg backdrop-blur-md rounded-full',
   ]}
 >
-  <div class="container flex justify-between items-center">
+  <div class="md:container flex justify-between items-center">
     <!-- Logo -->
-    <div aria-hidden>
+    <div class="hidden md:inline-block">
       <Link
         link={{
           url: '/',
@@ -59,12 +59,12 @@ import { Button, ImageHandler, Link } from '.'
   </div>
 </header>
 
-<style>
+<style is:global>
   body.js #header {
-    @apply -translate-y-full transition-transform;
+    @apply -translate-y-[120%] transition-transform;
 
     &.show {
-      @apply translate-y-0;
+      @apply translate-y-0 drop-shadow-xl;
     }
   }
 </style>

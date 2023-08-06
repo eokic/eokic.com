@@ -12,6 +12,16 @@ export const spacing: ScaleInput = {
       mid: '6vw',
       max: '4rem',
     },
+    'safe-edge-l': {
+      min: 'max(1.25rem, env(safe-area-inset-left))',
+      mid: 'max(6vw, env(safe-area-inset-left))',
+      max: 'max(4rem, env(safe-area-inset-left))',
+    },
+    'safe-edge-r': {
+      min: 'max(1.25rem, env(safe-area-inset-right))',
+      mid: 'max(6vw, env(safe-area-inset-right))',
+      max: 'max(4rem, env(safe-area-inset-right))',
+    },
     section: {
       min: '40px',
       mid: '6.25vh',

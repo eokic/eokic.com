@@ -70,16 +70,7 @@ import '@/styles/eokic.css'
     <Header {globals} />
 
     <script is:inline>
-      // document.querySelectorAll('[id^="st-image-img-"]').forEach((element) => {
-      //   if (element.complete) {
-      //     console.log(111)
-      //   } else {
-      //     console.log(222)
-      //   }
-      // })
-
       function onStrapiImageLoad(localID) {
-        // console.log('Loaded', localID)
         document.getElementById(`st-image-${localID}`).classList.add('-loaded')
         setTimeout(() => {
           document.getElementById(`placeholder-${localID}`).style.display =
@@ -91,7 +82,7 @@ import '@/styles/eokic.css'
     <!-- Body -->
     <slot />
 
-    <!-- Secondary scripts -->
+    <!-- Scripts -->
     <script src="@/assets/main.ts"></script>
   </body>
 </html>
