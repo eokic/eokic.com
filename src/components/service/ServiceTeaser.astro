@@ -16,7 +16,13 @@ import { Button, ImageHandler } from '@/components'
 ---
 
 <article class="text-center">
-  <ImageHandler cssClass="mb-3 inline-block" img={service.thumbnail} inline />
+  <div class="thumb">
+    <ImageHandler
+      cssClass={['mb-3 inline-block']}
+      img={service.thumbnail}
+      inline
+    />
+  </div>
   <h3 class="pb-3 h4 lh-h4-vtrim font-semibold">
     {service.title}
   </h3>
@@ -30,3 +36,10 @@ import { Button, ImageHandler } from '@/components'
     label={service.callToAction}
   />
 </article>
+
+<style define:vars={{ offset: `${service.thumbOffsetTop}em` }}>
+  .thumb {
+    margin-top: var(--offset);
+    @apply md:mt-0;
+  }
+</style>

@@ -6,4 +6,5 @@ export default interface IService extends IEntity {
   subtitle: string
   callToAction: string
   thumbnail: NStrapiMedia.Vector
+  thumbOffsetTop: number
 }
