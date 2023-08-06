@@ -10,6 +10,9 @@ const { cssClass, theme, label, href } = Astro.props
 
 // METHODS
 import { markdownToHTML } from '@/utils'
+
+// HELPERS
+const shouldSmoothScroll = href && href.startsWith('#')
 ---
 
 <a
@@ -23,6 +26,7 @@ import { markdownToHTML } from '@/utils'
   href={href}
   set:html={label ? markdownToHTML(label) : null}
   tabindex="0"
+  data-smooth-scroll={shouldSmoothScroll}
 >
   <slot />
 </a>

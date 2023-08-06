@@ -17,6 +17,9 @@ const { link, label, cssClass } = Astro.props
   One use-case for this is for <Link> to wrap around a large chunk of content
     like a clickable card.
 */
+
+// HELPERS
+const shouldSmoothScroll = link.url && link.url.startsWith('#')
 ---
 
 <a
@@ -36,6 +39,7 @@ const { link, label, cssClass } = Astro.props
     ? ('_blank' satisfies HTMLAttributeAnchorTarget)
     : ''}
   tabindex="0"
+  data-smooth-scroll={shouldSmoothScroll}
 >
   {label ? <span>{label}</span> : null}
   <slot />
