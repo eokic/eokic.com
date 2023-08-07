@@ -17,7 +17,7 @@ const shouldSmoothScroll = href && href.startsWith('#')
 
 <a
   class:list={[
-    'btn py-3 px-3 sm:px-4',
+    'btn py-3 px-2 xs:px-3 lg:px-4',
     'body lh-body font-sans text-white bg-primary',
     'rounded-full transition-all cursor-pointer',
     `-${theme || 'neutral'}`,
@@ -43,11 +43,21 @@ const shouldSmoothScroll = href && href.startsWith('#')
 
     &.-neutral {
       @apply text-primary bg-transparent;
+
+      /* Hover */
+      &:not(:active):hover {
+        outline-color: var(--color-primary);
+      }
     }
 
     &.-primary {
       @apply px-4 md:px-5;
       @apply font-semibold bg-primary;
+
+      /* Hover */
+      &:not(:active):hover {
+        outline-color: var(--color-primary);
+      }
     }
 
     &.-a11y {
@@ -60,11 +70,6 @@ const shouldSmoothScroll = href && href.startsWith('#')
       &::focus {
         @apply inline-block;
       }
-    }
-
-    /* Hover */
-    &:not(:active):hover {
-      outline-color: inherit;
     }
 
     /* Focus */

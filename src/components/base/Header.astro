@@ -15,13 +15,16 @@ import { Button, ImageHandler, Link } from '.'
 <header
   id="header"
   class:list={[
-    'fixed z-20 top-1 right-edge h-60 p-2',
-    'bg-primary-bg backdrop-blur-md rounded-full',
+    'fixed z-20 top-1 right-edge p-2 rounded-full pointer-events-none will-change-transform',
+    // 'md:right-1/2 md:translate-x-1/2',
+    'bg-primary-bg backdrop-blur-md', // has to be here... https://stackoverflow.com/questions/60997948/backdrop-filter-not-working-for-nested-elements-in-chrome
   ]}
 >
-  <div class="md:container flex justify-between items-center">
+  <div
+    class="test inline-flex justify-between items-center pointer-events-auto"
+  >
     <!-- Logo -->
-    <div class="hidden md:inline-block">
+    <div class="hidden md:inline-block ml-3 mr-2 -mb-1">
       <Link
         link={{
           url: '/',
@@ -29,7 +32,7 @@ import { Button, ImageHandler, Link } from '.'
       >
         <ImageHandler
           cssClass="inline-block"
-          imgClass="h-[50px]"
+          imgClass="h-[36px]"
           img={globals.logo.colorOnLight}
           fullWidth
           inline
@@ -39,7 +42,7 @@ import { Button, ImageHandler, Link } from '.'
 
     <!-- Navigation -->
     <nav aria-label="Main navigation">
-      <ul class="flex flex-wrap">
+      <ul class="flex">
         <li><Button href="#services" label="Services" /></li>
         <li><Button href="#work" label="Work" /></li>
         <li>

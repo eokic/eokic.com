@@ -1,8 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-// TYPES
-import type { ResponsiveSizing } from './src/utils/tw-scale'
-
 // METHODS
 const plugin = require('tailwindcss/plugin')
 import { generateTwScale } from './src/utils/tw-scale'
