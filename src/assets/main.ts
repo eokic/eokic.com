@@ -19,9 +19,13 @@ document.addEventListener('astro:load', () => {
   document.querySelectorAll('a[data-smooth-scroll]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault()
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
+      const href = this.getAttribute('href')
+
+      document.querySelector(href).scrollIntoView({
         behavior: 'smooth',
       })
+
+      window.history.replaceState(null, '', href)
     })
   })
 
