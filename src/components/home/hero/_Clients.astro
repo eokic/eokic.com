@@ -54,19 +54,13 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
 }
 ---
 
-<footer class="relative -mb-3 lg:-mb-4 lg:-mb-2">
-  <div
-    class:list={[
-      'absolute z-2 top-0 left-0 w-outer h-full',
-      'bg-gradient-to-r from-white to-transparent',
-    ]}
-  >
-  </div>
+<footer class="relative max-lg:mt-2 -mb-1 lg:-mb-2 xl:-mb-3 2xl:-mb-4">
+  <div class="logo-fade left-0"></div>
 
   <!-- Single row on larger devices -->
   <div
     class:list={[
-      'z-1 max-lg:hidden mtr-section lg:mtr-outer flex justify-center items-center',
+      'z-1 max-lg:hidden mt-section lg:mt-outer flex justify-center items-center',
       'logo-curve gap-4 lg:gap-5 xl:gap-7 2xl:gap-8',
     ]}
   >
@@ -89,8 +83,8 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
 
   <!-- Two rows on smaller devices -->
   <!-- aria-hidden as it's simply a duplicate for layout purposes -->
-  <div class="lg:hidden relative z-1" aria-hidden="true">
-    <div class="flex justify-center items-center gap-5 mtr-section">
+  <div class="lg:hidden relative z-1 -mt-3 -mb-3" aria-hidden="true">
+    <div class="flex justify-center items-center gap-5 sm:gap-6 md:gap-7">
       {
         sortedClients.twoRowsTop
           ?.filter((client) => client.logo?.colorOnLight?.url)
@@ -104,7 +98,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
           ))
       }
     </div>
-    <div class="flex justify-center items-center gap-5 mtr-section">
+    <div class="flex justify-center items-center mt-3 gap-5 sm:gap-6 md:gap-7">
       {
         sortedClients.twoRowsBottom
           ?.filter((client) => client.logo?.colorOnLight?.url)
@@ -120,16 +114,15 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
     </div>
   </div>
 
-  <div
-    class:list={[
-      'absolute z-2 top-0 right-0 w-outer h-full',
-      'bg-gradient-to-l from-white to-transparent',
-    ]}
-  >
-  </div>
+  <div class="logo-fade right-0 rotate-180"></div>
 </footer>
 
 <style is:global>
+  .logo-fade {
+    @apply absolute z-2 -top-3 lg:-top-5 -bottom-2 lg:-bottom-3 w-outer;
+    @apply bg-gradient-to-r from-white to-transparent;
+  }
+
   .logo-curve {
     --base-offset: 8px;
     --base-rotation: 2deg;
@@ -158,7 +151,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
     }
 
     > *:nth-child(1) {
-      transform: rotate(calc(2 * var(--base-rotation)));
+      transform: rotate(calc(1.9 * var(--base-rotation)));
     }
 
     > *:nth-child(2) {
@@ -167,23 +160,23 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
     }
 
     > *:nth-child(3) {
-      transform: translateY(calc(2 * var(--base-offset)))
-        rotate(calc(1.65 * var(--base-rotation)));
+      transform: translateY(calc(1.75 * var(--base-offset)))
+        rotate(calc(1.35 * var(--base-rotation)));
     }
 
     > *:nth-child(4) {
-      transform: translateY(calc(3 * var(--base-offset)))
+      transform: translateY(calc(2.5 * var(--base-offset)))
         rotate(calc(0.75 * var(--base-rotation)));
     }
 
     > *:nth-child(5) {
-      transform: translateY(calc(3 * var(--base-offset)))
+      transform: translateY(calc(2.5 * var(--base-offset)))
         rotate(calc(-0.5 * var(--base-rotation)));
     }
 
     > *:nth-child(6) {
-      transform: translateY(calc(2 * var(--base-offset)))
-        rotate(calc(-1.35 * var(--base-rotation)));
+      transform: translateY(calc(1.75 * var(--base-offset)))
+        rotate(calc(-1.25 * var(--base-rotation)));
     }
 
     > *:nth-child(7) {
@@ -192,7 +185,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
     }
 
     > *:nth-child(8) {
-      transform: rotate(calc(-2 * var(--base-rotation)));
+      transform: rotate(calc(-1.9 * var(--base-rotation)));
     }
   }
 </style>
