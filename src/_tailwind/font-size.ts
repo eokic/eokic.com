@@ -8,8 +8,8 @@ export const fontSize: ScaleInput = {
   type: 'fontSize',
   scale: {
     h1: {
-      min: 30,
-      max: 46,
+      min: 26,
+      max: 48,
       unit: 'px',
     },
     h2: {

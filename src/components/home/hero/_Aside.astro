@@ -27,12 +27,22 @@ import { ImageHandler } from '@/components'
       fullWidth
       important
     />
-    <span class="absolute top-3 right-[100%] font-display">
+    <span
+      class:list={[
+        'absolute z-2 top-8 md:top-9 right-[98%] lg:right-full w-9 [@media(min-width:345px)]:w-10',
+        'font-display text-secondary-dark',
+      ]}
+    >
+      <img
+        src="/layout/arrow-straight.svg"
+        class="absolute top-4 left-3/4 w-[72px] sm:w-[82px] lg:w-[87px] max-w-none"
+        alt="Arrow pointing at my head"
+      />
       {home?.photoLabelMe}
     </span>
     <span
       class:list={[
-        'hidden md:block absolute top-4 left-[100%]',
+        'hidden md:block absolute z-2 top-4 left-full',
         'font-display md:text-right',
       ]}
     >

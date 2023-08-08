@@ -9,8 +9,8 @@ export const spacing: ScaleInput = {
   clamp: {
     edge: {
       min: '1.25rem',
-      mid: '6vw',
-      max: '4rem',
+      mid: '8vw',
+      max: '4.2rem',
     },
     'safe-edge-l': {
       min: 'max(1.25rem, env(safe-area-inset-left))',
