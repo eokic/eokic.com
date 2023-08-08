@@ -36,10 +36,12 @@ import { getAspectRatio, ID } from '@/utils'
 
 // Returns a valid `srcset` string based on the provided formats
 function getSrcset(formats: Record<string, NStrapiMedia.Base>): string {
-  return Object.entries(formats)
-    .filter(([size, variant]) => size !== '16' && size !== 'thumbnail')
-    .map(([size, variant]) => `${variant.url} ${variant.width}w`)
-    .join(', ')
+  return [
+    Object.entries(formats)
+      .filter(([size, variant]) => size !== '16' && size !== 'thumbnail')
+      .map(([size, variant]) => `${variant.url} ${variant.width}w`),
+    `${img.url} ${img.width}w`,
+  ].join(', ')
 }
 
 // COMPUTED
