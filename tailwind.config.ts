@@ -72,7 +72,7 @@ module.exports = {
         md: 'auto',
         lg: 'auto',
         xl: '1240px',
-        '2xl': '1496px',
+        '2xl': '1380px',
       },
     },
 

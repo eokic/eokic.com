@@ -13,7 +13,13 @@ interface Props {
 import { ImageHandler } from '@/components'
 ---
 
-<div id="hero-photo">
+<div
+  class:list={[
+    'max-sm:translate-x-[90px] md:max-lg:translate-x-[140px]',
+    'max-md:min-w-[280px] max-md:w-[280px] md:max-lg:min-w-[360px] md:max-lg:w-[360px] lg:max-w-[400px]',
+    'rotate-[1.35deg]',
+  ]}
+>
   <div class="hero-photo relative will-change-transform">
     <ImageHandler
       imgClass="border-8 border-solid border-black"
@@ -34,12 +40,3 @@ import { ImageHandler } from '@/components'
     </span>
   </div>
 </div>
-
-<style is:global>
-  .hero-photo {
-    @apply max-sm:translate-x-[90px];
-    @apply max-md:min-w-[280px] max-md:w-[280px] md:max-lg:min-w-[360px] md:max-lg:w-[360px];
-    @apply md:max-lg:translate-x-[140px];
-    @apply rotate-[1.35deg];
-  }
-</style>

@@ -54,7 +54,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
 }
 ---
 
-<footer class="relative -mb-3 lg:-mb-2">
+<footer class="relative -mb-3 lg:-mb-4 lg:-mb-2">
   <div
     class:list={[
       'absolute z-2 top-0 left-0 w-outer h-full',
@@ -65,7 +65,10 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
 
   <!-- Single row on larger devices -->
   <div
-    class="z-1 max-lg:hidden flex justify-center items-center gap-4 lg:gap-5 xl:gap-8 mtr-section logo-curve"
+    class:list={[
+      'z-1 max-lg:hidden mtr-section lg:mtr-outer flex justify-center items-center',
+      'logo-curve gap-4 lg:gap-5 xl:gap-7 2xl:gap-8',
+    ]}
   >
     {
       sortedClients.singleRow
@@ -75,7 +78,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
             img={client.logo.colorOnLight}
             cssClass="shrink-0"
             style={{
-              marginTop: `${client.logo.vAlign}em`,
+              marginTop: client.logo.vAlign ? `${client.logo.vAlign}em` : '',
             }}
             alt={client.title}
             nonStandardRatio
@@ -128,38 +131,68 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
 
 <style is:global>
   .logo-curve {
-    /*  */
+    --base-offset: 8px;
+    --base-rotation: 2deg;
+
+    @media (min-width: 1280px) {
+      --base-rotation: 1.5deg;
+    }
+
+    @media (min-width: 1400px) {
+      --base-rotation: 1.35deg;
+    }
+
+    @media (min-width: 1600px) {
+      --base-offset: 7px;
+      --base-rotation: 0.9deg;
+    }
+
+    @media (min-width: 1900px) {
+      --base-offset: 6px;
+      --base-rotation: 0.75deg;
+    }
+
+    @media (min-width: 2100px) {
+      --base-offset: 5px;
+      --base-rotation: 0.65deg;
+    }
 
     > *:nth-child(1) {
-      @apply rotate-[2.5deg];
+      transform: rotate(calc(2 * var(--base-rotation)));
     }
 
     > *:nth-child(2) {
-      @apply translate-y-2 rotate-[1.9deg];
+      transform: translateY(calc(1 * var(--base-offset)))
+        rotate(calc(1.65 * var(--base-rotation)));
     }
 
     > *:nth-child(3) {
-      @apply translate-y-3 rotate-[1.25deg];
+      transform: translateY(calc(2 * var(--base-offset)))
+        rotate(calc(1.65 * var(--base-rotation)));
     }
 
     > *:nth-child(4) {
-      @apply translate-y-4 rotate-[.5deg];
+      transform: translateY(calc(3 * var(--base-offset)))
+        rotate(calc(0.75 * var(--base-rotation)));
     }
 
     > *:nth-child(5) {
-      @apply translate-y-4 rotate-[-.25deg];
+      transform: translateY(calc(3 * var(--base-offset)))
+        rotate(calc(-0.5 * var(--base-rotation)));
     }
 
     > *:nth-child(6) {
-      @apply translate-y-3 rotate-[-1.25deg];
+      transform: translateY(calc(2 * var(--base-offset)))
+        rotate(calc(-1.35 * var(--base-rotation)));
     }
 
     > *:nth-child(7) {
-      @apply translate-y-2 rotate-[-1.9deg];
+      transform: translateY(calc(1 * var(--base-offset)))
+        rotate(calc(-1.65 * var(--base-rotation)));
     }
 
     > *:nth-child(8) {
-      @apply rotate-[-2.5deg];
+      transform: rotate(calc(-2 * var(--base-rotation)));
     }
   }
 </style>
