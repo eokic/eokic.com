@@ -5,4 +5,5 @@ export default interface ILogo {
   colorOnDark?: NStrapiMedia.Vector
   monoOnLight?: NStrapiMedia.Vector
   monoOnDark?: NStrapiMedia.Vector
+  vAlign?: number
 }

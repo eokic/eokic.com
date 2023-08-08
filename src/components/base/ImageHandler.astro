@@ -6,7 +6,9 @@ import { NStrapiMedia } from '@/interfaces'
 interface Props {
   img: NStrapiMedia.Unknown
   cssClass?: string | string[]
+  style?: Record<string, unknown>
   imgClass?: string | string[]
+  imgStyle?: Record<string, unknown>
   fullWidth?: boolean
   nonStandardRatio?: boolean
   important?: boolean
@@ -14,14 +16,16 @@ interface Props {
   alt?: string // should come from Strapi though
 }
 const {
-  alt,
-  cssClass,
-  fullWidth,
   img,
-  inline,
+  cssClass,
+  style,
   imgClass,
-  important,
+  imgStyle,
+  fullWidth,
   nonStandardRatio,
+  important,
+  inline,
+  alt,
 } = Astro.props
 
 // COMPONENTS
@@ -32,7 +36,9 @@ import { Image } from 'astro:assets'
 <StrapiImage
   {img}
   {cssClass}
+  {style}
   {imgClass}
+  {imgStyle}
   {fullWidth}
   {nonStandardRatio}
   {important}

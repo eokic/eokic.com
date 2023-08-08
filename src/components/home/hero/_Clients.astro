@@ -7,6 +7,7 @@ import fetchApi from '@/lib/strapi'
 
 // COMPONENTS
 import { ImageHandler } from '@/components'
+import { Debug } from 'astro/components'
 
 // LOCAL STATE
 const clients = await fetchApi<IClient[]>({
@@ -14,20 +15,135 @@ const clients = await fetchApi<IClient[]>({
   query: { populate: 'deep' },
   wrappedByKey: 'data',
 })
+
+/*
+  Returns the clients so that the ones with the highest importance are
+  towards the middle of the array.
+
+  Does the same on a two-row basis.
+*/
+const sortedClients = sortClients(clients)
+function sortClients(arr: IClient[]): Record<string, IClient[]> {
+  const ascSort = arr.sort((a, b) => a.importance - b.importance)
+
+  // Prep the arrays
+  const singleRow: IClient[] = []
+  const twoRowsTop: IClient[] = []
+  const twoRowsBottom: IClient[] = []
+
+  // Use only the top 8 clients
+  ascSort
+    .slice(Math.max(0, ascSort.length - 9), ascSort.length)
+    .forEach((item, index) => {
+      // Single row
+      if (singleRow.length < 2) singleRow.push(item)
+      else singleRow.splice(Math.ceil((singleRow.length - 1) / 2), 0, item)
+
+      // Two rows
+      const twoRowTarget = (index + 1) % 2 === 0 ? twoRowsTop : twoRowsBottom
+      if (twoRowTarget.length < 2) twoRowTarget.push(item)
+      else
+        twoRowTarget.splice(Math.ceil((twoRowTarget.length - 1) / 2), 0, item)
+    })
+
+  return {
+    singleRow,
+    twoRowsTop,
+    twoRowsBottom,
+  }
+}
 ---
 
-<footer>
-  <div class="flex items-center flex-wrap md:flex-nowrap gap-5 mtr-section">
+<footer class="-mb-3 lg:-mb-2">
+  <!-- Single row on larger devices -->
+  <div
+    class="max-lg:hidden flex justify-center items-center gap-5 lg:gap-7 mtr-section logo-curve"
+  >
     {
-      clients
+      sortedClients.singleRow
         ?.filter((client) => client.logo?.colorOnLight?.url)
         ?.map((client) => (
           <ImageHandler
             img={client.logo.colorOnLight}
+            cssClass="shrink-0"
+            style={{
+              marginTop: `${client.logo.vAlign}em`,
+            }}
             alt={client.title}
             nonStandardRatio
           />
         ))
     }
   </div>
+
+  <!-- Two rows on smaller devices -->
+  <!-- aria-hidden as it's simply a duplicate for layout purposes -->
+  <div class="lg:hidden" aria-hidden="true">
+    <div class="flex justify-center items-center gap-5 mtr-section">
+      {
+        sortedClients.twoRowsTop
+          ?.filter((client) => client.logo?.colorOnLight?.url)
+          ?.map((client) => (
+            <ImageHandler
+              img={client.logo.colorOnLight}
+              cssClass="shrink-0"
+              alt={client.title}
+              nonStandardRatio
+            />
+          ))
+      }
+    </div>
+    <div class="flex justify-center items-center gap-5 mtr-section">
+      {
+        sortedClients.twoRowsBottom
+          ?.filter((client) => client.logo?.colorOnLight?.url)
+          ?.map((client) => (
+            <ImageHandler
+              img={client.logo.colorOnLight}
+              cssClass="shrink-0"
+              alt={client.title}
+              nonStandardRatio
+            />
+          ))
+      }
+    </div>
+  </div>
 </footer>
+
+<style is:global>
+  .logo-curve {
+    /*  */
+
+    > *:nth-child(1) {
+      @apply rotate-[2.5deg];
+    }
+
+    > *:nth-child(2) {
+      @apply translate-y-2 rotate-[1.9deg];
+    }
+
+    > *:nth-child(3) {
+      @apply translate-y-3 rotate-[1.25deg];
+    }
+
+    > *:nth-child(4) {
+      @apply translate-y-4 rotate-[.5deg];
+    }
+
+    > *:nth-child(5) {
+      @apply translate-y-4 rotate-[-.25deg];
+    }
+
+    > *:nth-child(6) {
+      @apply translate-y-3 rotate-[-1.25deg];
+    }
+
+    > *:nth-child(7) {
+      @apply translate-y-2 rotate-[-1.9deg];
+    }
+
+    > *:nth-child(8) {
+      @apply rotate-[-2.5deg];
+    }
+  }
+</style>
