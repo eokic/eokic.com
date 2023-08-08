@@ -37,15 +37,6 @@ module.exports = {
   -------------------------------------------------------------------------- */
   plugins: [
     require('@tailwindcss/typography'),
-    plugin(({ addBase, theme }) => {
-      addBase({
-        ':root': `
-          --color-primary: 39 34 55;
-          --color-secondary: 214 69 38;
-          --color-tertiary: 61 87 84;
-        `,
-      })
-    }),
     plugin(({ addUtilities, theme }) => {
       addUtilities({
         ...fontSizes.style,
