@@ -87,7 +87,7 @@ const base64Orig = inline
       ...(typeof imgClass === 'string' ? [imgClass] : imgClass || []),
     ]}
     style={{
-      aspectRatio: nonStandardRatio ? aspectRatio : null,
+      aspectRatio: aspectRatio,
       ...(imgStyle || {}),
     }}
     width={img.width}
