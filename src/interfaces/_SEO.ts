@@ -8,9 +8,9 @@ export interface IMetaSocial {
 }
 
 export default interface ISEO {
-  metaTitle: string
-  metaDescription: string
-  metaImage: NStrapiMedia.Raster
+  metaTitle?: string
+  metaDescription?: string
+  metaImage?: NStrapiMedia.Raster
   metaSocial?: IMetaSocial[]
   keywords?: string
   metaRobots?: string

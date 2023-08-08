@@ -1,13 +1,14 @@
 import type { IClient, IEntity, ISEO, IStrapiMedia } from '.'
 
 export default interface IProject extends IEntity {
-  client: IClient
+  url: string
   title: string
+  client: IClient
   subtitle: string
   thumbnail: IStrapiMedia
   dateStart: string
   dateEnd?: string
   ongoing?: boolean
   sequence: number
-  seo?: ISEO
+  seo: ISEO
 }

@@ -13,12 +13,12 @@ export async function getStaticPaths() {
     wrappedByKey: 'data',
   })
 
-  return projects.map((project) => {
-    return {
-      params: { caseStudy: project.seo.url },
-      props: { project },
-    }
-  })
+  if (!projects) return { paths: [], fallback: true }
+
+  return projects.map((project) => ({
+    params: { caseStudy: project.url },
+    props: { project },
+  }))
 }
 
 const { caseStudy } = Astro.params
