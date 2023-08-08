@@ -15,13 +15,13 @@ export async function getStaticPaths() {
 
   return projects.map((project) => {
     return {
-      params: { seoUrl: project.seo.url },
+      params: { caseStudy: project.seo.url },
       props: { project },
     }
   })
 }
 
-const { seoUrl } = Astro.params
+const { caseStudy } = Astro.params
 const { project } = Astro.props
 
 // COMPONENTS
