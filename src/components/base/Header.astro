@@ -32,7 +32,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
   >
     <!-- Mobile: back-to-top -->
     <Button
-      cssClass="max-sm:!hidden md:!hidden border-r border-primary-xlight rounded-r-none"
+      cssClass="block md:!hidden border-r border-primary-xlight rounded-r-none"
       theme="header-arrow"
       href={isHomePage ? '#main-content' : '/#main-content'}
       label="↑"
