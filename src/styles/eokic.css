@@ -58,7 +58,16 @@
   --color-secondary-dark: 36 71% 35%;
   --color-tertiary: 61 87% 84%;
   --color-focus-sr: 0 100% 50%;
-  --hover-outline-width: 2px;
+
+  /*
+    Focus styling (naming based on my fork of flying-focus.js)
+    https://github.com/eokic/flying-focus
+  */
+  --focus-sr-width: 0.5em;
+  --focus-sr-style: solid;
+  --focus-sr-color: hsl(var(--color-focus-sr));
+  --focus-sr-offset: 0.2em;
+  --hover-outline-width: 2px; /* local, hover variation */
 }
 
 html {

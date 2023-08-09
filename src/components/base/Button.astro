@@ -20,7 +20,7 @@ const shouldSmoothScroll = href && href.startsWith('#')
   class:list={[
     'btn py-3 px-2 xs:px-3 lg:px-4',
     'body lh-body font-sans text-white bg-primary',
-    'rounded-full transition-all cursor-pointer',
+    'rounded-[99px] cursor-pointer',
     `-${theme || 'neutral'}`,
     ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
   ]}

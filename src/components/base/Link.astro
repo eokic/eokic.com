@@ -29,6 +29,7 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
       focusable: !label,
       link: label,
     },
+    'rounded',
     ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
   ]}
   href={link.url}
@@ -50,13 +51,11 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
 <style is:global>
   .link {
     @apply underline underline-offset-4;
-    @apply transition-all;
     color: blue; /* TODO: from brand variables */
   }
 
   .focusable {
     @apply inline-block;
-    @apply rounded-lg;
 
     /* Hover */
     &:not(:active):hover {
@@ -80,7 +79,6 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
     outline-offset: 0.15em;
 
     &:not(:active):focus-visible {
-      @apply rounded-lg;
       outline: 0.5rem solid hsl(var(--color-focus-sr));
     }
   }
