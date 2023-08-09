@@ -23,7 +23,7 @@ export const spacing: ScaleInput = {
       max: 'max(4rem, env(safe-area-inset-right))',
     },
     section: {
-      min: '40px',
+      min: '46px',
       mid: '6.25vh',
       max: '80px',
     },
