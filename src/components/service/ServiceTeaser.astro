@@ -13,6 +13,12 @@ import { markdownToHTML } from '@/utils'
 
 // COMPONENTS
 import { Button, ImageHandler } from '@/components'
+
+// HELPERS
+const mailTo =
+  `mailto:${import.meta.env.MAILTO_ADDRESS}` +
+  `?subject=${service.email.subject}` +
+  `&body=${service.email.body}`
 ---
 
 <article class="text-center">
@@ -30,11 +36,7 @@ import { Button, ImageHandler } from '@/components'
     class="max-w-[27em] mx-auto mb-4 prose lh-prose body-1"
     set:html={markdownToHTML(service.subtitle)}
   />
-  <Button
-    theme="primary"
-    href={`mailto:${import.meta.env.MAILTO_ADDRESS}`}
-    label={service.callToAction}
-  />
+  <Button theme="primary" href={mailTo} label={service.callToAction} />
 </article>
 
 <style define:vars={{ offset: `${service.thumbOffsetTop}em` }}>

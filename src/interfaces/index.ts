@@ -1,3 +1,4 @@
+export type { default as IEmailTemplate } from './_EmailTemplate'
 export type { default as IEntity } from './_Entity'
 export type { default as ILink } from './_Link'
 export type { default as ILogo } from './_Logo'
