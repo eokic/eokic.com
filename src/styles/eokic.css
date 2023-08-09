@@ -85,3 +85,13 @@ html, body {
 .container {
   @apply pr-safe-edge-r pl-safe-edge-l;
 }
+
+.bg-dot-grid {
+  --grid-size: 16px;
+  background-image: radial-gradient(
+    circle at calc(var(--grid-size) / 1.5) calc(var(--grid-size) / 1.5),
+    hsl(var(--color-primary) / 0.12) 1px,
+    transparent 0
+  );
+  background-size: var(--grid-size) var(--grid-size);
+}
