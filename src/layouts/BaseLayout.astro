@@ -50,7 +50,7 @@ import '@/styles/eokic.css'
     <meta name="description" content="Astro description" />
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body class:list={[pageClass, 'no-js']}>
+  <body id="top" class:list={[pageClass, 'no-js']}>
     <!-- Accessibilty links -->
     <div class="absolute z-30 top-6 left-6">
       <Button theme="a11y" href="#main" label="Skip to content" />
@@ -87,6 +87,7 @@ import '@/styles/eokic.css'
       function onStrapiImageLoad(localID) {
         document.getElementById(`st-image-${localID}`).classList.add('-loaded')
         setTimeout(() => {
+          if (!document.getElementById(`placeholder-${localID}`)) return
           document.getElementById(`placeholder-${localID}`).style.display =
             'none'
         }, 1000)

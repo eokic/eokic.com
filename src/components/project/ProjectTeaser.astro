@@ -26,6 +26,8 @@ import dayjs from 'dayjs'
     style={{
       backgroundColor: project.client.brandColor,
     }}
+    transition:name={`project/${project.url}`}
+    transition:persist
   >
     <div class="grid md:grid-cols-2">
       <div class="max-md:mb-2">

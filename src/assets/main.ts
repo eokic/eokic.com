@@ -24,14 +24,23 @@ document.addEventListener('astro:load', () => {
       anchor.addEventListener('click', e => {
         e.preventDefault()
         const href = anchor.getAttribute('href')!
-        const targetEl = document.querySelector(href)!
+        const targetEl = document.querySelector(href)
+        if (!targetEl) return
         const offsetPosition = targetEl.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET
 
+        // Remove focus from the anchor
+        anchor.blur()
+
+        // Scroll to the target element
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth',
         })
 
+        // TODO: Focus something for screen readers?
+
+        // Modify the url in case the user wants to copy/paste it
+        // However, don't add a new history entry to keep the "back button" clean
         window.history.replaceState(null, '', href)
       })
     })

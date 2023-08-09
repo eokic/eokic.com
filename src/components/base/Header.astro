@@ -23,18 +23,19 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
   ]}
 >
   <div
-    transition:name="header"
     class:list={[
       'header-inner inline-flex justify-between items-center p-2',
       'text-white bg-primary-bg',
       'rounded-full backdrop-blur-md pointer-events-auto',
     ]}
+    transition:name="header"
+    transition:persist
   >
     <!-- Mobile: back-to-top -->
     <Button
       cssClass="block md:!hidden border-r border-primary-xlight rounded-r-none"
       theme="header-arrow"
-      href={isHomePage ? '#main-content' : '/#main-content'}
+      href="#top"
       label="↑"
     />
 
@@ -42,7 +43,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
     <div class="hidden md:inline-block ml-3 mr-2 -mb-1">
       <Link
         link={{
-          url: isHomePage ? '#main-content' : '/',
+          url: isHomePage ? '#top' : '/',
         }}
       >
         <ImageHandler

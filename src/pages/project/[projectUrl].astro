@@ -26,13 +26,15 @@ const { project } = Astro.props
 
 // COMPONENTS
 import { BaseLayout } from '@/layouts'
+import { ProjectTeaser } from '@/components'
 ---
 
 <BaseLayout
   title={project.seo.metaTitle || project.title}
   pageClass="pg-project"
 >
-  <main>
+  <main id="main">
     <h1>{project.title}</h1>
+    <ProjectTeaser {project} />
   </main>
 </BaseLayout>
