@@ -53,7 +53,8 @@
 
   /* Branding */
   --color-primary: 214 69% 38%;
-  --color-primary-bg: 220 45% 97%;
+  --color-primary-dark: 214 87% 26%;
+  --color-primary-bg: 220 65% 96%;
   --color-secondary: 39 34% 55%;
   --color-secondary-dark: 36 71% 35%;
   --color-tertiary: 61 87% 84%;

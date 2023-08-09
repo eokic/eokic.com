@@ -10,26 +10,31 @@ const { globals } = Astro.props
 
 // COMPONENTS
 import { Button, ImageHandler, Link } from '.'
+
+// HELPERS
+const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
 ---
 
 <header
   id="header"
   class:list={[
-    'fixed z-20 top-1 right-edge md:left-0 md:right-0 md:flex md:justify-center',
-    'will-change-transform pointer-events-none',
+    'fixed z-20 top-1 xl:top-2 2xl:top-3 right-edge md:left-0 md:right-0 md:flex md:justify-center',
+    '-translate-y-[120%] transition-transform will-change-transform pointer-events-none',
   ]}
+  transition:name="header"
 >
   <div
     class:list={[
-      'header-inner inline-flex justify-between items-center  p-2',
-      'rounded-full bg-primary-bg backdrop-blur-md pointer-events-auto',
+      'header-inner inline-flex justify-between items-center p-2',
+      'text-white bg-primary-bg',
+      'rounded-full backdrop-blur-md pointer-events-auto',
     ]}
   >
     <!-- Logo -->
     <div class="hidden md:inline-block ml-3 mr-2 -mb-1">
       <Link
         link={{
-          url: /^\/(#.*)?$/.test(Astro.url.pathname) ? '#main-content' : '/',
+          url: isHomePage ? '#main-content' : '/',
         }}
       >
         <ImageHandler
@@ -45,11 +50,27 @@ import { Button, ImageHandler, Link } from '.'
     <!-- Navigation -->
     <nav aria-label="Main navigation">
       <ul class="flex">
-        <li><Button href="#services" label="Services" /></li>
-        <li><Button href="#work" label="Work" /></li>
+        <li>
+          <Button
+            theme="header"
+            href={isHomePage ? '#services' : '/#services'}
+            label="Services"
+          />
+        </li>
+        <li>
+          <Button
+            theme="header"
+            href={isHomePage ? '#work' : '/#work'}
+            label="Work"
+          />
+        </li>
         <li>
           <div class="hidden sm:inline-block">
-            <Button href="#about" label="About" />
+            <Button
+              theme="header"
+              href={isHomePage ? '#about' : '/#about'}
+              label="About"
+            />
           </div>
         </li>
         <li>
@@ -65,16 +86,33 @@ import { Button, ImageHandler, Link } from '.'
 </header>
 
 <style is:global>
-  body.js #header {
-    @apply -translate-y-[120%];
+  /* Homepage without JS */
+  .pg-home.no-js #header {
+    @apply translate-y-0 delay-300;
 
+    .header-inner {
+      @apply drop-shadow-lg;
+    }
+  }
+
+  /* Homepage with JS */
+  .pg-home.js #header {
     &.show,
     &:focus-within {
       @apply translate-y-0;
 
       .header-inner {
-        @apply drop-shadow-xl;
+        @apply drop-shadow-lg;
       }
+    }
+  }
+
+  /* Non-Homepages */
+  body:not(.pg-home) #header {
+    @apply translate-y-0 !important;
+
+    .header-inner {
+      @apply drop-shadow-lg;
     }
   }
 </style>
