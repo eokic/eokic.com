@@ -31,7 +31,7 @@ import { Button, ImageHandler } from '@/components'
 <div
   id="hero-desc"
   class:list={[
-    'text-start will-change-transform',
+    'text-start hero-card-shadow md:shadow-none will-change-transform',
     'xs:max-md:absolute xs:max-md:bottom-0 max-md:-ml-edge max-xs:-mr-edge xs:max-sm:-mr-4',
     'max-md:-mb-2 max-md:p-4 max-md:pl-edge max-md:pb-5',
     'max-md:bg-primary-bg max-md:rounded-tr-lg max-md:rounded-br-lg max-md:backdrop-blur-md',
@@ -73,5 +73,14 @@ import { Button, ImageHandler } from '@/components'
         /* TODO: Safari does not support the ::marker pseudo */
       }
     }
+  }
+
+  .hero-card-shadow {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06),
+      3px 3px 10px 0px rgba(0, 0, 0, 0.06),
+      14px 13px 19px 0px rgba(0, 0, 0, 0.07),
+      30px 30px 26px 0px rgba(0, 0, 0, 0.04),
+      54px 53px 30px 0px rgba(0, 0, 0, 0.01),
+      85px 83px 33px 0px rgba(0, 0, 0, 0);
   }
 </style>
