@@ -18,12 +18,12 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
 <header
   id="header"
   class:list={[
-    'fixed z-20 top-1 xl:top-2 2xl:top-3 right-edge md:left-0 md:right-0 md:flex md:justify-center',
+    'fixed z-20 top-1 xl:top-2 2xl:top-3 left-0 right-0 flex justify-center',
     '-translate-y-[120%] transition-transform will-change-transform pointer-events-none',
   ]}
-  transition:name="header"
 >
   <div
+    transition:name="header"
     class:list={[
       'header-inner inline-flex justify-between items-center p-2',
       'text-white bg-primary-bg',
@@ -86,12 +86,13 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
 </header>
 
 <style is:global>
-  /* Homepage without JS */
-  .pg-home.no-js #header {
-    @apply translate-y-0 delay-300;
+  /* Homepage without JS & non-homepages */
+  .pg-home.no-js #header,
+  body:not(.pg-home) #header {
+    @apply translate-y-0 !important;
 
     .header-inner {
-      @apply drop-shadow-lg;
+      @apply drop-shadow-xl lg:drop-shadow-2xl;
     }
   }
 
@@ -102,17 +103,8 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
       @apply translate-y-0;
 
       .header-inner {
-        @apply drop-shadow-lg;
+        @apply drop-shadow-xl lg:drop-shadow-2xl;
       }
-    }
-  }
-
-  /* Non-Homepages */
-  body:not(.pg-home) #header {
-    @apply translate-y-0 !important;
-
-    .header-inner {
-      @apply drop-shadow-lg;
     }
   }
 </style>

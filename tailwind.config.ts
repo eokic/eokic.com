@@ -81,6 +81,14 @@ module.exports = {
         },
       },
 
+      dropShadow: {
+        xl: [
+          '0 20px 13px rgb(0 0 0 / 0.1)',
+          '0 8px 5px rgb(0 0 0 / 0.08)',
+        ],
+        '2xl': '0 20px 25px rgb(0 0 0 / 0.25)',
+      },
+
       zIndex: {
         1: '1',
         2: '2',
