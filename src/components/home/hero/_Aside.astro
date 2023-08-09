@@ -29,24 +29,46 @@ import { ImageHandler } from '@/components'
     />
     <span
       class:list={[
-        'absolute z-2 top-8 md:top-9 right-[98%] lg:right-full w-9 [@media(min-width:345px)]:w-10',
+        'absolute z-2 top-8 md:top-6 lg:top-5 xl:top-9 right-[98%] sm:right-full',
+        'w-9 [@media(min-width:345px)]:w-10',
         'font-display text-secondary-dark',
       ]}
     >
+      {home?.photoLabelMe}
       <img
         src="/layout/arrow-straight.svg"
-        class="absolute top-4 left-3/4 w-[72px] sm:w-[82px] lg:w-[87px] max-w-none"
+        class:list={[
+          'absolute top-4 left-3/4 md:max-xl:translate-y-[20px] md:max-xl:rotate-[29deg]',
+          'w-[72px] sm:w-[82px] md:w-[87px] max-w-none',
+        ]}
         alt="Arrow pointing at my head"
       />
-      {home?.photoLabelMe}
     </span>
     <span
       class:list={[
-        'hidden md:block absolute z-2 top-4 left-full',
-        'font-display md:text-right',
+        'hidden lg:block absolute z-2 top-7 xl:top-9 left-full -ml-8 xl:ml-1 2xl:ml-3',
+        'w-10',
+        'font-display md:text-right text-[#B90043] text-outline',
       ]}
     >
       {home?.photoLabelWaifu}
+      <img
+        src="/layout/arrow-looped.svg"
+        class="absolute top-7 max-xl:-rotate-45 xl:top-5 right-[70%] xl:right-[90%] w-[90px] max-w-none"
+        alt="Arrow pointing at my wife"
+      />
     </span>
   </div>
 </div>
+
+<style is:global>
+  .text-outline {
+    text-shadow: 1.41px 1.41px white, 2px 0 white, 1.41px -1.41px white,
+      0 -2px white, -1.41px -1.41px white, -2px 0 white, -1.41px 1.41px white,
+      0 2px white, 1.66px 1.66px white, 2.2px 0 white, 1.66px -1.66px white,
+      0 -2.2px white, -1.66px -1.66px white, -2.2px 0 white,
+      -1.66px 1.66px white, 0 2.2px white, 1.8px 1.8px white, 2.25px 0 white,
+      1.8px -1.8px white, 0 -2.25px white, -1.8px -1.8px white, -2.25px 0 white,
+      -1.8px 1.8px white, 0 2.25px white;
+  }
+</style>
