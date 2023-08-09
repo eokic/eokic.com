@@ -69,8 +69,11 @@ import '@/styles/eokic.css'
         document.body.classList.add('vfxReady')
       }, 100)
 
-      // Route detection
+      // App globals
       window.App = {
+        prefersReducedMotion: window.matchMedia(
+          '(prefers-reduced-motion: reduce)'
+        ).matches,
         route: {
           isHomePage: document.body.classList.contains('pg-home'),
           isProjectPage: document.body.classList.contains('pg-project'),
