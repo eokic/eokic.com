@@ -5,8 +5,9 @@ interface Props {
   theme?: 'primary' | 'neutral' | 'a11y' // defaults to neutral
   label?: string
   href?: string
+  presentational?: boolean
 }
-const { cssClass, theme, label, href } = Astro.props
+const { cssClass, theme, label, href, presentational } = Astro.props
 
 // METHODS
 import { markdownToHTML } from '@/utils'
@@ -25,7 +26,8 @@ const shouldSmoothScroll = href && href.startsWith('#')
   ]}
   href={href}
   set:html={label ? markdownToHTML(label) : null}
-  tabindex="0"
+  aria-hidden={presentational ? true : null}
+  tabindex={presentational ? -1 : 0}
   data-smooth-scroll={shouldSmoothScroll}
 >
   <slot />

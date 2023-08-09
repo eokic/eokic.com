@@ -7,8 +7,9 @@ interface Props {
   link: ILink
   label?: string
   cssClass?: string | string[]
+  presentational?: boolean
 }
-const { link, label, cssClass } = Astro.props
+const { link, label, cssClass, presentational } = Astro.props
 
 /*
   Note: if no `label`` is provided, then it is presumed that a <slot> was used.
@@ -38,7 +39,8 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
   target={link.openInNewTab
     ? ('_blank' satisfies HTMLAttributeAnchorTarget)
     : ''}
-  tabindex="0"
+  aria-hidden={presentational ? true : null}
+  tabindex={presentational ? -1 : 0}
   data-smooth-scroll={shouldSmoothScroll}
 >
   {label ? <span>{label}</span> : null}
