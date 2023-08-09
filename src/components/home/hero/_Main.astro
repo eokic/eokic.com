@@ -31,33 +31,39 @@ import { Button, ImageHandler } from '@/components'
 <div
   id="hero-desc"
   class:list={[
-    'hero-desc text-start will-change-transform',
+    'text-start will-change-transform',
     'xs:max-md:absolute xs:max-md:bottom-0 max-md:-ml-edge max-xs:-mr-edge xs:max-sm:-mr-4',
     'max-md:-mb-2 max-md:p-4 max-md:pl-edge max-md:pb-5',
     'max-md:bg-primary-bg max-md:rounded-tr-lg max-md:rounded-br-lg max-md:backdrop-blur-md',
   ]}
 >
   <div
-    class="mb-2 sm:mb-4 md:mb-outer prose md:lead lh-prose"
+    class="hero-body mb-2 sm:mb-4 md:mb-outer prose md:lead lh-prose"
     set:html={markdownToHTML(home.description)}
   />
-  <div class="flex flex-wrap sm:gap-2" aria-hidden="true">
-    <Button
-      theme="primary"
-      href="mailto:hi@eokic.com"
-      label="Let's talk!"
-      presentational
-    />
-    <Button href="#services" label="Services" presentational />
-    <Button href="#work" label="Work" presentational />
-    <div class="hidden sm:inline-block">
+  <ul class="flex flex-wrap sm:gap-2" aria-hidden="true">
+    <li>
+      <Button
+        theme="primary"
+        href="mailto:hi@eokic.com"
+        label="Let's talk!"
+        presentational
+      />
+    </li>
+    <li>
+      <Button href="#services" label="Services" presentational />
+    </li>
+    <li>
+      <Button href="#work" label="Work" presentational />
+    </li>
+    <li class="hidden sm:inline-block">
       <Button href="#about" label="About" presentational />
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>
 
 <style is:global>
-  .hero-desc {
+  .hero-body {
     ul {
       padding-left: 1em;
 
