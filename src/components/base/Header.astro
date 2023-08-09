@@ -30,6 +30,14 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
       'rounded-full backdrop-blur-md pointer-events-auto',
     ]}
   >
+    <!-- Mobile: back-to-top -->
+    <Button
+      cssClass="max-sm:hidden md:hidden border-r border-primary-xlight rounded-r-none"
+      theme="header-arrow"
+      href={isHomePage ? '#main-content' : '/#main-content'}
+      label="↑"
+    />
+
     <!-- Logo -->
     <div class="hidden md:inline-block ml-3 mr-2 -mb-1">
       <Link

@@ -2,7 +2,7 @@
 // PROPS
 interface Props {
   cssClass?: string | string[]
-  theme?: 'header' | 'primary' | 'neutral' | 'a11y' // defaults to neutral
+  theme?: 'header' | 'header-arrow' | 'primary' | 'neutral' | 'a11y' // defaults to neutral
   label?: string
   href?: string
   presentational?: boolean
@@ -43,13 +43,18 @@ const shouldSmoothScroll = href && href.startsWith('#')
     outline: var(--hover-outline-width) solid transparent;
     outline-offset: 0.2em;
 
-    &.-header {
+    &.-header,
+    &.-header-arrow {
       @apply text-primary-dark bg-transparent;
 
       /* Hover */
       &:not(:active):hover {
         outline-color: var(--color-primary);
       }
+    }
+
+    &.-header-arrow {
+      @apply text-primary-light font-medium;
     }
 
     &.-neutral {

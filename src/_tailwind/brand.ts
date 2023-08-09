@@ -3,6 +3,8 @@ export default {
 
   colors: {
     primary: 'hsl(var(--color-primary) / 1)',
+    'primary-light': 'hsl(var(--color-primary) / 0.65)',
+    'primary-xlight': 'hsl(var(--color-primary) / 0.3)',
     'primary-dark': 'hsl(var(--color-primary-dark) / 1)',
     'primary-bg': 'hsl(var(--color-primary-bg) / 0.92)',
     secondary: 'hsl(var(--color-secondary) / 1)',
