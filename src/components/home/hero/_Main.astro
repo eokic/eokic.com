@@ -45,7 +45,7 @@ import { Button, ImageHandler } from '@/components'
     <li>
       <Button
         theme="primary"
-        href="mailto:hi@eokic.com"
+        href={`mailto:${import.meta.env.MAILTO_ADDRESS}`}
         label="Let's talk!"
         presentational
       />

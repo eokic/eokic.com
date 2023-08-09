@@ -32,7 +32,7 @@ import { Button, ImageHandler } from '@/components'
   />
   <Button
     theme="primary"
-    href="mailto:hi@eokic.com"
+    href={`mailto:${import.meta.env.MAILTO_ADDRESS}`}
     label={service.callToAction}
   />
 </article>
