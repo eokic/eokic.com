@@ -1,5 +1,11 @@
 import Motus from 'motus'
 
+// Avoids weird visual issues by keeping important flags consistent
+document.addEventListener('astro:beforeload', () => {
+  document.body.classList.remove('no-js')
+  document.body.classList.add('js')
+})
+
 // On every (Astro) page load...
 document.addEventListener('astro:load', () => {
   const SCROLL_OFFSET = 50
@@ -13,21 +19,22 @@ document.addEventListener('astro:load', () => {
   /* --------------------------------------------------------------------------
     Smooth scroll any #hash links
   -------------------------------------------------------------------------- */
-  document.querySelectorAll('a[data-smooth-scroll]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault()
-      const href = this.getAttribute('href')
-      const targetEl = document.querySelector(href)
-      const offsetPosition = targetEl.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET
+  document.querySelectorAll('a[data-smooth-scroll][href^="#"]')
+    .forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        e.preventDefault()
+        const href = anchor.getAttribute('href')!
+        const targetEl = document.querySelector(href)!
+        const offsetPosition = targetEl.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        })
+
+        window.history.replaceState(null, '', href)
       })
-
-      window.history.replaceState(null, '', href)
     })
-  })
 
 
   /* --------------------------------------------------------------------------
