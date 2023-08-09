@@ -27,6 +27,13 @@ import { ImageHandler } from '@/components'
       fullWidth
       important
     />
+
+    <!-- Shadow -->
+    <span
+      class="absolute top-0 left-0 w-full h-full -translate-x-1 translate-y-1 -rotate-1 scale-[99%] bg-neutral-300 blur-[3px]"
+    ></span>
+
+    <!-- Label (me) -->
     <span
       class:list={[
         'absolute z-2 top-8 md:top-6 lg:top-5 xl:top-9 right-[98%] sm:right-full',
@@ -44,10 +51,11 @@ import { ImageHandler } from '@/components'
         alt="Arrow pointing at my head"
       />
     </span>
+
+    <!-- Label (waifu) -->
     <span
       class:list={[
-        'hidden lg:block absolute z-2 top-7 xl:top-9 left-full -ml-8 xl:ml-1 2xl:ml-3',
-        'w-10',
+        'hidden lg:block absolute z-2 top-7 xl:top-9 left-full w-10 -ml-8 xl:ml-1 2xl:ml-3',
         'font-display md:text-right text-[#B90043] text-outline',
       ]}
     >
