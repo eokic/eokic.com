@@ -2,10 +2,7 @@ import Motus from 'motus'
 
 // On every (Astro) page load...
 document.addEventListener('astro:load', () => {
-
-  // TODO: figure out a better way to handle route detection
-  const isHomePage = /^\/(#.*)?$/.test(window.location.pathname)
-  const isCaseStudy = window.location.pathname.includes('case-study')
+  const SCROLL_OFFSET = 50
 
   // Get all common/useful elements
   const header = document.getElementById('header')
@@ -20,8 +17,11 @@ document.addEventListener('astro:load', () => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault()
       const href = this.getAttribute('href')
+      const targetEl = document.querySelector(href)
+      const offsetPosition = targetEl.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET
 
-      document.querySelector(href).scrollIntoView({
+      window.scrollTo({
+        top: offsetPosition,
         behavior: 'smooth',
       })
 
@@ -34,7 +34,7 @@ document.addEventListener('astro:load', () => {
     STICKY HEADER
     Probably just on the homepage for now
   -------------------------------------------------------------------------- */
-  if (isHomePage && heroDesc) {
+  if (window.App.route.isHomePage && header && heroDesc) {
     new IntersectionObserver(e => {
       if (e[0]?.intersectionRatio <= 0)
         header.classList.add('show')
@@ -49,7 +49,7 @@ document.addEventListener('astro:load', () => {
   /* --------------------------------------------------------------------------
     Homepage hero parallax
   -------------------------------------------------------------------------- */
-  if (isHomePage && heroPhoto && heroDesc) {
+  if (window.App.route.isHomePage && heroPhoto && heroDesc) {
     const heroPhotoParallax = new Motus.Animation({
       $el: heroPhoto,
       startPoint: 0,

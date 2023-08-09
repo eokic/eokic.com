@@ -22,7 +22,7 @@ import { Aside, Clients, Main } from './'
     <Link
       presentational
       link={{
-        url: '/',
+        url: /^\/(#.*)?$/.test(Astro.url.pathname) ? '#main-content' : '/',
       }}
     >
       <ImageHandler

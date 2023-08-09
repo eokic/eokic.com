@@ -56,14 +56,26 @@ import '@/styles/eokic.css'
     </div>
 
     <script is:inline>
+      // JS detection
       document.body.classList.remove('no-js')
       document.body.classList.add('js')
       document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('domReady')
       })
+
+      // VFX marker
       setTimeout(() => {
         document.body.classList.add('vfxReady')
-      }, 250)
+      }, 100)
+
+      // Route detection
+      // TODO: figure out a better way to handle this
+      window.App = {
+        route: {
+          isHomePage: /^\/(#.*)?$/.test(window.location.pathname),
+          isCaseStudy: window.location.pathname.includes('case-study'),
+        },
+      }
     </script>
 
     <Header {globals} />
