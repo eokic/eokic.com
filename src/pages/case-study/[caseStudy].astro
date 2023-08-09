@@ -28,7 +28,10 @@ const { project } = Astro.props
 import { BaseLayout } from '@/layouts'
 ---
 
-<BaseLayout title={project.seo.metaTitle || project.title}>
+<BaseLayout
+  title={project.seo.metaTitle || project.title}
+  pageClass="pg-project"
+>
   <main>
     <h1>{project.title}</h1>
   </main>

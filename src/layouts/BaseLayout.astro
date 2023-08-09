@@ -3,10 +3,11 @@
 import type { IGlobal } from '@/interfaces'
 interface Props {
   title: string
+  pageClass: string
 }
 
 // PROPS
-const { title } = Astro.props
+const { title, pageClass } = Astro.props
 
 // METHODS
 import fetchApi from '@/lib/strapi'
@@ -49,7 +50,7 @@ import '@/styles/eokic.css'
     <meta name="description" content="Astro description" />
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body class="no-js">
+  <body class:list={[pageClass, 'no-js']}>
     <!-- Accessibilty links -->
     <div class="absolute z-30 top-6 left-6">
       <Button theme="a11y" href="#main" label="Skip to content" />
@@ -69,11 +70,10 @@ import '@/styles/eokic.css'
       }, 100)
 
       // Route detection
-      // TODO: figure out a better way to handle this
       window.App = {
         route: {
-          isHomePage: /^\/(#.*)?$/.test(window.location.pathname),
-          isCaseStudy: window.location.pathname.includes('case-study'),
+          isHomePage: document.body.classList.contains('pg-home'),
+          isProjectPage: document.body.classList.contains('pg-project'),
         },
       }
     </script>

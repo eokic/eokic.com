@@ -15,6 +15,9 @@ import {
   Testimonial,
 } from '@/components'
 
+/* --------------------------------------------------------------------------
+  DATA
+-------------------------------------------------------------------------- */
 const globals = await fetchApi<IGlobal>({
   endpoint: 'global',
   query: { populate: 'deep' },
@@ -34,7 +37,7 @@ const testimonials = await fetchApi<ITestimonial[]>({
 })
 ---
 
-<BaseLayout title="Welcome to Astro.">
+<BaseLayout title="Welcome to Astro." pageClass="pg-home">
   <main id="main-content" class="main">
     <Hero {globals} {home} />
 
