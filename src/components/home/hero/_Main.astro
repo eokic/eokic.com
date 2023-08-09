@@ -41,12 +41,17 @@ import { Button, ImageHandler } from '@/components'
     class="mb-2 sm:mb-4 md:mb-outer prose md:lead lh-prose"
     set:html={markdownToHTML(home.description)}
   />
-  <div class="flex flex-wrap sm:gap-2">
-    <Button theme="primary" href="mailto:hi@eokic.com" label="Let's talk!" />
-    <Button href="#services" label="Services" />
-    <Button href="#work" label="Work" />
+  <div class="flex flex-wrap sm:gap-2" aria-hidden="true">
+    <Button
+      theme="primary"
+      href="mailto:hi@eokic.com"
+      label="Let's talk!"
+      presentational
+    />
+    <Button href="#services" label="Services" presentational />
+    <Button href="#work" label="Work" presentational />
     <div class="hidden sm:inline-block">
-      <Button href="#about" label="About" />
+      <Button href="#about" label="About" presentational />
     </div>
   </div>
 </div>

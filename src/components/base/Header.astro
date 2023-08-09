@@ -68,7 +68,8 @@ import { Button, ImageHandler, Link } from '.'
   body.js #header {
     @apply -translate-y-[120%];
 
-    &.show {
+    &.show,
+    &:focus-within {
       @apply translate-y-0;
 
       .header-inner {

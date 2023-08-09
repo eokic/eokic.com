@@ -24,7 +24,7 @@ const { id, title, subtitle, cssClass, alt } = Astro.props
       (title || subtitle) && (
         <header class="section-head">
           {title && <h2 class="section-title">{title}</h2>}
-          {subtitle && <h3 class="section-subtitle">{subtitle}</h3>}
+          {subtitle && <p class="section-subtitle">{subtitle}</p>}
         </header>
       )
     }
