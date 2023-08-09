@@ -32,7 +32,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
   >
     <!-- Mobile: back-to-top -->
     <Button
-      cssClass="max-sm:hidden md:hidden border-r border-primary-xlight rounded-r-none"
+      cssClass="max-sm:!hidden md:!hidden border-r border-primary-xlight rounded-r-none"
       theme="header-arrow"
       href={isHomePage ? '#main-content' : '/#main-content'}
       label="↑"
@@ -73,7 +73,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
           />
         </li>
         <li>
-          <div class="hidden sm:inline-block">
+          <div class="hidden sm:block h-full">
             <Button
               theme="header"
               href={isHomePage ? '#about' : '/#about'}
@@ -86,6 +86,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
             theme="primary"
             href="mailto:hi@eokic.com"
             label="Let's talk!"
+            fullHeight
           />
         </li>
       </ul>

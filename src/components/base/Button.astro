@@ -5,9 +5,10 @@ interface Props {
   theme?: 'header' | 'header-arrow' | 'primary' | 'neutral' | 'a11y' // defaults to neutral
   label?: string
   href?: string
+  fullHeight?: boolean
   presentational?: boolean
 }
-const { cssClass, theme, label, href, presentational } = Astro.props
+const { cssClass, theme, label, href, fullHeight, presentational } = Astro.props
 
 // METHODS
 import { markdownToHTML } from '@/utils'
@@ -22,66 +23,114 @@ const shouldSmoothScroll = href && href.startsWith('#')
     'body lh-body font-sans text-white bg-primary',
     'rounded-[99px] cursor-pointer',
     `-${theme || 'neutral'}`,
+    {
+      '-full-height': fullHeight,
+    },
     ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
   ]}
   href={href}
-  set:html={label ? markdownToHTML(label) : null}
   aria-hidden={presentational ? true : null}
   tabindex={presentational ? -1 : 0}
   data-smooth-scroll={shouldSmoothScroll}
 >
-  <slot />
+  <div
+    class="btn-inner relative z-2"
+    set:html={label ? markdownToHTML(label) : null}
+  >
+    <slot />
+  </div>
 </a>
 
 <style is:global>
   .btn {
-    display: inline-block;
-    /* @apply hover:shadow-sm hover:shadow-slate-700/40; */
-    /* @apply focus:opacity-[0.85] focus:shadow-none; */
-    /* @apply active:opacity-[0.85] active:shadow-none; */
-    /* @apply disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none; */
-    outline: var(--hover-outline-width) solid transparent;
-    outline-offset: 0.2em;
+    @apply relative inline-block overflow-hidden transition-all;
+    outline: var(--focus-sr-width) var(--focus-sr-style) transparent;
+    outline-offset: var(--focus-sr-offset);
 
+    &::before,
+    &::after {
+      @apply absolute z-1 pointer-events-none;
+      @apply left-1/2 -translate-x-1/2 w-1/2 h-2 rounded-full;
+      @apply transition-all duration-300;
+      @apply mix-blend-overlay blur;
+      content: '';
+    }
+
+    &::before {
+      @apply -top-1;
+    }
+
+    &::after {
+      @apply -bottom-1;
+    }
+
+    &.-full-height {
+      @apply h-full flex items-center;
+    }
+
+    /* --------------------------------------------------------------------------
+      HEADER
+    -------------------------------------------------------------------------- */
     &.-header,
     &.-header-arrow {
+      @apply h-full flex items-center;
       @apply text-primary-dark bg-transparent;
-
-      /* Hover */
-      &:not(:active):hover {
-        outline-color: var(--color-primary);
-      }
     }
 
     &.-header-arrow {
       @apply text-primary-light font-medium;
     }
 
+    /* --------------------------------------------------------------------------
+      NEUTRAL
+    -------------------------------------------------------------------------- */
     &.-neutral {
       @apply text-primary bg-transparent;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: hsl(var(--color-secondary));
 
       /* Hover */
       &:not(:active):hover {
-        outline-color: var(--color-primary);
+        @apply bg-primary-bg;
+        /* outline-color: var(--color-primary-xlight); */
+
+        /* Glow */
+        &::before,
+        &::after {
+          @apply bg-white;
+        }
       }
     }
 
+    /* --------------------------------------------------------------------------
+      PRIMARY
+    -------------------------------------------------------------------------- */
     &.-primary {
       @apply px-4 md:px-5;
       @apply font-semibold bg-primary;
 
+      /* Glow */
+      &::before,
+      &::after {
+        @apply bg-white;
+      }
+
       /* Hover */
       &:not(:active):hover {
-        outline-color: var(--color-primary);
+        @apply bg-primary-dark;
       }
     }
 
+    /* --------------------------------------------------------------------------
+      ACCESSIBILITY
+    -------------------------------------------------------------------------- */
     &.-a11y {
       @apply sr-only focus:not-sr-only;
       @apply py-2 px-3 !important;
       @apply h4 lh-h4 font-semibold text-white bg-slate-900;
       @apply rounded-sm;
-      outline: 1rem solid hsl(var(--color-focus-sr));
+      outline: var(--focus-sr-width) var(--focus-sr-style) var(--focus-sr-color);
 
       &::focus {
         @apply inline-block;
@@ -90,7 +139,7 @@ const shouldSmoothScroll = href && href.startsWith('#')
 
     /* Focus */
     &:not(:active):focus-visible {
-      outline: 0.5em solid hsl(var(--color-focus-sr));
+      outline: var(--focus-sr-width) var(--focus-sr-style) var(--focus-sr-color);
     }
 
     /* Pressed */
