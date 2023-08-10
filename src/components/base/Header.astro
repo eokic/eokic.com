@@ -97,15 +97,17 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
 
 <style is:global>
   #header {
+    @apply opacity-0;
+
     @media not (prefers-reduced-motion) {
-      @apply transition-transform;
+      @apply transition-all duration-700;
     }
   }
 
   /* Homepage without JS & non-homepages */
   .pg-home.no-js #header,
   body:not(.pg-home) #header {
-    @apply translate-y-0 !important;
+    @apply opacity-100 translate-y-0 !important;
 
     .header-inner {
       @apply drop-shadow-xl lg:drop-shadow-2xl;
@@ -116,7 +118,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
   .pg-home.js #header {
     &.show,
     &:focus-within {
-      @apply translate-y-0;
+      @apply opacity-100 translate-y-0;
 
       .header-inner {
         @apply drop-shadow-xl lg:drop-shadow-2xl;
