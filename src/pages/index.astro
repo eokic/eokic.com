@@ -1,16 +1,23 @@
 ---
 // TYPES
-import type { IGlobal, IHome, ITestimonial } from '@/interfaces'
+import type {
+  IGlobal,
+  IHome,
+  IProjectMention,
+  ITestimonial,
+} from '@/interfaces'
 
 // METHODS
 import fetchApi from '@/lib/strapi'
 
 // COMPONENTS
+import { Debug } from 'astro/components'
 import { BaseLayout } from '@/layouts'
 import { Hero } from '@/components/home'
 import {
   Section,
   ProjectTeaser,
+  ProjectMention,
   ServiceTeaser,
   Testimonial,
 } from '@/components'
@@ -26,6 +33,12 @@ const globals = await fetchApi<IGlobal>({
 
 const home = await fetchApi<IHome>({
   endpoint: 'home',
+  query: { populate: 'deep' },
+  wrappedByKey: 'data',
+})
+
+const projectMentions = await fetchApi<IProjectMention[]>({
+  endpoint: 'project-mentions',
   query: { populate: 'deep' },
   wrappedByKey: 'data',
 })
@@ -57,9 +70,51 @@ const testimonials = await fetchApi<ITestimonial[]>({
       title={home?.sectionWork?.title}
       subtitle={home?.sectionWork?.subtitle}
     >
-      <div class="flex flex-col gap-3 md:gap-4 lg:gap-5 mb-inner">
-        {home.projects?.map((project) => <ProjectTeaser {project} />)}
+      <!-- Case Studies -->
+      <div class="flex flex-col gap-3 md:gap-4 lg:gap-5 mb-5">
+        {
+          home.projects
+            ?.sort((a, b) => a.sequence - b.sequence)
+            ?.map((project) => <ProjectTeaser {project} />)
+        }
       </div>
+
+      <!-- Other works -->
+      <div
+        class:list={[
+          'mb-outer rounded-lg overflow-hidden',
+          'border-2 border-dashed border-secondary-light',
+        ]}
+      >
+        <h3
+          class:list={[
+            'px-2 py-4 h3 lh-h3 font-semibold text-center',
+            'border-b-2 border-dashed border-secondary-light bg-secondary-bg',
+          ]}
+        >
+          Other notable works include
+        </h3>
+        <ul
+          class="grid md:grid-cols-2 divide-x divide-y divide-dashed divide-secondary-xlight"
+        >
+          {
+            projectMentions
+              ?.sort((a, b) => a.sequence - b.sequence)
+              ?.map((project) => (
+                <li>
+                  <ProjectMention {project} />
+                </li>
+              ))
+          }
+          <li>
+            <a class="py-4 px-5 flex h-full max-lg:justify-center items-center">
+              Gallery of randomness
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Testimonials -->
       <div class="ml-1 lg:ml-2 mb-2 grid md:grid-cols-3 gap-5 sm:gap-6">
         {testimonials?.map((testimonial) => <Testimonial {testimonial} />)}
       </div>

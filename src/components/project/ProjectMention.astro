@@ -1,0 +1,41 @@
+---
+// TYPES
+import type { IProjectMention } from '@/interfaces'
+
+// PROPS
+interface Props {
+  project: IProjectMention
+}
+const { project } = Astro.props
+
+// COMPONENTS
+import { ImageHandler } from '@/components'
+---
+
+<div
+  class:list={[
+    'flex flex-col sm:flex-row items-center gap-3 md:gap-4',
+    'py-3 px-4 sm:px-5 md:px-4',
+  ]}
+>
+  <ImageHandler
+    imgClass="w-11 sm:w-9 [@media(min-width:560px)]:w-10 xl:w-11 h-7 lg:h-8"
+    img={project.client.logoMark?.colorOnLight ||
+      project.client.logo.colorOnLight}
+    nonStandardRatio
+    contain
+  />
+
+  <div
+    class:list={['hidden xl:block', 'h4 font-light text-secondary select-none']}
+    aria-hidden="true"
+  >
+    →
+  </div>
+
+  <div class="-body-1 lh-lead max-sm:text-center text-slate-700">
+    <h5 class="font-semibold text-slate-900">{project.title}</h5>
+    <div class="">{project.services}</div>
+    <div class="-body-2 font-semibold uppercase">{project.dates}</div>
+  </div>
+</div>

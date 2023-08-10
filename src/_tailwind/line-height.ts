@@ -12,6 +12,11 @@ export const lineHeight: ScaleInput = {
       max: 1.15,
       marginMult: 0.2,
     },
+    lead: {
+      min: 1.40,
+      max: 1.45,
+      marginMult: 0.2,
+    },
     prose: {
       min: 1.55,
       max: 1.65,

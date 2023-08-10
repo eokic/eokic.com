@@ -7,4 +7,5 @@ export default interface IClient extends IEntity {
   importance: number
   brandColor: string // hex
   logo: ILogo
+  logoMark?: ILogo
 }
