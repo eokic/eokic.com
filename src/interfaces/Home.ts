@@ -10,7 +10,7 @@ export default interface IHome extends IEntity {
   photoLabelMe: string
   photoLabelWaifu: string
   sectionServices: ISection
-  services: Omit<IService, 'thumbnail'>[]
+  services: IService[]
   sectionWork: ISection
   projects: IProject[]
   sectionAbout: ISection
