@@ -12,6 +12,7 @@ interface Props {
   fullWidth?: boolean
   nonStandardRatio?: boolean
   important?: boolean
+  contain?: boolean
   inline?: boolean
   alt?: string // should come from Strapi though
 }
@@ -24,6 +25,7 @@ const {
   fullWidth,
   nonStandardRatio,
   important,
+  contain,
   inline,
   alt,
 } = Astro.props
@@ -42,6 +44,7 @@ import { Image } from 'astro:assets'
   {fullWidth}
   {nonStandardRatio}
   {important}
+  {contain}
   {inline}
   {alt}
 />

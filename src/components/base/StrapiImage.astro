@@ -12,6 +12,7 @@ interface Props {
   fullWidth?: boolean
   nonStandardRatio?: boolean
   important?: boolean
+  contain?: boolean
   inline?: boolean
   alt?: string // should come from Strapi though
 }
@@ -24,6 +25,7 @@ const {
   fullWidth,
   nonStandardRatio,
   important,
+  contain,
   inline,
   alt,
 } = Astro.props
@@ -69,6 +71,7 @@ const base64Orig = inline
   id=`st-image-${localID}`
   class:list={[
     'st-image relative overflow-hidden',
+    'flex justify-center items-center',
     {
       vfx: !base64Orig,
     },
@@ -81,7 +84,8 @@ const base64Orig = inline
   <img
     id=`st-image-img-${localID}`
     class:list={[
-      'st-image-img relative z-2 max-h-full object-cover',
+      'st-image-img relative z-2 max-h-full',
+      contain ? 'object-contain' : 'object-cover',
       {
         [`aspect-${aspectRatio}`]: !nonStandardRatio,
         'w-full': fullWidth,
