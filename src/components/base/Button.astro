@@ -43,17 +43,25 @@ const shouldSmoothScroll = href && href.startsWith('#')
 
 <style is:global>
   .btn {
-    @apply relative inline-block overflow-hidden transition-all;
+    @apply relative inline-block overflow-hidden;
     outline: var(--focus-sr-width) var(--focus-sr-style) transparent;
     outline-offset: var(--focus-sr-offset);
+
+    @media not (prefers-reduced-motion) {
+      @apply transition-all;
+    }
 
     &::before,
     &::after {
       @apply absolute z-1 pointer-events-none;
       @apply left-1/2 -translate-x-1/2 w-1/2 h-2 rounded-full;
-      @apply transition-all duration-300;
+      @apply duration-300;
       @apply mix-blend-overlay blur;
       content: '';
+
+      @media not (prefers-reduced-motion) {
+        @apply transition-all;
+      }
     }
 
     &::before {
@@ -136,14 +144,15 @@ const shouldSmoothScroll = href && href.startsWith('#')
     }
 
     &:not(:active):hover {
+      box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1),
+        0px 4px 8px 0px rgba(0, 0, 0, 0.1),
+        0px 14px 14px 0px rgba(0, 0, 0, 0.09),
+        0px 32px 19px 0px rgba(0, 0, 0, 0.05),
+        0px 56px 23px 0px rgba(0, 0, 0, 0.01),
+        0px 88px 25px 0px rgba(0, 0, 0, 0);
+
       @media not (prefers-reduced-motion) {
         @apply -translate-y-[2px];
-        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1),
-          0px 4px 8px 0px rgba(0, 0, 0, 0.1),
-          0px 14px 14px 0px rgba(0, 0, 0, 0.09),
-          0px 32px 19px 0px rgba(0, 0, 0, 0.05),
-          0px 56px 23px 0px rgba(0, 0, 0, 0.01),
-          0px 88px 25px 0px rgba(0, 0, 0, 0);
       }
     }
 
