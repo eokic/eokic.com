@@ -13,8 +13,8 @@ export const lineHeight: ScaleInput = {
       marginMult: 0.2,
     },
     prose: {
-      min: 1.5,
-      max: 1.6,
+      min: 1.55,
+      max: 1.65,
       marginMult: 0.2,
     },
     h1: {

@@ -24,17 +24,46 @@ import { micromark } from 'micromark'
     },
   ]}
 >
-  <blockquote set:html={micromark(testimonial.quote)} />
-  <figcaption>
-    <strong class="block font-semibold">
-      {
-        testimonial.link ? (
-          <Link label={testimonial.person} link={testimonial.link} />
-        ) : (
-          testimonial.person
-        )
-      }
-    </strong>
-    <small>{testimonial.position}</small>
-  </figcaption>
+  <div class="testimonial-inner">
+    <blockquote
+      class="testimonial-quote mb-3 prose body-1 lh-prose font-light italic text-slate-600"
+      set:html={micromark(testimonial.quote)}
+    />
+    <figcaption>
+      <strong class="block font-semibold">
+        {
+          testimonial.link ? (
+            <Link label={testimonial.person} link={testimonial.link} />
+          ) : (
+            testimonial.person
+          )
+        }
+      </strong>
+      <small>{testimonial.position}</small>
+    </figcaption>
+  </div>
 </figure>
+
+<style is:global>
+  .testimonial {
+    /*  */
+
+    &-inner {
+      @apply relative border-l-2 border-secondary-xlight pl-4;
+
+      &:before {
+        @apply absolute top-0 -left-3 w-5 h-6 bg-white;
+        @apply h2 font-display font-light text-secondary;
+        line-height: 1.45;
+        content: '“';
+      }
+    }
+
+    &-quote p {
+      &::before,
+      &::after {
+        display: none !important;
+      }
+    }
+  }
+</style>
