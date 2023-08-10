@@ -37,7 +37,7 @@ document.addEventListener('astro:load', () => {
         // Scroll to the target element
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth',
+          behavior: App.prefersReducedMotion ? 'instant' : 'smooth',
         })
 
         // TODO: Focus something for screen readers?
