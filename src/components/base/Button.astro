@@ -69,7 +69,7 @@ const shouldSmoothScroll = href && href.startsWith('#')
     }
 
     /* --------------------------------------------------------------------------
-      HEADER
+      HEADER BUTTONS
     -------------------------------------------------------------------------- */
     &.-header,
     &.-header-arrow {
@@ -82,17 +82,15 @@ const shouldSmoothScroll = href && href.startsWith('#')
     }
 
     /* --------------------------------------------------------------------------
-      NEUTRAL
+      NEUTRAL THEME
     -------------------------------------------------------------------------- */
     &.-neutral {
       @apply text-primary bg-transparent;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      text-decoration-color: hsl(var(--color-secondary));
+      @apply underline decoration-secondary underline-offset-4;
 
       /* Hover */
       &:not(:active):hover {
-        @apply bg-primary-bg;
+        @apply text-primary-dark bg-primary-bg decoration-transparent;
         /* outline-color: var(--color-primary-xlight); */
 
         /* Glow */
@@ -104,7 +102,7 @@ const shouldSmoothScroll = href && href.startsWith('#')
     }
 
     /* --------------------------------------------------------------------------
-      PRIMARY
+      PRIMARY THEME
     -------------------------------------------------------------------------- */
     &.-primary {
       @apply px-4 md:px-5;
@@ -123,7 +121,7 @@ const shouldSmoothScroll = href && href.startsWith('#')
     }
 
     /* --------------------------------------------------------------------------
-      ACCESSIBILITY
+      ACCESSIBILITY BUTTONS
     -------------------------------------------------------------------------- */
     &.-a11y {
       @apply sr-only focus:not-sr-only;
@@ -134,6 +132,18 @@ const shouldSmoothScroll = href && href.startsWith('#')
 
       &::focus {
         @apply inline-block;
+      }
+    }
+
+    &:not(:active):hover {
+      @media not (prefers-reduced-motion) {
+        @apply -translate-y-[2px];
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1),
+          0px 4px 8px 0px rgba(0, 0, 0, 0.1),
+          0px 14px 14px 0px rgba(0, 0, 0, 0.09),
+          0px 32px 19px 0px rgba(0, 0, 0, 0.05),
+          0px 56px 23px 0px rgba(0, 0, 0, 0.01),
+          0px 88px 25px 0px rgba(0, 0, 0, 0);
       }
     }
 
