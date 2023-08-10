@@ -19,7 +19,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
   id="header"
   class:list={[
     'fixed z-20 top-1 xl:top-2 2xl:top-3 left-0 right-0 flex justify-center',
-    '-translate-y-[120%] transition-transform will-change-transform pointer-events-none',
+    '-translate-y-[120%] will-change-transform pointer-events-none',
   ]}
 >
   <div
@@ -96,6 +96,12 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
 </header>
 
 <style is:global>
+  #header {
+    @media not (prefers-reduced-motion) {
+      @apply transition-transform;
+    }
+  }
+
   /* Homepage without JS & non-homepages */
   .pg-home.no-js #header,
   body:not(.pg-home) #header {

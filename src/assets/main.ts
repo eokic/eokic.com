@@ -1,5 +1,8 @@
 import Motus from 'motus'
 
+// Aliasing
+const { App } = window
+
 // Avoids weird visual issues by keeping important flags consistent
 document.addEventListener('astro:beforeload', () => {
   document.body.classList.remove('no-js')
@@ -50,7 +53,7 @@ document.addEventListener('astro:load', () => {
     STICKY HEADER
     Probably just on the homepage for now
   -------------------------------------------------------------------------- */
-  if (window.App.route.isHomePage && header && heroDesc) {
+  if (App.route.isHomePage && header && heroDesc) {
     new IntersectionObserver(e => {
       if (e[0]?.intersectionRatio <= 0)
         header.classList.add('show')
@@ -65,7 +68,7 @@ document.addEventListener('astro:load', () => {
   /* --------------------------------------------------------------------------
     Homepage hero parallax
   -------------------------------------------------------------------------- */
-  if (window.App.route.isHomePage && heroPhoto && heroDesc) {
+  if (!App.prefersReducedMotion && App.route.isHomePage && heroPhoto && heroDesc) {
     const heroPhotoParallax = new Motus.Animation({
       $el: heroPhoto,
       startPoint: 0,
