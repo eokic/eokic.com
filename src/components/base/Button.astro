@@ -19,9 +19,7 @@ const shouldSmoothScroll = href && href.startsWith('#')
 
 <a
   class:list={[
-    'btn py-3 px-2 sm:px-3 lg:px-4',
-    'body lh-body font-sans text-white bg-primary',
-    'rounded-[99px] cursor-pointer',
+    'btn',
     `-${theme || 'neutral'}`,
     {
       '-full-height': fullHeight,
@@ -43,7 +41,10 @@ const shouldSmoothScroll = href && href.startsWith('#')
 
 <style is:global>
   .btn {
+    @apply py-3 px-2 xs:px-3 lg:px-4;
     @apply relative inline-block overflow-hidden;
+    @apply body lh-body font-sans text-white bg-primary;
+    @apply rounded-[99px] cursor-pointer;
     outline: var(--focus-sr-width) var(--focus-sr-style) transparent;
     outline-offset: var(--focus-sr-offset);
 
