@@ -40,7 +40,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
     />
 
     <!-- Logo -->
-    <div class="hidden md:inline-block ml-3 mr-2 -mb-1">
+    <div class="hidden md:inline-block ml-3 mr-2 leading-none">
       <Link
         link={{
           url: isHomePage ? '#top' : '/',
