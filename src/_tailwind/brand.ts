@@ -2,6 +2,10 @@
 export default {
 
   colors: {
+    light: 'hsl(var(--color-light))',
+    'light-bg': 'hsl(var(--color-light) / 0.82)',
+    dark: 'hsl(var(--color-dark))',
+    'dark-bg': 'hsl(var(--color-dark) / 0.85)',
     primary: 'hsl(var(--color-primary) / 1)',
     'primary-light': 'hsl(var(--color-primary) / 0.65)',
     'primary-xlight': 'hsl(var(--color-primary) / 0.25)',

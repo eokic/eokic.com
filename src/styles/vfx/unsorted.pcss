@@ -1,0 +1,25 @@
+.photo-frame {
+  @apply border-8 border-solid border-dark-bg;
+  /* @apply sm:border-8; */
+}
+
+.bg-dot-grid {
+  --grid-size: 16px;
+  background-image: radial-gradient(
+    circle at calc(var(--grid-size) / 1.5) calc(var(--grid-size) / 1.5),
+    hsl(var(--color-primary) / 0.12) 1px,
+    transparent 0
+  );
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+.edge-fade {
+  --edge-gradient-mask: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: var(--edge-gradient-mask);
+}
