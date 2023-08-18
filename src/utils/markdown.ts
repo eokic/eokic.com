@@ -8,10 +8,26 @@ export default function markdownToHTML (
 ): string {
   if (!body) return ''
 
-  return micromark(body, {
+  const HTML = micromark(body, {
     extensions: [directive()],
-    htmlExtensions: [directiveHtml({ xs, sm, md, lg })],
+    htmlExtensions: [directiveHtml({ link, xs, sm, md, lg })],
   })
+
+  return HTML
+}
+
+function link (dir: Directive): boolean | undefined {
+  if (dir.type !== 'textDirective') return false
+
+  this.tag(`<a class='link' href='${dir.attributes?.url}' `)
+
+  if (!dir.attributes?.internal) {
+    this.tag('rel="noopener noreferrer"')
+    this.tag('referrerpolicy="no-referrer"')
+    this.tag('target="_blank"')
+  }
+
+  this.tag(`><span>${dir.label}</span></a>`)
 }
 
 function xs (dir: Directive): boolean | undefined {

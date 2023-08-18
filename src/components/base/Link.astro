@@ -29,7 +29,6 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
       focusable: !label,
       link: label,
     },
-    'rounded',
     ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
   ]}
   href={link.url}
@@ -44,18 +43,18 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
   tabindex={presentational ? -1 : 0}
   data-smooth-scroll={shouldSmoothScroll}
 >
-  {
-    label ? (
-      <span class="inline-block underline underline-offset-4">{label}</span>
-    ) : null
-  }
+  {label ? <span>{label}</span> : null}
   <slot />
 </a>
 
 <style is:global>
   .link,
   .focusable {
-    @apply inline-block;
+    @apply inline-block rounded;
+
+    > span {
+      @apply inline-block underline underline-offset-4;
+    }
   }
 
   .link {
