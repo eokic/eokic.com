@@ -1,6 +1,7 @@
 ---
 // TYPES
 import type {
+  IAbout,
   IGlobal,
   IHome,
   IProjectMention,
@@ -9,12 +10,15 @@ import type {
 
 // METHODS
 import fetchApi from '@/lib/strapi'
+import { markdownToHTML } from '@/utils'
 
 // COMPONENTS
 import { Debug } from 'astro/components'
 import { BaseLayout } from '@/layouts'
 import { Hero } from '@/components/home'
 import {
+  ImageHandler,
+  Link,
   Section,
   ProjectTeaser,
   ProjectMention,
@@ -48,12 +52,21 @@ const testimonials = await fetchApi<ITestimonial[]>({
   query: { populate: 'deep' },
   wrappedByKey: 'data',
 })
+
+const about = await fetchApi<IAbout>({
+  endpoint: 'about',
+  query: { populate: 'deep' },
+  wrappedByKey: 'data',
+})
 ---
 
 <BaseLayout title="Welcome to Astro." pageClass="pg-home">
   <main id="main" class="main">
     <Hero {globals} {home} />
 
+    <!-- -------------------------------------------------------------------------
+      SERVICES
+    -------------------------------------------------------------------------- -->
     <Section
       id="services"
       title={home?.sectionServices?.title}
@@ -65,6 +78,9 @@ const testimonials = await fetchApi<ITestimonial[]>({
       </div>
     </Section>
 
+    <!-- -------------------------------------------------------------------------
+      WORK
+    -------------------------------------------------------------------------- -->
     <Section
       id="work"
       title={home?.sectionWork?.title}
@@ -107,7 +123,11 @@ const testimonials = await fetchApi<ITestimonial[]>({
               ))
           }
           <li>
-            <a class="py-4 px-5 flex h-full max-lg:justify-center items-center">
+            <a
+              class:list={[
+                'block py-4 px-5 flex h-full max-lg:justify-center items-center',
+              ]}
+            >
               Gallery of randomness
             </a>
           </li>
@@ -120,13 +140,70 @@ const testimonials = await fetchApi<ITestimonial[]>({
       </div>
     </Section>
 
-    <Section
-      id="about"
-      title={home?.sectionAbout?.title}
-      subtitle={home?.sectionAbout?.subtitle}
-      alt
-    >
-      TODO: ABOUT
-    </Section>
+    <!-- -------------------------------------------------------------------------
+      ABOUT
+    -------------------------------------------------------------------------- -->
+    <!-- <section class="lg:mt-section">
+      <div class="relative z-20 max-lg:mb-inner lg:-mb-10 text-center">
+        <h2
+          class:list={[
+            'section-title inline-block rounded',
+            'lg:px-3 lg:py-1 lg:text-white',
+            'max-lg:!bg-transparent lg:backdrop-blur-md',
+          ]}
+          style="background: hsl(var(--color-primary-dark) / 75%)"
+        >
+          About
+        </h2>
+      </div>
+      <div
+        id="about"
+        class="relative lg:grid lg:gap-1 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        <img
+          class:list={[
+            'max-lg:hidden absolute z-10 top-0 left-0 ',
+            'w-full h-[25px] object-cover pointer-events-none',
+          ]}
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSIyNSIgdmlld0JveD0iMCAwIDE0NDAgMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xNDQwIDBIMFYyQzExOS44MzMgOS41IDQzMS4yIDI0LjUgNzE4IDI0LjVDMTAwNC44IDI0LjUgMTMxOC44MyA5LjUgMTQ0MCAyVjBaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K"
+          aria-hidden="true"
+        />
+        <ImageHandler
+          cssClass={[
+            'photo-frame max-lg:!absolute max-lg:z-3 max-lg:-top-5 max-lg:rotate-3 max-lg:w-[32vw]',
+            'max-sm:-left-2 sm:max-lg:-left-4',
+            'lg:mb-10 lg:border-0',
+          ]}
+          img={about.heroMediaLeft}
+          fullHeight
+        />
+        <ImageHandler
+          cssClass="xl:col-span-2"
+          img={about.heroMediaCenter}
+          fullHeight
+        />
+        <ImageHandler
+          cssClass={['max-lg:!hidden']}
+          img={about.heroMediaRight}
+          fullHeight
+        />
+        <div class="lg:-mt-10">
+          <ImageHandler
+            cssClass={[
+              'photo-frame max-lg:!absolute max-lg:z-3 max-lg:-right-2 max-lg:rotate-3 max-lg:w-[32vw]',
+              'max-sm:top-10 sm:max-lg:top-11',
+              'lg:border-0',
+            ]}
+            img={about.heroMediaSupplement}
+          />
+        </div>
+        <div class="col-span-2 lg:col-span-2 xl:col-span-3 p-4 sm:p-5 md:p-7">
+          <div
+            class="prose body-1 lh-prose"
+            set:html={markdownToHTML(about.body)}
+          />
+        </div>
+      </div>
+    </section> -->
   </main>
 </BaseLayout>
