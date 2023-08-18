@@ -4,8 +4,10 @@ import { directive, directiveHtml } from 'micromark-extension-directive'
 
 
 export default function markdownToHTML (
-  body: string,
+  body: string | null | undefined,
 ): string {
+  if (!body) return ''
+
   return micromark(body, {
     extensions: [directive()],
     htmlExtensions: [directiveHtml({ xs, sm, md, lg })],
