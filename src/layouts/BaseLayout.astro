@@ -120,7 +120,10 @@ import '@/styles/eokic.pcss'
       <div class="container">
         <div class:list={['border-t border-dashed border-slate-300 pt-inner']}>
           <div
-            class="prose max-w-none -text-body-1 lh-prose mx-auto"
+            class:list={[
+              'max-w-none',
+              'prose -text-body-1 lh-prose text-slate-500',
+            ]}
             set:html={markdownToHTML(globals.footer)}
           />
         </div>
