@@ -10,6 +10,7 @@ interface Props {
   imgClass?: string | string[]
   imgStyle?: Record<string, unknown>
   fullWidth?: boolean
+  fullHeight?: boolean
   nonStandardRatio?: boolean
   important?: boolean
   contain?: boolean
@@ -23,6 +24,7 @@ const {
   imgClass,
   imgStyle,
   fullWidth,
+  fullHeight,
   nonStandardRatio,
   important,
   contain,
@@ -89,6 +91,7 @@ const base64Orig = inline
       {
         [`aspect-${aspectRatio}`]: !nonStandardRatio,
         'w-full': fullWidth,
+        'h-full': fullHeight,
       },
       ...(typeof imgClass === 'string' ? [imgClass] : imgClass || []),
     ]}
