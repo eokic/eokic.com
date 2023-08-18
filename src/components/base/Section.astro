@@ -12,7 +12,7 @@ const { id, title, subtitle, cssClass, alt } = Astro.props
 
 <section
   class:list={[
-    'section py-section',
+    'section py-section relative',
     { '-alt': alt },
     ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
   ]}
@@ -38,14 +38,14 @@ const { id, title, subtitle, cssClass, alt } = Astro.props
 <style is:global>
   .section {
     &.-alt {
-      @apply relative;
-      background: #f4f6fb;
+      @apply relative bg-primary-bg;
 
       &::before,
       &::after {
         @apply absolute left-0 w-full h-[25px] bg-center;
-        @apply lg:bg-[length:100%_100%];
-        background-image: /* @/assets/layout/section-curve.svg */ url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDQwIiBoZWlnaHQ9IjI1IiBmaWxsPSJub25lIj48ZyBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNGNEY2RkIiIGQ9Ik0wIDBzMzI5LjEgMjMgNzIxIDIzIDcxOS0yMyA3MTktMjN2MjVIMFYwWiIvPjxwYXRoIGZpbGw9InVybCgjYikiIGZpbGwtb3BhY2l0eT0iLjciIGQ9Ik0wIDBzMzI5LjEgMjMgNzIxIDIzIDcxOS0yMyA3MTktMjN2MjVIMFYwWiIvPjwvZz48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImIiIGN4PSIwIiBjeT0iMCIgcj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InNjYWxlKDY5OS43NiAzMTkuMjcpIHJvdGF0ZSgtOTAgMSAwKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PGNsaXBQYXRoIGlkPSJhIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMCAwaDE0NDB2MjVIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48L3N2Zz4=');
+        background: inherit;
+        mask: url('/layout/section-curve.svg');
+        mask-size: 100% 25px;
         content: '';
       }
 
