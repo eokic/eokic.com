@@ -24,7 +24,7 @@ export const spacing: ScaleInput = {
     },
     section: {
       min: '46px',
-      mid: '6.25vh',
+      mid: '6.75vh',
       max: '80px',
     },
     outer: {
