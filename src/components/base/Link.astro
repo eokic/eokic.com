@@ -44,19 +44,26 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
   tabindex={presentational ? -1 : 0}
   data-smooth-scroll={shouldSmoothScroll}
 >
-  {label ? <span>{label}</span> : null}
+  {
+    label ? (
+      <span class="inline-block underline underline-offset-4">{label}</span>
+    ) : null
+  }
   <slot />
 </a>
 
 <style is:global>
+  .link,
+  .focusable {
+    @apply inline-block;
+  }
+
   .link {
     @apply underline underline-offset-4;
     color: blue; /* TODO: from brand variables */
   }
 
   .focusable {
-    @apply inline-block;
-
     /* Hover */
     &:not(:active):hover {
       outline-color: hsl(var(--color-primary));
