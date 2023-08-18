@@ -54,14 +54,16 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
 }
 ---
 
-<footer class="relative max-lg:mt-2 -mb-1 lg:-mb-2 xl:-mb-3 2xl:-mb-4">
-  <div class="logo-fade left-0"></div>
-
+<footer
+  class:list={[
+    'edge-fade relative max-lg:mt-2 -mb-2 lg:-mb-3 xl:-mb-4 2xl:-mb-5',
+  ]}
+>
   <!-- Single row on larger devices -->
   <div
     class:list={[
       'z-1 max-lg:hidden mt-section lg:mt-outer flex justify-center items-center',
-      'logo-curve gap-4 lg:gap-5 xl:gap-7 2xl:gap-8',
+      'logo-curve gap-4 lg:gap-5 xl:gap-7 2xl:gap-8 pt-3 py-5',
     ]}
   >
     {
@@ -113,16 +115,9 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
       }
     </div>
   </div>
-
-  <div class="logo-fade right-0 rotate-180"></div>
 </footer>
 
 <style is:global>
-  .logo-fade {
-    @apply absolute z-2 -top-3 lg:-top-5 -bottom-2 lg:-bottom-3 w-outer;
-    @apply bg-gradient-to-r from-white to-transparent;
-  }
-
   .logo-curve {
     --base-offset: 8px;
     --base-rotation: 2deg;

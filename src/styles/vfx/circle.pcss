@@ -1,76 +1,98 @@
 .srkl {
-  @apply absolute -z-1 rounded-full opacity-75;
-  width: calc(32vw + 22vh);
-  height: calc(32vw + 22vh);
-  animation-name: srkl-around;
+  @apply absolute -z-1 rounded-full;
+  width: calc(25vw + 15vh);
+  height: calc(25vw + 15vh);
+  /* animation-name: srkl-around; */
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   transform-origin: 35% 35%;
-  animation-duration: 2s;
-  filter: blur(90px);
+  animation-duration: 5s;
+  filter: blur(100px);
+  transform: translate3d(0, 0, 0);
 
   &.-blue {
-    top: 25vh;
-    right: -38vw;
+    top: 10vh;
+    right: -20vw;
     background: radial-gradient(
       circle,
       hsl(var(--color-primary)) 0%,
       hsla(var(--color-primary) / 0) 100%
     );
+    opacity: 50%;
   }
 
   &.-yellow {
-    top: 19vh;
-    right: 55vw;
+    top: 10vh;
+    left: -15vw;
     transform-origin: 65% 65%;
     animation-direction: reverse;
-    /* animation-duration: 6s; */
+    animation-duration: 6s;
+    /* background: radial-gradient(
+      circle,
+      hsl(86 76% 85%) 0%,
+      hsla(86 76% 85% / 0) 100%
+    ); */
     background: radial-gradient(
       circle,
       hsl(var(--color-tertiary)) 0%,
       hsla(var(--color-tertiary) / 0) 100%
     );
+    opacity: 50%;
   }
 
+  &.-white {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
+    background: radial-gradient(
+      circle,
+      hsl(0 0% 100%) 0%,
+      hsla(0 0% 100% / 0) 100%
+    );
+    opacity: 100%;
+  }
+
+  /* --------------------------------------------------------------------------
+    480px
+  -------------------------------------------------------------------------- */
   @media (min-width: 480px) {
-    /*  */
-
-    &.-blue {
-      opacity: 50%;
-    }
-
-    &.-yellow {
-      /*  */
-    }
+    width: calc(40vw + 32vh);
+    height: calc(40vw + 32vh);
   }
 
+  /* --------------------------------------------------------------------------
+    768px
+  -------------------------------------------------------------------------- */
   @media (min-width: 768px) {
-    /*  */
+    width: calc(42vw + 35vh);
+    height: calc(42vw + 35vh);
 
     &.-blue {
-      top: 15vh;
-      right: -25vw;
+      top: -25vh;
       opacity: 20%;
     }
-
     &.-yellow {
-      top: 17vh;
-      right: 35vw;
+      top: -15vh;
+      left: -30vw;
+      opacity: 20%;
+    }
+    &.-white {
+      transform: translateX(-50%) translateY(60%);
     }
   }
 
-  @media (min-width: 1024px) {
-    width: calc(25vw + 18vh);
-    height: calc(25vw + 18vh);
-
+  /* --------------------------------------------------------------------------
+    1280px
+  -------------------------------------------------------------------------- */
+  @media (min-width: 1280px) {
     &.-blue {
-      top: 0;
-      right: -5vw;
+      opacity: 10%;
     }
-
     &.-yellow {
-      top: 10vh;
-      right: 15vw;
+      /* left: -30vw; */
+    }
+    &.-white {
+      transform: translateX(-50%) translateY(70%);
     }
   }
 }
