@@ -98,14 +98,16 @@ const shouldSmoothScroll = href && href.startsWith('#')
       @apply underline decoration-secondary underline-offset-4;
 
       /* Hover */
-      &:not(:active):hover {
-        @apply text-primary-dark bg-primary-bg decoration-transparent;
-        /* outline-color: var(--color-primary-xlight); */
+      @media (hover: hover) {
+        &:not(:active):hover {
+          @apply text-primary-dark bg-primary-bg decoration-transparent;
+          /* outline-color: var(--color-primary-xlight); */
 
-        /* Glow */
-        &::before,
-        &::after {
-          @apply bg-white;
+          /* Glow */
+          &::before,
+          &::after {
+            @apply bg-white;
+          }
         }
       }
     }
@@ -124,8 +126,10 @@ const shouldSmoothScroll = href && href.startsWith('#')
       }
 
       /* Hover */
-      &:not(:active):hover {
-        @apply bg-primary-dark;
+      @media (hover: hover) {
+        &:not(:active):hover {
+          @apply bg-primary-dark;
+        }
       }
     }
 
@@ -144,16 +148,20 @@ const shouldSmoothScroll = href && href.startsWith('#')
       }
     }
 
-    &:not(:active):hover {
-      box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1),
-        0px 4px 8px 0px rgba(0, 0, 0, 0.1),
-        0px 14px 14px 0px rgba(0, 0, 0, 0.09),
-        0px 32px 19px 0px rgba(0, 0, 0, 0.05),
-        0px 56px 23px 0px rgba(0, 0, 0, 0.01),
-        0px 88px 25px 0px rgba(0, 0, 0, 0);
+    /* Hover */
+    /* Using the @media to avoid click styling on touch devices */
+    @media (hover: hover) {
+      &:not(:active):hover {
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1),
+          0px 4px 8px 0px rgba(0, 0, 0, 0.1),
+          0px 14px 14px 0px rgba(0, 0, 0, 0.09),
+          0px 32px 19px 0px rgba(0, 0, 0, 0.05),
+          0px 56px 23px 0px rgba(0, 0, 0, 0.01),
+          0px 88px 25px 0px rgba(0, 0, 0, 0);
 
-      @media not (prefers-reduced-motion) {
-        @apply -translate-y-[2px];
+        @media not (prefers-reduced-motion) {
+          @apply -translate-y-[2px];
+        }
       }
     }
 
