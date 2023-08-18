@@ -11,7 +11,7 @@ const { title, pageClass } = Astro.props
 
 // METHODS
 import fetchApi from '@/lib/strapi'
-import { googleFonts } from '@/utils'
+import { googleFonts, markdownToHTML } from '@/utils'
 
 // COMPONENTS
 import { Button, Header } from '@/components'
@@ -82,6 +82,9 @@ import '@/styles/eokic.pcss'
       }
     </script>
 
+    <!-- -------------------------------------------------------------------------
+      HEADER
+    -------------------------------------------------------------------------- -->
     <Header {globals} />
 
     <script is:inline>
@@ -95,6 +98,9 @@ import '@/styles/eokic.pcss'
       }
     </script>
 
+    <!-- -------------------------------------------------------------------------
+      NOISE VFX
+    -------------------------------------------------------------------------- -->
     <Noise />
     <div
       class="fixed top-0 left-0 w-full h-full opacity-10 pointer-events-none"
@@ -102,8 +108,24 @@ import '@/styles/eokic.pcss'
     >
     </div>
 
-    <!-- Body -->
+    <!-- -------------------------------------------------------------------------
+      BODY
+    -------------------------------------------------------------------------- -->
     <slot />
+
+    <!-- -------------------------------------------------------------------------
+      FOOTER
+    -------------------------------------------------------------------------- -->
+    <footer class="mb-section">
+      <div class="container">
+        <div class:list={['border-t border-dashed border-slate-300 pt-inner']}>
+          <div
+            class="prose max-w-none -text-body-1 lh-prose mx-auto"
+            set:html={markdownToHTML(globals.footer)}
+          />
+        </div>
+      </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="@/assets/main.ts"></script>
