@@ -15,6 +15,7 @@ import { googleFonts } from '@/utils'
 
 // COMPONENTS
 import { Button, Header } from '@/components'
+import { Noise } from '@/components/vfx'
 import { ViewTransitions } from 'astro:transitions'
 
 // DATA
@@ -93,6 +94,13 @@ import '@/styles/eokic.pcss'
         }, 1000)
       }
     </script>
+
+    <Noise />
+    <div
+      class="fixed top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+      style="filter: url(#noise); mix-blend-mode: multiply;"
+    >
+    </div>
 
     <!-- Body -->
     <slot />
