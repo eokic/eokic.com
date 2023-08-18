@@ -5,4 +5,5 @@ export default interface IHome extends IEntity {
   siteName: string
   siteDescription?: string
   logo: ILogo
+  footer?: string
 }
