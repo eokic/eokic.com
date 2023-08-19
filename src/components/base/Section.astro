@@ -45,8 +45,25 @@ const { id, title, subtitle, cssClass, alt } = Astro.props
         @apply absolute left-0 w-full h-[25px] bg-center;
         background: inherit;
         mask: url('/layout/section-curve.svg');
-        mask-size: 100% 25px;
+        mask-size: 200% 25px;
+        mask-position: center;
         content: '';
+
+        @media screen and (min-width: 640px) {
+          mask-size: 175% 25px;
+        }
+
+        @media screen and (min-width: 768px) {
+          mask-size: 150% 25px;
+        }
+
+        @media screen and (min-width: 860px) {
+          mask-size: 125% 25px;
+        }
+
+        @media screen and (min-width: 1024px) {
+          mask-size: 100% 25px;
+        }
       }
 
       &::before {
