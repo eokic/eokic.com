@@ -2,7 +2,7 @@
 public/uploads
 
 # build output
-dist/
+# dist/
 
 # generated types
 .astro/
