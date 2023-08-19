@@ -1,5 +1,4 @@
-import type { NStrapiMedia } from './_StrapiMedia'
-import type { IEntity, IProject, ISection, ISEO, IService } from '.'
+import type { IEntity, IProject, ISection, ISEO, IService, NStrapiMedia } from '.'
 
 export default interface IHome extends IEntity {
   title: string

@@ -9,7 +9,7 @@ interface Props {
 const { testimonial } = Astro.props
 
 // COMPONENTS
-import { Link } from '@/components'
+import { ImageHandler, Link } from '@/components'
 
 // VENDOR
 import { micromark } from 'micromark'
@@ -26,20 +26,29 @@ import { micromark } from 'micromark'
 >
   <div class="testimonial-inner">
     <blockquote
-      class="testimonial-quote mb-3 prose body-1 lh-prose italic text-slate-600"
+      class:list={[
+        'testimonial-quote mb-3 prose body-1 lh-prose italic text-slate-600',
+      ]}
       set:html={micromark(testimonial.quote)}
     />
-    <figcaption>
-      <strong class="block font-semibold">
-        {
-          testimonial.link ? (
-            <Link label={testimonial.person} link={testimonial.link} />
-          ) : (
-            testimonial.person
-          )
-        }
-      </strong>
-      <small>{testimonial.position}</small>
+    <figcaption class="flex lh-body">
+      <ImageHandler
+        cssClass="mr-3 w-7 h-7 rounded-full"
+        imgClass="rounded-full"
+        img={testimonial.photo}
+      />
+      <div>
+        <strong class="block mb-1 font-semibold">
+          {
+            testimonial.link ? (
+              <Link label={testimonial.person} link={testimonial.link} />
+            ) : (
+              testimonial.person
+            )
+          }
+        </strong>
+        <small>{testimonial.position}</small>
+      </div>
     </figcaption>
   </div>
 </figure>

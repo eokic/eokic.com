@@ -1,11 +1,11 @@
-import type { IClient, IEntity, IListItem, ISEO, IStrapiMedia } from '.'
+import type { IClient, IEntity, IListItem, ISEO, NStrapiMedia } from '.'
 
 export default interface IProject extends IEntity {
   url: string
   title: string
   client: IClient
   subtitle: string
-  thumbnail: IStrapiMedia
+  thumbnail: NStrapiMedia.Raster
   dateStart: string
   dateEnd?: string
   ongoing?: boolean

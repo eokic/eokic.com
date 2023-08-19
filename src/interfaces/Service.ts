@@ -1,5 +1,4 @@
-import type { NStrapiMedia } from './_StrapiMedia'
-import type { IEntity, IEmailTemplate } from '.'
+import type { IEntity, IEmailTemplate, NStrapiMedia } from '.'
 
 export default interface IService extends IEntity {
   title: string
