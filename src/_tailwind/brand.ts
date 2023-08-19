@@ -15,7 +15,7 @@ export default {
     'secondary-light': 'hsl(var(--color-secondary) / 0.65)',
     'secondary-xlight': 'hsl(var(--color-secondary) / 0.25)',
     'secondary-dark': 'hsl(var(--color-secondary-dark) / 1)',
-    'secondary-bg': 'hsl(var(--color-secondary) / 0.1)',
+    'secondary-bg': 'hsl(var(--color-secondary-desat) / 0.6)',
     tertiary: 'hsl(var(--color-tertiary) / 1)',
     'focus-sr': 'hsl(var(--color-focus-sr) / 1)',
   },
