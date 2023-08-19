@@ -25,6 +25,11 @@ const globals = await fetchApi<IGlobal>({
   wrappedByKey: 'data',
 })
 
+// MEDIA
+import faviconSVG from '@/assets/favicon/favicon.svg'
+import faviconICO from '@/assets/favicon/favicon.ico'
+import touchIcon from '@/assets/favicon/apple-touch-icon.png'
+
 // STYLES
 import '@/styles/eokic.pcss'
 ---
@@ -47,6 +52,9 @@ import '@/styles/eokic.pcss'
         weight: ['400', '700'],
       })}
     />
+    <link href={faviconICO} rel="icon" sizes="32x32" />
+    <link href={faviconSVG.src} rel="icon" type="image/svg+xml" />
+    <link href={touchIcon.src} rel="apple-touch-icon" />
     <ViewTransitions />
     <meta name="description" content="Astro description" />
     <meta name="generator" content={Astro.generator} />
