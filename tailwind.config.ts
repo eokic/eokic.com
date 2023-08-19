@@ -104,6 +104,13 @@ module.exports = {
       ...fontSizes.theme,
     },
 
+    textUnderlineOffset: {
+      0: '0px',
+      1: '0.15em',
+      2: '0.25em',
+      3: '0.35em',
+    },
+
     spacing: {
       ...spacings.theme,
       0: '0',

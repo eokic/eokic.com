@@ -42,7 +42,7 @@ const shouldSmoothScroll = href && href.startsWith('#')
 <style is:global>
   .btn {
     @apply relative inline-block overflow-hidden;
-    @apply py-3 px-2 sm:px-3 lg:px-4;
+    @apply py-3 px-2 xs:px-3 lg:px-4;
     @apply body lh-body font-sans text-white bg-primary;
     @apply rounded-[99px] cursor-pointer;
     outline: var(--focus-sr-width) var(--focus-sr-style) transparent;
@@ -95,13 +95,13 @@ const shouldSmoothScroll = href && href.startsWith('#')
     -------------------------------------------------------------------------- */
     &.-neutral {
       @apply text-primary bg-transparent;
-      @apply underline decoration-secondary underline-offset-4;
+      @apply underline decoration-secondary underline-offset-3;
 
       /* Hover */
       @media (hover: hover) {
         &:not(:active):hover {
-          @apply text-primary-dark bg-primary-bg decoration-transparent;
-          /* outline-color: var(--color-primary-xlight); */
+          @apply text-primary-dark decoration-transparent;
+          background: hsl(0 0% 100% / 0.92);
 
           /* Glow */
           &::before,

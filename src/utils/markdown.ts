@@ -27,7 +27,7 @@ function link (dir: Directive): boolean | undefined {
     this.tag('target="_blank"')
   }
 
-  this.tag(`><span>${dir.label}</span></a>`)
+  this.tag(`>${dir.label}</a>`)
 }
 
 function xs (dir: Directive): boolean | undefined {
