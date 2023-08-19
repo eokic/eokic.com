@@ -3,11 +3,12 @@
 import type { IGlobal } from '@/interfaces'
 interface Props {
   title: string
-  pageClass: string
+  description?: string
+  pageClass?: string
 }
 
 // PROPS
-const { title, pageClass } = Astro.props
+const { title, description, pageClass } = Astro.props
 
 // METHODS
 import fetchApi from '@/lib/strapi'
@@ -56,7 +57,7 @@ import '@/styles/eokic.pcss'
     <link href={faviconSVG.src} rel="icon" type="image/svg+xml" />
     <link href={touchIcon.src} rel="apple-touch-icon" />
     <ViewTransitions />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={description || globals.siteDescription} />
     <meta name="generator" content={Astro.generator} />
   </head>
   <body id="top" class:list={[pageClass, 'no-js']}>
