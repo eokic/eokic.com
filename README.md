@@ -1,6 +1,6 @@
 # eokic.com
 
-TODO: Public intro & licence
+TODO: Public intro
 
 
 ## Technical requirements
