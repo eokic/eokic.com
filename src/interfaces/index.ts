@@ -1,6 +1,7 @@
 export type { default as IEmailTemplate } from './_EmailTemplate'
 export type { default as IEntity } from './_Entity'
 export type { default as ILink } from './_Link'
+export type { default as IListItem } from './_ListItem'
 export type { default as ILogo } from './_Logo'
 export type { default as ISection } from './_Section'
 export type { default as ISEO } from './_SEO'

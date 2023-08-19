@@ -1,0 +1,29 @@
+ul.lightning-list,
+.hero-body ul {
+  @apply m-0 p-0;
+  list-style: none;
+
+  li {
+    @apply relative m-0 p-0;
+    margin-bottom: 0.25em;
+    padding-left: 1.25em;
+
+    /* Safari does not seem to support the ::marker */
+    &::marker {
+      display: none;
+    }
+
+    /* Safari does not seem to support the ::marker */
+    &::before {
+      @apply absolute top-0 -left-1;
+      font-size: 1.1em;
+      content: '⚡️';
+    }
+  }
+}
+
+.hero-body ul {
+  li {
+    margin-bottom: 0.5em;
+  }
+}

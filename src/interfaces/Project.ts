@@ -1,4 +1,4 @@
-import type { IClient, IEntity, ISEO, IStrapiMedia } from '.'
+import type { IClient, IEntity, IListItem, ISEO, IStrapiMedia } from '.'
 
 export default interface IProject extends IEntity {
   url: string
@@ -10,5 +10,6 @@ export default interface IProject extends IEntity {
   dateEnd?: string
   ongoing?: boolean
   sequence: number
+  features: IListItem[]
   seo: ISEO
 }
