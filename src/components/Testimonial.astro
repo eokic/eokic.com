@@ -60,10 +60,16 @@ import { micromark } from 'micromark'
     /*  */
 
     &-inner {
-      @apply relative border-l-2 border-secondary-xlight pl-4;
+      @apply relative pl-4 sm:pl-5;
 
       &:before {
-        @apply absolute top-0 -left-3 w-5 h-6 bg-white;
+        @apply absolute top-5 bottom-0 left-0 bg-secondary-xlight;
+        width: 2px;
+        content: '';
+      }
+
+      &:after {
+        @apply absolute top-0 -left-2 w-5;
         @apply h2 font-display font-light text-secondary;
         line-height: 1.45;
         content: '“';
