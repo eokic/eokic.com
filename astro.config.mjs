@@ -1,6 +1,5 @@
 import { defineConfig, sharpImageService } from 'astro/config'
 
-// import alpinejs from '@astrojs/alpinejs'
 // import { astroImageTools } from 'astro-imagetools'
 import compress from 'astro-compress'
 import compressor from 'astro-compressor'
@@ -20,8 +19,6 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-
-    // alpinejs(),
     sitemap(),
     compress(),
     compressor(),
