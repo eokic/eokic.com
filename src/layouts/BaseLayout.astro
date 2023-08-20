@@ -42,30 +42,13 @@ import '@/styles/eokic.pcss'
       content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover"
     />
     <title>{seo?.metaTitle || globals.seo.metaTitle}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link
-      rel="stylesheet"
-      media="print"
-      onload="this.onload=null;this.removeAttribute('media');"
-      href={googleFonts({
-        family: ['Kalam'],
-        weight: ['400', '700'],
-      })}
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href={googleFonts({
-          family: ['Kalam'],
-          weight: ['400', '700'],
-        })}
-      />
-    </noscript>
+
+    <!-- Favicon -->
     <link href={faviconICO} rel="icon" sizes="32x32" />
     <link href={faviconSVG.src} rel="icon" type="image/svg+xml" />
     <link href={touchIcon.src} rel="apple-touch-icon" />
+
+    <!-- Other -->
     <ViewTransitions />
     <meta
       name="description"
@@ -152,6 +135,25 @@ import '@/styles/eokic.pcss'
       BODY
     -------------------------------------------------------------------------- -->
     <slot />
+
+    <!-- Fonts -->
+    <style>
+      @font-face {
+        font-display: swap;
+        font-family: 'Kalam';
+        font-style: normal;
+        font-weight: 400;
+        src: url('/fonts/kalam-v16-latin_latin-ext-regular.woff2')
+          format('woff2');
+      }
+      @font-face {
+        font-display: swap;
+        font-family: 'Kalam';
+        font-style: normal;
+        font-weight: 700;
+        src: url('/fonts/kalam-v16-latin_latin-ext-700.woff2') format('woff2');
+      }
+    </style>
 
     <!-- -------------------------------------------------------------------------
       FOOTER
