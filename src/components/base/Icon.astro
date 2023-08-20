@@ -24,7 +24,11 @@ const icon = {
 }
 ---
 
-<span class="icon" style={`width: ${size || 1}em; height: ${size || 1}em;`}>
+<span
+  class="icon"
+  style={`width: ${size || 1}em; height: ${size || 1}em;`}
+  aria-hidden="true"
+>
   <ImageHandler img={{ url: icon[id]?.src }} />
 </span>
 
