@@ -1,7 +1,7 @@
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), display-capture=(), interest-cohort=()
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), display-capture=()
   Content-Security-Policy: object-src 'none'; script-src 'self' 'unsafe-inline'; frame-ancestors 'none';
 
 # TODO: find a way to remove `unsafe-inline` with Astro & Cloudflare.
