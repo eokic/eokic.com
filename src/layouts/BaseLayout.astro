@@ -14,7 +14,7 @@ import fetchApi from '@/lib/strapi'
 import { googleFonts, markdownToHTML } from '@/utils'
 
 // COMPONENTS
-import { Button, Header } from '@/components'
+import { Button, Link, Header } from '@/components'
 import { Noise } from '@/components/vfx'
 import { ViewTransitions } from 'astro:transitions'
 
@@ -147,12 +147,20 @@ import '@/styles/eokic.pcss'
     -------------------------------------------------------------------------- -->
     <footer class="mt-inner mb-section">
       <div class="container">
-        <div class:list={['border-t border-dashed border-slate-300 pt-inner']}>
+        <div class="border-t border-dashed border-slate-300 pt-inner">
+          <div class="body-1 text-center">
+            <ul class="mb-5 md:mb-6 inline-flex gap-3 sm:gap-4">
+              {
+                globals.footerLinks?.map((link) => (
+                  <li>
+                    <Link link={link} />
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
           <div
-            class:list={[
-              'max-w-none',
-              'prose -text-body-1 lh-prose text-slate-500',
-            ]}
+            class="max-w-none prose -text-body-1 lh-prose text-slate-500 lg:text-center"
             set:html={markdownToHTML(globals.footer)}
           />
         </div>

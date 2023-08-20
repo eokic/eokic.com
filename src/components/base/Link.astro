@@ -11,6 +11,9 @@ interface Props {
 }
 const { link, label, cssClass, presentational } = Astro.props
 
+// COMPONENTS
+import { Icon } from '@/components'
+
 /*
   Note: if no `label`` is provided, then it is presumed that a <slot> was used.
   In this case, the <Link> component will be focusable and serves primarily to
@@ -26,8 +29,8 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
 <a
   class:list={[
     {
-      focusable: !label,
-      link: label,
+      focusable: !label && !link.title,
+      link: label || link.title,
     },
     ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
   ]}
@@ -43,7 +46,9 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
   tabindex={presentational ? -1 : 0}
   data-smooth-scroll={shouldSmoothScroll}
 >
-  {label ? label : null}
+  {link.icon ? <Icon id={link.icon} /> : null}{
+    label ? label : link.title ? link.title : null
+  }
   <slot />
 </a>
 
@@ -51,6 +56,11 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
   .link,
   .focusable {
     @apply inline-block rounded;
+
+    .icon {
+      margin-right: 0.25em;
+      vertical-align: -0.1em;
+    }
   }
 
   .link {

@@ -1,5 +1,6 @@
 export { default as Button } from './Button.astro'
 export { default as Header } from './Header.astro'
+export { default as Icon } from './Icon.astro'
 export { default as ImageHandler } from './ImageHandler.astro'
 export { default as Link } from './Link.astro'
 export { default as Section } from './Section.astro'

@@ -52,7 +52,7 @@ function getSrcset(formats: Record<string, NStrapiMedia.Base>): string {
 const localID = ID()
 const aspectRatio = getAspectRatio(img.width, img.height, !nonStandardRatio)
 const isResponsive = img.formats && Object.keys(img.formats).length > 1
-const srcset = isResponsive ? getSrcset(img.formats) : null
+const srcset = img.formats && isResponsive ? getSrcset(img.formats) : null
 
 // BASE64 THUMB
 import fs from 'node:fs/promises'

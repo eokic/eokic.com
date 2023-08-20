@@ -1,0 +1,35 @@
+---
+// PROPS
+interface Props {
+  id: 'github' | 'linkedin'
+  size?: number // em
+}
+const { id, size } = Astro.props
+
+// METHODS
+import { getImage } from 'astro:assets'
+
+// COMPONENTS
+import { ImageHandler } from '@/components'
+
+// MEDIA
+// TODO: Find a better way; aliases don't seem to work with dynamic imports
+const icon = {
+  github: await getImage({
+    src: import('@/assets/icons/github.svg'),
+  }),
+  linkedin: await getImage({
+    src: import('@/assets/icons/linkedin.svg'),
+  }),
+}
+---
+
+<span class="icon" style={`width: ${size || 1}em; height: ${size || 1}em;`}>
+  <ImageHandler img={{ url: icon[id]?.src }} />
+</span>
+
+<style is:global>
+  .icon {
+    @apply inline-block;
+  }
+</style>
