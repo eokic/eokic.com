@@ -30,4 +30,7 @@ export default defineConfig({
     assets: true,
     viewTransitions: true,
   },
+  build: {
+    inlineStylesheets: 'always',
+  },
 })

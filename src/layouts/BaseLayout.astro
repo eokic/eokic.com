@@ -11,7 +11,7 @@ const { seo, pageClass } = Astro.props
 
 // METHODS
 import fetchApi from '@/lib/strapi'
-import { googleFonts, markdownToHTML } from '@/utils'
+import { markdownToHTML } from '@/utils'
 
 // COMPONENTS
 import { Button, Link, Header } from '@/components'
@@ -42,6 +42,25 @@ import '@/styles/eokic.pcss'
       content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover"
     />
     <title>{seo?.metaTitle || globals.seo.metaTitle}</title>
+
+    <!-- Fonts -->
+    <style>
+      @font-face {
+        font-display: swap;
+        font-family: 'Kalam';
+        font-style: normal;
+        font-weight: 400;
+        src: url('/fonts/kalam-v16-latin_latin-ext-regular.woff2')
+          format('woff2');
+      }
+      @font-face {
+        font-display: swap;
+        font-family: 'Kalam';
+        font-style: normal;
+        font-weight: 700;
+        src: url('/fonts/kalam-v16-latin_latin-ext-700.woff2') format('woff2');
+      }
+    </style>
 
     <!-- Favicon -->
     <link href={faviconICO} rel="icon" sizes="32x32" />
@@ -135,25 +154,6 @@ import '@/styles/eokic.pcss'
       BODY
     -------------------------------------------------------------------------- -->
     <slot />
-
-    <!-- Fonts -->
-    <style is:inline>
-      @font-face {
-        font-display: swap;
-        font-family: 'Kalam';
-        font-style: normal;
-        font-weight: 400;
-        src: url('/fonts/kalam-v16-latin_latin-ext-regular.woff2')
-          format('woff2');
-      }
-      @font-face {
-        font-display: swap;
-        font-family: 'Kalam';
-        font-style: normal;
-        font-weight: 700;
-        src: url('/fonts/kalam-v16-latin_latin-ext-700.woff2') format('woff2');
-      }
-    </style>
 
     <!-- -------------------------------------------------------------------------
       FOOTER
