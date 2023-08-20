@@ -47,11 +47,22 @@ import '@/styles/eokic.pcss'
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link
       rel="stylesheet"
+      media="print"
+      onload="this.onload=null;this.removeAttribute('media');"
       href={googleFonts({
         family: ['Kalam'],
         weight: ['400', '700'],
       })}
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href={googleFonts({
+          family: ['Kalam'],
+          weight: ['400', '700'],
+        })}
+      />
+    </noscript>
     <link href={faviconICO} rel="icon" sizes="32x32" />
     <link href={faviconSVG.src} rel="icon" type="image/svg+xml" />
     <link href={touchIcon.src} rel="apple-touch-icon" />
