@@ -46,7 +46,7 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
   tabindex={presentational ? -1 : 0}
   data-smooth-scroll={shouldSmoothScroll}
 >
-  {link.icon ? <Icon id={link.icon} /> : null}{
+  {link.icon ? <Icon id={link.icon} decorative /> : null}{
     label ? label : link.title ? link.title : null
   }
   <slot />

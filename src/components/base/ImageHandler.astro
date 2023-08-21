@@ -12,6 +12,7 @@ interface Props {
   fullWidth?: boolean
   fullHeight?: boolean
   nonStandardRatio?: boolean
+  decorative?: boolean
   important?: boolean
   contain?: boolean
   inline?: boolean
@@ -26,6 +27,7 @@ const {
   fullWidth,
   fullHeight,
   nonStandardRatio,
+  decorative,
   important,
   contain,
   inline,
@@ -46,6 +48,7 @@ import { Image } from 'astro:assets'
   {fullWidth}
   {fullHeight}
   {nonStandardRatio}
+  {decorative}
   {important}
   {contain}
   {inline}

@@ -12,6 +12,7 @@ interface Props {
   fullWidth?: boolean
   fullHeight?: boolean
   nonStandardRatio?: boolean
+  decorative?: boolean
   important?: boolean
   contain?: boolean
   inline?: boolean
@@ -26,6 +27,7 @@ const {
   fullWidth,
   fullHeight,
   nonStandardRatio,
+  decorative,
   important,
   contain,
   inline,
@@ -107,6 +109,8 @@ const base64Orig = inline
     loading={base64Orig ? null : important ? 'eager' : 'lazy'}
     decoding="async"
     onload={base64Orig ? null : `javascript: onStrapiImageLoad('${localID}')`}
+    role={decorative ? 'presentation' : null}
+    aria-hidden={decorative ? 'true' : null}
   />
 
   <!-- Blurry placeholder -->

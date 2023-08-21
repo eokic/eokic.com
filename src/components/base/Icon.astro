@@ -3,8 +3,9 @@
 interface Props {
   id: 'github' | 'linkedin'
   size?: number // em
+  decorative?: boolean
 }
-const { id, size } = Astro.props
+const { id, size, decorative } = Astro.props
 
 // METHODS
 import { getImage } from 'astro:assets'
@@ -29,7 +30,7 @@ const icon = {
   style={`width: ${size || 1}em; height: ${size || 1}em;`}
   aria-hidden="true"
 >
-  <ImageHandler img={{ url: icon[id]?.src }} />
+  <ImageHandler img={{ url: icon[id]?.src }} {decorative} />
 </span>
 
 <style is:global>
