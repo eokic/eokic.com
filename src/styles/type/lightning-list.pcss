@@ -15,9 +15,13 @@ ul.lightning-list,
 
     /* Safari does not seem to support the ::marker */
     &::before {
-      @apply absolute top-0 -left-1;
-      font-size: 1.1em;
-      content: '⚡️';
+      @apply absolute -left-1;
+      top: 0.25em;
+      width: 1.1em;
+      height: 1.1em;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MSIgaGVpZ2h0PSIxMjciIGZpbGw9Im5vbmUiPgogIDxwYXRoIGZpbGw9InVybCgjYSkiIGQ9Ik0wIDY5IDcwIDAgNDUgNTFoNDZMNyAxMjdsMzctNThIMFoiLz4KICA8cGF0aCBmaWxsPSIjRkZGRjlEIiBkPSJtMjAgNjIgMzItMzctMTggMzJoMzlMMzAgOTlsMjgtMzdIMjBaIi8+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSI2NC42IiB4Mj0iMTQuMiIgeTE9IjAiIHkyPSIxMjYuOCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjRkZBODAwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiNGMTg5MDAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZCODAwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KPC9zdmc+Cg==')
+        center/contain no-repeat;
+      content: '';
     }
   }
 }
