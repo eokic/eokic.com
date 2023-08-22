@@ -56,7 +56,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
 
 <footer class:list={['edge-fade relative max-lg:mt-2 -mb-3 lg:-mb-inner']}>
   <!-- Single row on larger devices -->
-  <div
+  <ul
     class:list={[
       'z-1 max-lg:hidden mt-section lg:mt-outer flex justify-center items-center',
       'logo-curve gap-4 lg:gap-5 xl:gap-7 2xl:gap-8 pt-3 py-5',
@@ -66,22 +66,28 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
       sortedClients.singleRow
         ?.filter((client) => client.logo?.colorOnLight?.url)
         ?.map((client) => (
-          <ImageHandler
-            img={client.logo.colorOnLight}
-            cssClass="shrink-0"
-            style={{
-              marginTop: client.logo.vAlign ? `${client.logo.vAlign}em` : '',
-            }}
-            alt={client.title}
-            nonStandardRatio
-          />
+          <li>
+            <ImageHandler
+              img={client.logo.colorOnLight}
+              cssClass="shrink-0"
+              style={{
+                marginTop: client.logo.vAlign ? `${client.logo.vAlign}em` : '',
+              }}
+              alt={client.title}
+              nonStandardRatio
+            />
+          </li>
         ))
     }
-  </div>
+  </ul>
 
   <!-- Two rows on smaller devices -->
-  <!-- aria-hidden as it's simply a duplicate for layout purposes -->
-  <div class="lg:hidden relative z-1 -mt-3 -mb-3" aria-hidden="true">
+  <!-- Hidden from screen readers as it's simply a duplicate for layout/centering purposes -->
+  <div
+    class="lg:hidden relative z-1 -mt-3 -mb-3"
+    aria-hidden="true"
+    role="presentation"
+  >
     <div class="flex justify-center items-center gap-5 sm:gap-6 md:gap-7">
       {
         sortedClients.twoRowsTop
