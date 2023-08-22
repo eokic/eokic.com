@@ -67,12 +67,12 @@ import '@/styles/eokic.pcss'
     <link href={faviconSVG.src} rel="icon" type="image/svg+xml" />
     <link href={touchIcon.src} rel="apple-touch-icon" />
 
-    <!-- Other -->
-    <ViewTransitions />
+    <!-- SEO -->
     <meta
       name="description"
       content={seo?.metaDescription || globals.seo.metaDescription}
     />
+    <meta name="keywords" content={seo?.keywords || globals.seo.keywords} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -91,7 +91,7 @@ import '@/styles/eokic.pcss'
         (seo?.metaImage?.url || globals?.seo?.metaImage?.url || '')}
     />
 
-    <meta name="generator" content={Astro.generator} />
+    <ViewTransitions />
   </head>
   <body id="top" class:list={[pageClass, 'no-js']}>
     <!-- Accessibilty links -->
