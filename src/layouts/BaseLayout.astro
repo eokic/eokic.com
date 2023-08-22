@@ -32,6 +32,7 @@ import touchIcon from '@/assets/favicon/apple-touch-icon.png'
 
 // STYLES
 import '@/styles/eokic.pcss'
+import 'flying-focus/flying-focus.css'
 ---
 
 <html lang="en">
@@ -44,7 +45,7 @@ import '@/styles/eokic.pcss'
     <title>{seo?.metaTitle || globals.seo.metaTitle}</title>
 
     <!-- Fonts -->
-    <style>
+    <style is:global>
       @font-face {
         font-display: swap;
         font-family: 'Kalam';
