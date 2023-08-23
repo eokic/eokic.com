@@ -25,6 +25,9 @@ const globals = await fetchApi<IGlobal>({
   wrappedByKey: 'data',
 })
 
+// HELPERS
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+
 // MEDIA
 import faviconSVG from '@/assets/favicon/favicon.svg'
 import faviconICO from '@/assets/favicon/favicon.ico'
@@ -69,6 +72,7 @@ import 'flying-focus/flying-focus.css'
     <link href={touchIcon.src} rel="apple-touch-icon" />
 
     <!-- SEO -->
+    <meta name="canonical" content={seo?.canonicalURL || canonicalURL} />
     <meta
       name="description"
       content={seo?.metaDescription || globals.seo.metaDescription}
