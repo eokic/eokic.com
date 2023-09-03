@@ -1,14 +1,21 @@
 ---
 // PROPS
 interface Props {
-  cssClass?: string | string[]
+  class?: string
   theme?: 'header' | 'header-arrow' | 'primary' | 'neutral' | 'a11y' // defaults to neutral
   label?: string
   href?: string
   fullHeight?: boolean
   presentational?: boolean
 }
-const { cssClass, theme, label, href, fullHeight, presentational } = Astro.props
+const {
+  class:cssClass,
+  theme,
+  label,
+  href,
+  fullHeight,
+  presentational,
+} = Astro.props
 
 // METHODS
 import { markdownToHTML } from '@/utils'

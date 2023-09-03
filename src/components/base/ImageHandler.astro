@@ -5,9 +5,9 @@ import { NStrapiMedia } from '@/interfaces'
 // PROPS
 interface Props {
   img: NStrapiMedia.Unknown
-  cssClass?: string | string[]
+  class?: string
   style?: Record<string, unknown>
-  imgClass?: string | string[]
+  imgClass?: string
   imgStyle?: Record<string, unknown>
   fullWidth?: boolean
   fullHeight?: boolean
@@ -20,7 +20,7 @@ interface Props {
 }
 const {
   img,
-  cssClass,
+  class: cssClass,
   style,
   imgClass,
   imgStyle,
@@ -41,7 +41,7 @@ import { Image } from 'astro:assets'
 
 <StrapiImage
   {img}
-  {cssClass}
+  class={cssClass}
   {style}
   {imgClass}
   {imgStyle}

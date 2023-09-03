@@ -1,13 +1,13 @@
 ---
 // PROPS
 interface Props {
-  cssClass?: string | string[]
+  class?: string
 }
-const { cssClass } = Astro.props
+const { class: cssClass } = Astro.props
 ---
 
 <div
-  class:list={[...(typeof cssClass === 'string' ? [cssClass] : cssClass || [])]}
+  class={cssClass}
   role="status"
 >
   <svg

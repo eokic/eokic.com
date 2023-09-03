@@ -5,9 +5,9 @@ import { NStrapiMedia } from '@/interfaces'
 // PROPS
 interface Props {
   img: NStrapiMedia.Unknown
-  cssClass?: string | string[]
+  class?: string
   style?: Record<string, unknown>
-  imgClass?: string | string[]
+  imgClass?: string
   imgStyle?: Record<string, unknown>
   fullWidth?: boolean
   fullHeight?: boolean
@@ -20,7 +20,7 @@ interface Props {
 }
 const {
   img,
-  cssClass,
+  class: cssClass,
   style,
   imgClass,
   imgStyle,
@@ -35,7 +35,7 @@ const {
 } = Astro.props
 
 // COMPONENTS
-import { Spinner } from '@/components'
+// import { Spinner } from '@/components'
 
 // METHODS
 import { getAspectRatio, ID } from '@/utils'
@@ -76,10 +76,8 @@ const base64Orig = inline
   class:list={[
     'st-image relative overflow-hidden',
     'flex justify-center items-center',
-    {
-      vfx: !base64Orig,
-    },
-    ...(typeof cssClass === 'string' ? [cssClass] : cssClass || []),
+    { vfx: !base64Orig },
+    cssClass,
   ]}
   style={{
     ...(style || {}),
@@ -95,7 +93,7 @@ const base64Orig = inline
         'w-full': fullWidth,
         'h-full': fullHeight,
       },
-      ...(typeof imgClass === 'string' ? [imgClass] : imgClass || []),
+      imgClass,
     ]}
     style={{
       aspectRatio: aspectRatio,

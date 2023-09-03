@@ -6,10 +6,10 @@ import type { ILink } from '@/interfaces'
 interface Props {
   link: ILink
   label?: string
-  cssClass?: string | string[]
+  class?: string
   presentational?: boolean
 }
-const { link, label, cssClass, presentational } = Astro.props
+const { link, label, class: cssClass, presentational } = Astro.props
 
 // COMPONENTS
 import { Icon } from '@/components'

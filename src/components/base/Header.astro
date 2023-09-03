@@ -33,7 +33,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
   >
     <!-- Mobile: back-to-top -->
     <Button
-      cssClass="block md:!hidden border-r border-primary-xlight rounded-r-none"
+      class="block md:!hidden border-r border-primary-xlight rounded-r-none"
       theme="header-arrow"
       href="#top"
       label="↑"
@@ -47,7 +47,7 @@ const isHomePage = /^\/(#.*)?$/.test(Astro.url.pathname)
         }}
       >
         <ImageHandler
-          cssClass="inline-block"
+          class="inline-block"
           imgClass="h-[36px]"
           img={globals.logo.colorOnLight}
           nonStandardRatio

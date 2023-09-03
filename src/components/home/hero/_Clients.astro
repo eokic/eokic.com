@@ -69,7 +69,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
           <li>
             <ImageHandler
               img={client.logo.colorOnLight}
-              cssClass="shrink-0"
+              class="shrink-0"
               style={{
                 marginTop: client.logo.vAlign ? `${client.logo.vAlign}em` : '',
               }}
@@ -95,7 +95,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
           ?.map((client) => (
             <ImageHandler
               img={client.logo.colorOnLight}
-              cssClass="shrink-0"
+              class="shrink-0"
               alt={client.title}
               nonStandardRatio
             />
@@ -109,7 +109,7 @@ function sortClients(arr: IClient[]): Record<string, IClient[]> {
           ?.map((client) => (
             <ImageHandler
               img={client.logo.colorOnLight}
-              cssClass="shrink-0"
+              class="shrink-0"
               alt={client.title}
               nonStandardRatio
             />

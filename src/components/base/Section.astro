@@ -4,10 +4,10 @@ interface Props {
   id?: string
   title?: string
   subtitle?: string
-  cssClass?: string | string[]
+  class?: string
   alt?: boolean
 }
-const { id, title, subtitle, cssClass, alt } = Astro.props
+const { id, title, subtitle, class: cssClass, alt } = Astro.props
 ---
 
 <section
