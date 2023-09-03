@@ -1,4 +1,4 @@
-import { defineConfig, sharpImageService } from 'astro/config'
+import { defineConfig } from 'astro/config'
 
 // import { astroImageTools } from 'astro-imagetools'
 import compress from 'astro-compress'
@@ -23,14 +23,8 @@ export default defineConfig({
     compress(),
     compressor(),
   ],
-  image: {
-    service: sharpImageService(),
-  },
-  experimental: {
-    assets: true,
-    viewTransitions: true,
-  },
   build: {
     inlineStylesheets: 'always',
+    excludeMiddleware: true,
   },
 })
