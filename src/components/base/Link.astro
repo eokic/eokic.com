@@ -46,16 +46,15 @@ const shouldSmoothScroll = link.url && link.url.startsWith('#')
   tabindex={presentational ? -1 : 0}
   data-smooth-scroll={shouldSmoothScroll}
 >
-  {link.icon ? <Icon id={link.icon} decorative /> : null}{
-    label ? label : link.title ? link.title : null
-  }
+  {link.icon ? <Icon id={link.icon} decorative /> : null}
+  {label || link.title}
   <slot />
 </a>
 
 <style is:global>
   .link,
   .focusable {
-    @apply inline-block rounded;
+    @apply inline-flex items-center rounded;
 
     .icon {
       margin-right: 0.25em;

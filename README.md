@@ -13,7 +13,7 @@ TODO: Public intro
 ## Setup
 
 1. create and configure the `.env` based on `.env.example`
-1. symlink Strapi's uploads `ln -s STRAPI_UPLOAD_FOLDER public/uploads`
+1. symlink Strapi's uploads in `eokic.com/public/` with `ln -s ../../eokic.cms/public/uploads ./`
 
 
 ## Development
